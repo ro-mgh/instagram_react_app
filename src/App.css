@@ -391,28 +391,6 @@ footer {
 .sign-input-form-onfulfil {
   font-size: 12px;
   padding: 14px 0 2px 8px !important;
-  /* background: rgba(var(--b3f, 250, 250, 250), 1);
-  border: 0;
-  flex: 1 0 auto;
-  margin: 0;
-  outline: 0;
-  overflow: hidden;
-  padding: 9px 0 7px 8px;
-  text-overflow: ellipsis;
-  color: rgba(var(--i1d, 38, 38, 38), 1);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
-  line-height: 18px;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-  cursor: text;
-  font: 400 13.3333px Arial; */
 }
 
 .sign-input-label {
@@ -433,7 +411,6 @@ footer {
   border-width: 0;
   border-style: none;
   border-image: none;
-
   color: rgba(var(--f75, 38, 38, 38), 1);
   border: 0;
   display: inline;
@@ -459,9 +436,44 @@ footer {
   text-indent: 0px;
   text-shadow: none;
   align-items: flex-start;
-  font: 400 13.3333px Arial;
 }
 
 .MuiIconButton-root:hover {
   background-color: initial !important;
+}
+
+.sign-password-enddiv {
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  padding-right: 8px;
+  vertical-align: middle;
+  margin-left: 8px;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sign-button-submit {
+  background-color: rgba(var(--d69, 0, 149, 246), 0.3);
+  opacity: 1;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: rgba(var(--eca, 255, 255, 255), 1);
+  position: relative;
+  cursor: pointer;
+  display: block;
+  font-weight: 600;
+  padding: 5px 9px;
+  text-align: center;
+  text-transform: inherit;
+  text-overflow: ellipsis;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  width: 100%;
 }
