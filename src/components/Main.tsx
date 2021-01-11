@@ -1,15 +1,14 @@
 import React, { useState, useEffect, FunctionComponent } from "react";
 import PhoneAnimation from "./PhoneAnimation";
+import SigninField from "./SigninField";
 
 const Main: FunctionComponent = () => {
   const userId = 123;
   if (userId) {
     return (
       <article className="article-sign">
-        <div className="div-sign-phone">
-          <PhoneAnimation />
-        </div>
-        <div className="div-sign-form">SigninComponent</div>
+        <PhoneAnimation />
+        <SigninField />
       </article>
     );
   }
