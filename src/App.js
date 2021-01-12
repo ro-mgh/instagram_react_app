@@ -6,10 +6,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import Main from "./components/Main";
 import ProtectedSignin from "./views/ProtectedSignin";
 import ProtectedSignup from "./views/ProtectedSignup";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,10 +17,9 @@ function App() {
         <Route exact path="/">
           <Main />
         </Route>
-        {/* <ProtectedSignin exact path="/signin" />
-            <ProtectedSignup exact path="/signup" /> */}
+        <ProtectedSignin exact path="/signin" />
+        <ProtectedSignup exact path="/signup" />
       </Switch>
-      <Footer />
     </Router>
   );
 }

@@ -23,7 +23,9 @@ const SigninField: FunctionComponent = () => {
       <div className="sign-redirect">
         <p className="sign-redirect-p">
           Don&apos;t have an account?{" "}
-          <span className="sign-redirect-span">Sign up</span>
+          <a href="/signup" className="sign-redirect-a">
+            <span className="sign-redirect-span">Sign up</span>
+          </a>
         </p>
       </div>
       <p className="sign-links-p">Get the app.</p>

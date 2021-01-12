@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const FooterExtended = () => {
   return (
     <footer>
       <div className="footer-div-main">
@@ -52,6 +52,29 @@ const Footer = () => {
               Locations
             </a>
           </div>
+          <div className="footer-div-bottom-placeholder">
+            <a href="/topics/beauty/" className="footer-text">
+              Beauty
+            </a>
+            <a href="/topics/dance-and-performance/" className="footer-text">
+              Dance &amp; Performance
+            </a>
+            <a href="/topics/fitness/" className="footer-text">
+              Fitness
+            </a>
+            <a href="/topics/food-and-drink/" className="footer-text">
+              Food &amp; Drink
+            </a>
+            <a href="/topics/home-and-garden/" className="footer-text">
+              Home &amp; Garden
+            </a>
+            <a href="/topics/music/" className="footer-text">
+              Music
+            </a>
+            <a href="/topics/visual-arts/" className="footer-text">
+              Visual Arts
+            </a>
+          </div>
         </div>
         <div className="footer-div-bottom">
           <div className="footer-text">English</div>
@@ -62,4 +85,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterExtended;
