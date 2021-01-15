@@ -5,59 +5,78 @@ import {
   SIGNIN_ERROR,
   SIGNOUT_SUCCESS,
   SIGNOUT_ERROR,
+  VERIFY_REQUEST,
 } from "./actionTypes";
 import firebase from "../../services/firebase";
 
 // Signing up with Firebase
-export const signupUser = (email, password) => async (dispatch) => {
-  console.log(email, password);
+export const signupUser = (email, password, name, username) => async (
+  dispatch
+) => {
   console.log("AUTH REQUEST");
-  try {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((dataBeforeEmail) => {
-        console.log("data before email", dataBeforeEmail);
-        firebase.auth().onAuthStateChanged(function (user) {
-          user.sendEmailVerification();
-        });
-      })
-      .then((dataAfterEmail) => {
-        console.log("data after email", dataAfterEmail);
-        firebase.auth().onAuthStateChanged(function (user) {
-          if (user.emailVerified) {
-            // Email is verified
-            dispatch({
-              type: SIGNUP_SUCCESS,
-              payload:
-                "Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox.",
-            });
-          } else {
-            // Email is not verified
-            console.log("email is not verified");
-            dispatch({
-              type: SIGNUP_ERROR,
-              payload:
-                "Something went wrong, we couldn't create your account. Please try again.",
-            });
-          }
-        });
-      })
-      .catch(function (error) {
-        console.log("error in request");
-        dispatch({
-          type: SIGNUP_ERROR,
-          payload:
-            "Something went wrong, we couldn't create your account. Please try again.",
-        });
-      });
-  } catch (err) {
-    console.log(err);
+
+  if (password.length < 6) {
     dispatch({
       type: SIGNUP_ERROR,
-      payload:
-        "Something went wrong, we couldn't create your account. Please try again.",
+      payload: {
+        authMsgError: "Password length should be at least 6 characters",
+      },
     });
+  } else {
+    try {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((data) => {
+          console.log("data before email", data);
+          firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+              console.log("Updating user, username:", username);
+              user
+                .updateProfile({
+                  // <-- Update Method here
+
+                  displayName: username,
+                })
+                .then(function () {
+                  dispatch({
+                    type: SIGNUP_SUCCESS,
+                    payload: {
+                      authMsgSuccess: "Your account was successfully created!",
+                      user,
+                    },
+                  });
+                });
+            } else {
+              dispatch({
+                type: SIGNUP_ERROR,
+                payload: {
+                  authMsgError:
+                    "Something went wrong, we couldn't create your account. Please try again.",
+                },
+              });
+            }
+          });
+        })
+        .catch(function (error) {
+          dispatch({
+            type: SIGNUP_ERROR,
+            payload: {
+              authMsgError:
+                "Something went wrong, we couldn't create your account. Please try again.",
+            },
+          });
+        });
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: SIGNUP_ERROR,
+        payload: {
+          authMsgError:
+            "Something went wrong, we couldn't create your account. Please try again.",
+        },
+      });
+    }
   }
 };
 
@@ -67,18 +86,30 @@ export const signinUser = (email, password, callback) => async (dispatch) => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        dispatch({ type: SIGNIN_SUCCESS });
+      .then((data) => {
+        console.log("Data from sign in", data);
+        dispatch({
+          type: SIGNIN_SUCCESS,
+          payload: {
+            authMsgSuccess: "You've been logged in succesfully",
+            user: data.user,
+          },
+        });
         callback();
       })
       .catch(() => {
         dispatch({
           type: SIGNIN_ERROR,
-          payload: "Invalid login credentials",
+          payload: {
+            authMsgError: "Invalid login credentials. Please try again.",
+          },
         });
       });
   } catch (err) {
-    dispatch({ type: SIGNIN_ERROR, payload: "Invalid login credentials" });
+    dispatch({
+      type: SIGNIN_ERROR,
+      payload: { authMsgError: "Invalid login credentials. Please try again." },
+    });
   }
 };
 
@@ -89,18 +120,34 @@ export const signoutUser = () => async (dispatch) => {
       .auth()
       .signOut()
       .then(() => {
-        dispatch({ type: SIGNOUT_SUCCESS });
+        dispatch({
+          type: SIGNOUT_SUCCESS,
+          payload: { authMsgSuccess: "You've been signed out succesfully" },
+        });
       })
       .catch(() => {
         dispatch({
           type: SIGNOUT_ERROR,
-          payload: "...some error message for the user...",
+          payload: { authMsgError: "Signout error. Please try again." },
         });
       });
   } catch (err) {
     dispatch({
       type: SIGNOUT_ERROR,
-      payload: "...some error message for the user...",
+      payload: { authMsgError: "Signout error. Please try again." },
     });
   }
+};
+
+export const verifyAuth = () => async (dispatch) => {
+  try {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user !== null) {
+        dispatch({
+          type: VERIFY_REQUEST,
+          payload: { user },
+        });
+      }
+    });
+  } catch {}
 };

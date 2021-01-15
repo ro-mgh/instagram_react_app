@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import { buttonSubmit } from "../../styles/materialui-components/SignStyles";
 import { signinUser } from "../../store/actions/auth";
 import { connect } from "react-redux";
+import Alert from "@material-ui/lab/Alert";
 
 interface State {
   username: string;
@@ -10,7 +11,7 @@ interface State {
   showPassword: boolean;
 }
 
-const Signin = ({ signin, auth }) => {
+const Signin = ({ signin, auth, authMsgError, authMsgSuccess }) => {
   const [values, setValues] = React.useState<State>({
     username: "",
     password: "",
@@ -55,6 +56,11 @@ const Signin = ({ signin, auth }) => {
   return (
     <div className="sign-form-div">
       <form className="sign-form" noValidate>
+        {authMsgSuccess ? (
+          <Alert severity="success">{authMsgSuccess}</Alert>
+        ) : authMsgError ? (
+          <Alert severity="error">{authMsgError}</Alert>
+        ) : null}
         <div className="sign-input-field">
           <label className={"sign-input-label"}>
             <span
@@ -152,9 +158,13 @@ const Signin = ({ signin, auth }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => ({
-  auth,
-});
+function mapStateToProps(state) {
+  return {
+    auth: state.firebaseReducer.auth,
+    authMsgError: state.authReducer.authMsgError,
+    authMsgSuccess: state.authReducer.authMsgSuccess,
+  };
+}
 
 const mapDispatchToProps = (dispatch) => ({
   signin(email, password) {

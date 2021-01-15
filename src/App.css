@@ -580,3 +580,9 @@ footer {
   background-repeat: no-repeat;
   background-image: url(./pictures/insta_brand_images.png);
 }
+
+/* error */
+
+.MuiAlert-root {
+  margin: 0 40px 8px;
+}

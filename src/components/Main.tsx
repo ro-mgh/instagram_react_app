@@ -14,19 +14,6 @@ interface IAuth {
 }
 
 const Main: FunctionComponent<IAuth> = ({ auth }) => {
-  // const userId = 123;
-  // if (userId) {
-  //   return (
-  //     <div>
-  //       <article className="article-sign">
-  //         <PhoneAnimation />
-  //         <SigninField />
-  //       </article>
-  //       <FooterExtended />
-  //     </div>
-  //   );
-  // }
-  console.log(auth);
   return (
     <div>
       {!auth.isLoaded ? (

@@ -3,6 +3,7 @@
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
+import { verifyAuth } from "./actions/auth";
 
 // const createStoreWithFirebase = compose(reactReduxFirebase(firebase))(
 //   createStore
@@ -40,5 +41,6 @@ const composeEnhancers =
 
 const enhancer = composeEnhancers(applyMiddleware(reduxThunk));
 const store = createStore(reducers, initialState, enhancer);
+store.dispatch(verifyAuth());
 
 export default store;
