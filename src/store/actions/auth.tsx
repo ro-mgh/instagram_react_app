@@ -8,6 +8,9 @@ import {
   VERIFY_REQUEST,
 } from "./actionTypes";
 import firebase from "../../services/firebase";
+import { Action } from "redux";
+import { RootState } from "../reducers/index";
+import { ThunkAction } from "redux-thunk";
 
 // Signing up with Firebase
 export const signupUser = (email, password, name, username) => async (
@@ -139,7 +142,12 @@ export const signoutUser = () => async (dispatch) => {
   }
 };
 
-export const verifyAuth = () => async (dispatch) => {
+export const verifyAuth = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  Action<string>
+> => async (dispatch) => {
   try {
     firebase.auth().onAuthStateChanged((user) => {
       if (user !== null) {

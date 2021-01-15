@@ -2,7 +2,9 @@ import { combineReducers } from "redux";
 import authReducer from "./auth";
 import { firebaseReducer } from "react-redux-firebase";
 
-export default combineReducers({
+export const reducers = combineReducers({
   firebaseReducer,
   authReducer,
 });
+
+export type RootState = ReturnType<typeof reducers>;
