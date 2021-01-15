@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Signin from "./Signin";
-import link1 from "../pictures/link_signup_appstore.png";
-import link2 from "../pictures/link_signup_googlestore.png";
+import link1 from "../../pictures/link_signup_appstore.png";
+import link2 from "../../pictures/link_signup_googlestore.png";
 
 const SigninField: FunctionComponent = () => {
   return (

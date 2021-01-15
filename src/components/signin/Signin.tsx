@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import { buttonSubmit } from "../styles/materialui-components/SignStyles";
+import { buttonSubmit } from "../../styles/materialui-components/SignStyles";
+import { signinUser } from "../../store/actions/auth";
+import { connect } from "react-redux";
 
 interface State {
   username: string;
@@ -8,7 +10,7 @@ interface State {
   showPassword: boolean;
 }
 
-const Signin = () => {
+const Signin = ({ signin, auth }) => {
   const [values, setValues] = React.useState<State>({
     username: "",
     password: "",
@@ -32,6 +34,22 @@ const Signin = () => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
+  };
+
+  const signinUserWithEmailAndPasswordHandler = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+
+    console.log("Signin clicked");
+
+    signin(values.username, values.password);
+
+    setValues({
+      ...values,
+      username: "",
+      password: "",
+    });
   };
 
   return (
@@ -122,11 +140,26 @@ const Signin = () => {
             Log in
           </Button> */}
 
-          <button className="sign-button-submit">Log in</button>
+          <button
+            className="sign-button-submit"
+            onClick={signinUserWithEmailAndPasswordHandler}
+          >
+            Log in
+          </button>
         </div>
       </form>
     </div>
   );
 };
 
-export default Signin;
+const mapStateToProps = ({ auth }) => ({
+  auth,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  signin(email, password) {
+    dispatch(signinUser(email, password));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);

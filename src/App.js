@@ -9,18 +9,35 @@ import {
 import Main from "./components/Main";
 import ProtectedSignin from "./views/ProtectedSignin";
 import ProtectedSignup from "./views/ProtectedSignup";
+import store from "./store/store";
+import { Provider } from "react-redux";
+import firebase from "./services/firebase";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+
+const rrfConfig = { userProfile: "users" };
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  // createFirestoreInstance // <- needed if using firestore
+};
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <ProtectedSignin exact path="/signin" />
-        <ProtectedSignup exact path="/signup" />
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <ProtectedSignin exact path="/signin" />
+            <ProtectedSignup exact path="/signup" />
+          </Switch>
+        </Router>
+      </ReactReduxFirebaseProvider>
+    </Provider>
   );
 }
 

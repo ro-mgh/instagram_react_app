@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Signup from "./Signup";
-import link1 from "../pictures/link_signup_appstore.png";
-import link2 from "../pictures/link_signup_googlestore.png";
+import link1 from "../../pictures/link_signup_appstore.png";
+import link2 from "../../pictures/link_signup_googlestore.png";
 
 const SignupField: FunctionComponent = () => {
   return (
@@ -29,7 +29,7 @@ const SignupField: FunctionComponent = () => {
             target="_blank"
             rel="noreferrer"
             href="https://help.instagram.com/581066165581870"
-            tabIndex="0"
+            tabIndex={0}
           >
             {" "}
             Terms
@@ -40,7 +40,7 @@ const SignupField: FunctionComponent = () => {
             target="_blank"
             rel="noreferrer"
             href="https://help.instagram.com/519522125107875"
-            tabIndex="0"
+            tabIndex={0}
           >
             {" "}
             Data Policy{" "}
@@ -51,7 +51,7 @@ const SignupField: FunctionComponent = () => {
             target="_blank"
             rel="noreferrer"
             href="https://help.instagram.com/519522125107875"
-            tabIndex="0"
+            tabIndex={0}
           >
             {" "}
             Cookies Policy

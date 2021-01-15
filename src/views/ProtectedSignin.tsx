@@ -1,11 +1,17 @@
-import React, { useContext } from "react";
+import React, { FunctionComponent } from "react";
 import { Route, Redirect } from "react-router-dom";
-import SigninField from "../components/SigninField";
-import Footer from "../components/Footer";
+import SigninField from "../components/signin/SigninField";
+import Footer from "../components/footer/Footer";
+import { connect } from "react-redux";
 
-const ProtectedSignin = () => {
-  // const [user] = useContext(UserContext);
+interface IAuth {
+  auth: {
+    isLoaded: boolean;
+    isEmpty: boolean;
+  };
+}
 
+const ProtectedSignin: FunctionComponent<IAuth> = ({ auth }) => {
   // to check in Redux
   const user = "";
   if (user) {
@@ -13,15 +19,27 @@ const ProtectedSignin = () => {
   }
 
   return (
-    <Route path="/signin">
-      <div>
-        <div className="div-sign-form-seperate">
-          <SigninField />
-        </div>
-        <Footer />
-      </div>
-    </Route>
+    <div>
+      {!auth.isEmpty ? (
+        <Redirect to="/" />
+      ) : (
+        <Route path="/signin">
+          <div>
+            <div className="div-sign-form-seperate">
+              <SigninField />
+            </div>
+            <Footer />
+          </div>
+        </Route>
+      )}
+    </div>
   );
 };
 
-export default ProtectedSignin;
+function mapStateToProps(state) {
+  return {
+    auth: state.firebaseReducer.auth,
+  };
+}
+
+export default connect(mapStateToProps)(ProtectedSignin);

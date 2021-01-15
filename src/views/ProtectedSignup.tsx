@@ -1,27 +1,45 @@
-import React, { useContext } from "react";
+import React, { FunctionComponent } from "react";
 import { Route, Redirect } from "react-router-dom";
-import SignupField from "../components/SignupField";
-import Footer from "../components/Footer";
+import SignupField from "../components/signup/SignupField";
+import Footer from "../components/footer/Footer";
+import { connect } from "react-redux";
 
-const ProtectedSignup = () => {
-  //   const [user] = useContext(UserContext);
+interface IAuth {
+  auth: {
+    isLoaded: boolean;
+    isEmpty: boolean;
+  };
+}
 
-  // to take from redux
+const ProtectedSignup: FunctionComponent<IAuth> = ({ auth }) => {
+  // to check in Redux
   const user = "";
   if (user) {
     return <Redirect to="/" />;
   }
 
   return (
-    <Route path="/signup">
-      <div>
-        <div className="div-sign-form-seperate">
-          <SignupField />
-        </div>
-        <Footer />
-      </div>
-    </Route>
+    <div>
+      {!auth.isEmpty ? (
+        <Redirect to="/" />
+      ) : (
+        <Route path="/signup">
+          <div>
+            <div className="div-sign-form-seperate">
+              <SignupField />
+            </div>
+            <Footer />
+          </div>
+        </Route>
+      )}
+    </div>
   );
 };
 
-export default ProtectedSignup;
+function mapStateToProps(state) {
+  return {
+    auth: state.firebaseReducer.auth,
+  };
+}
+
+export default connect(mapStateToProps)(ProtectedSignup);

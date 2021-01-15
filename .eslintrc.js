@@ -27,6 +27,7 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
   ],
   rules: {
+    "react/prop-types": ["off"],
     // "object-literal-sort-keys": false,
     // "member-ordering": false,
     // "no-console": false,
