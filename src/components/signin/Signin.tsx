@@ -37,15 +37,14 @@ const Signin = ({ signin, auth, authMsgError, authMsgSuccess }) => {
     event.preventDefault();
   };
 
-  const signinUserWithEmailAndPasswordHandler = (
+  const signinUserWithEmailAndPasswordHandler = async (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
 
+    await signin(values.username, values.password);
+
     console.log("Signin clicked");
-
-    signin(values.username, values.password);
-
     setValues({
       ...values,
       username: "",
@@ -168,7 +167,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => ({
   signin(email, password) {
-    dispatch(signinUser(email, password));
+    return dispatch(signinUser(email, password));
   },
 });
 

@@ -3,7 +3,8 @@ import PhoneAnimation from "./PhoneAnimation";
 import SigninField from "./signin/SigninField";
 import FooterExtended from "./footer/FooterExtended";
 import { connect } from "react-redux";
-import Home from "./MainPage/Home";
+import Home from "./main/Home";
+import Loader from "../views/Loader";
 // import PropTypes from 'prop-types';
 
 interface IAuth {
@@ -17,7 +18,7 @@ const Main: FunctionComponent<IAuth> = ({ auth }) => {
   return (
     <div>
       {!auth.isLoaded ? (
-        <div>Loader</div>
+        <Loader />
       ) : !auth.isEmpty ? (
         <Home />
       ) : (

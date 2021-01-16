@@ -1,8 +1,8 @@
 import React from "react";
-import { signoutUser } from "../../store/actions/auth";
+import { signoutUser } from "../../../store/actions/auth";
 import { connect } from "react-redux";
 
-const Home = ({ signout, auth }) => {
+const Signout = ({ signout, auth }) => {
   const handleSignout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -11,7 +11,11 @@ const Home = ({ signout, auth }) => {
     signout();
   };
 
-  return <button onClick={handleSignout}>Signout</button>;
+  return (
+    <button onClick={handleSignout} className="signout-button">
+      Signout
+    </button>
+  );
 };
 
 const mapStateToProps = ({ auth }) => ({
@@ -24,4 +28,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Signout);

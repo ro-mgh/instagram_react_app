@@ -13,7 +13,12 @@ import { RootState } from "../reducers/index";
 import { ThunkAction } from "redux-thunk";
 
 // Signing up with Firebase
-export const signupUser = (email, password, name, username) => async (
+export const signupUser = (
+  email: string,
+  password: string,
+  name: string,
+  username: string
+): ThunkAction<void, RootState, unknown, Action<string>> => async (
   dispatch
 ) => {
   console.log("AUTH REQUEST");
@@ -39,7 +44,7 @@ export const signupUser = (email, password, name, username) => async (
                 .updateProfile({
                   // <-- Update Method here
 
-                  displayName: username,
+                  displayName: username + "&&" + name,
                 })
                 .then(function () {
                   dispatch({
@@ -84,21 +89,27 @@ export const signupUser = (email, password, name, username) => async (
 };
 
 // Signing in with Firebase
-export const signinUser = (email, password, callback) => async (dispatch) => {
+export const signinUser = (
+  email: string,
+  password: string
+  // ,callback
+): ThunkAction<void, RootState, unknown, Action<string>> => async (
+  dispatch
+) => {
   try {
-    firebase
+    return firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((data) => {
         console.log("Data from sign in", data);
-        dispatch({
+        return dispatch({
           type: SIGNIN_SUCCESS,
           payload: {
             authMsgSuccess: "You've been logged in succesfully",
             user: data.user,
           },
         });
-        callback();
+        // callback();
       })
       .catch(() => {
         dispatch({
@@ -117,7 +128,12 @@ export const signinUser = (email, password, callback) => async (dispatch) => {
 };
 
 // Signing out with Firebase
-export const signoutUser = () => async (dispatch) => {
+export const signoutUser = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  Action<string>
+> => async (dispatch) => {
   try {
     firebase
       .auth()

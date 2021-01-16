@@ -41,14 +41,14 @@ const Signup = ({ signup, auth, authMsgError, authMsgSuccess }) => {
     event.preventDefault();
   };
 
-  const createUserWithEmailAndPasswordHandler = (
+  const createUserWithEmailAndPasswordHandler = async (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
 
     console.log("Signup clicked, username:", values.username);
 
-    signup(values.email, values.password, values.name, values.username);
+    await signup(values.email, values.password, values.name, values.username);
 
     setValues({
       ...values,

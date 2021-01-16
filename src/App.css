@@ -7,6 +7,16 @@ html {
   box-sizing: inherit;
 }
 
+/* loader */
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  fill: #c7c7c7;
+}
+
 /* signup page */
 /* *********** */
 
@@ -585,4 +595,257 @@ footer {
 
 .MuiAlert-root {
   margin: 0 40px 8px;
+}
+
+/* header */
+
+.header-main {
+  align-items: center;
+  height: 54px;
+  background-color: rgba(var(--d87, 255, 255, 255), 1);
+  border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  position: fixed;
+  top: 0;
+  transition: height 0.2s ease-in-out;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.header-main-container {
+  height: 54px;
+  padding: 0 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 975px;
+  transition: height 0.2s ease-in-out;
+  width: 100%;
+  flex-shrink: 0;
+  margin: 0;
+  position: relative;
+}
+
+.header-logo-placeholder {
+  flex: 1 9999 0%;
+  min-width: 40px;
+  align-items: stretch;
+  border: 0 solid #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-logo-a {
+  color: rgba(var(--fe0, 0, 55, 107), 1);
+  text-decoration: none;
+}
+
+.header-logo-div {
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  align-content: stretch;
+  display: flex;
+}
+
+.header-search-placeholder {
+  height: 28px;
+  flex: 0 1 auto;
+  min-width: 125px;
+  width: 215px;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-search-input {
+  font-size: 16px;
+  background: rgba(var(--b3f, 250, 250, 250), 1);
+
+  border: solid 1px rgba(var(--b6a, 219, 219, 219), 1);
+  border-radius: 3px;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+  outline: 0;
+  padding: 3px 10px 3px 26px;
+  z-index: 2;
+  box-sizing: border-box;
+
+  height: 100%;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  line-height: 18px;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  text-rendering: auto;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  cursor: text;
+  margin: 0em;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+}
+
+.header-search-button {
+  background: rgba(var(--b3f, 250, 250, 250), 1);
+  border: solid 1px rgba(var(--b6a, 219, 219, 219), 1);
+  justify-content: center;
+
+  border-radius: 3px;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  cursor: text;
+  font-size: 14px;
+  font-weight: 300;
+  /* left: 0; */
+  padding: 7px;
+  position: absolute;
+  text-align: center;
+  /* top: 0; */
+  z-index: 2;
+  height: 28px;
+  flex: 0 1 auto;
+  min-width: 125px;
+  width: 215px;
+  /* height: 100%;
+  width: 100%; */
+
+  /* align-items: stretch;
+  display: flex;
+  flex-direction: column; */
+}
+
+.header-search-div {
+  background: rgba(var(--b3f, 250, 250, 250), 1);
+  border: solid 1px rgba(var(--b6a, 219, 219, 219), 1);
+  justify-content: center;
+  border-radius: 3px;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  cursor: text;
+  font-size: 14px;
+  font-weight: 300;
+  left: 0;
+  padding: 7px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-search-spanLogo {
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: baseline;
+  background-repeat: no-repeat;
+  background-position: -399px -321px;
+  height: 10px;
+  width: 10px;
+  background-image: url(./pictures/insta_brand_images.png);
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  cursor: text;
+}
+
+.header-search-spanText {
+  display: inline-block;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  cursor: text;
+  text-align: center;
+}
+
+/* nav */
+
+.header-nav-placeholder {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex: 1 0 0%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.header-nav-div {
+  display: flex;
+  flex-direction: row;
+  padding-left: 24px;
+  white-space: nowrap;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.header-nav-icon {
+  margin-left: 22px;
+}
+
+.MuiButton-text {
+  padding: 0 !important ;
+}
+
+.MuiButton-label {
+  display: flow-root !important ;
+}
+
+.MuiButton-root {
+  min-width: 22px !important;
+}
+
+.signout-button {
+  width: 100%;
+  font: inherit;
+  appearance: button;
+  text-rendering: auto;
+  color: inherit;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: left;
+  align-items: flex-start;
+  cursor: pointer;
+  background-color: inherit;
+  margin: 0em;
+  padding: 0;
+  border-width: 0;
+  border-style: none;
+  border-color: inherit;
+  border-image: initial;
+}
+.signout-button:hover {
+  background-color: inherit;
+}
+
+.menudd-rhomb {
+  bottom: 0;
+  top: 10px;
+  border: 1px solid rgba(var(--f23, 255, 255, 255), 1);
+  background: rgba(var(--d87, 255, 255, 255), 1);
+  box-shadow: 0 0 5px 1px rgba(var(--jb7, 0, 0, 0), 0.0975);
+  height: 19px;
+  position: absolute;
+  transform: rotate(45deg);
+  width: 19px;
+  left: 184px;
 }
