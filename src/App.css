@@ -142,6 +142,60 @@ footer {
   text-decoration: none;
 }
 
+/* footer main */
+
+.footer-main {
+  padding: 0;
+}
+
+.footer-ul {
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  align-content: stretch;
+  width: 280px;
+}
+
+.footer-li {
+  color: rgba(var(--edc, 199, 199, 199), 1);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  text-transform: none;
+  text-decoration: none;
+  font-family: -apple-system, system-ui, "Segoe UI";
+}
+
+.footer-li::after {
+  color: rgba(var(--edc, 199, 199, 199), 1);
+  content: "\00B7";
+  margin: 0 0.25em 0 0.25em;
+}
+
+.footer-li-item {
+  color: rgba(var(--edc, 199, 199, 199), 1);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.footer-main-bottom {
+  text-transform: uppercase;
+  color: rgba(var(--edc, 199, 199, 199), 1);
+  font-size: 11px;
+  font-weight: 400;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: stretch;
+  margin-bottom: 12px;
+  padding: 0;
+}
+
 /* signin/up forms */
 
 .sign-mainfield {
@@ -850,100 +904,181 @@ footer {
   left: 184px;
 }
 
-/* sidebar */
+/* mainfield */
 
-.sidebar-main-wrapper {
-  height: 0;
-  max-width: 293px;
-  position: absolute;
-  right: 0;
-  width: 100%;
+.mainfield-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 94px;
   display: flex;
+  max-width: 975px;
+  /* justify-content: center; */
+  align-items: center;
+  flex-flow: column nowrap;
+  padding: 0 20px;
 }
 
-.sidebar-main {
-  /* left: 743px; */
+/* sidebar */
 
-  top: 88px;
+.sidebar-wrapper {
+  align-self: flex-end;
+  width: auto;
+  height: auto;
   position: fixed;
-  height: 100vh;
-  margin-bottom: 30px;
-  padding: 0;
-  max-width: 293px;
-  right: 0;
-  width: 100%;
-  align-items: stretch;
   display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  margin: 0;
-  font: inherit;
-  vertical-align: baseline;
+  flex-flow: column nowrap;
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: 18px;
+}
+
+.sidebar-user-wrapper {
+  margin-left: 12px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  flex-grow: 1;
+}
+
+.sidebar-user-avatar {
+  flex-grow: 0;
+}
+
+.sidebar-user {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.user-container {
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.username-font {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   color: rgba(var(--i1d, 38, 38, 38), 1);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.follow-button {
+  flex-grow: 0;
+  appearance: button;
+  text-rendering: auto;
+  color: inherit;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  background-color: inherit;
+  box-sizing: border-box;
+  margin: 0em;
+  padding: 0;
+
+  appearance: none;
+  background: 0 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 0;
+  text-align: center;
+  text-transform: inherit;
+  text-overflow: ellipsis;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(var(--d69, 0, 149, 246), 1);
+  display: inline;
+  padding: 0;
+  position: relative;
+  font-weight: 600;
+  line-height: 14px;
+  margin: -2px 0 -3px;
+}
+
+.name-font {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.sidebar-suggestions-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin: -3px 0 -4px;
+  margin-top: 22px;
+}
+
+.sidebar-suggestions-users {
+  padding-bottom: 8px;
+  padding-top: 8px;
 }
 
 /* posts */
 
-.posts-section-main {
-  padding-top: 30px;
-  display: flex;
-  flex-flow: row nowrap;
-  max-width: 935px;
-  flex-grow: 1;
-  margin: 0 auto;
-  position: relative;
-  width: 100%;
-  align-items: stretch;
-  border: 0 solid #000;
-}
-
 .posts-wrapper {
-  float: left;
   margin-right: 28px;
-  max-width: 614px;
-  width: 100%;
-  align-items: stretch;
-  border: 0 solid #000;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.sidebar-user-wrapper {
+  align-self: flex-start;
   height: auto;
-  margin-bottom: 10px;
-  margin-top: 18px;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  width: 616px;
 }
 
-.sidebar-user-wrapper1 {
+.post-wrapper {
+  padding: 0;
+  margin-bottom: 60px;
+  border-radius: 3px;
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  background-color: rgba(var(--d87, 255, 255, 255), 1);
+  margin-left: -1px;
+  margin-right: -1px;
+  height: auto;
+}
+
+/* post */
+
+.post-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 60px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+}
+
+.post-header-username {
+  margin-left: 14px;
+}
+
+.post-img {
+  object-fit: cover;
+  max-width: 616px;
+  max-height: 1200px;
   width: 100%;
-  margin-right: 4px;
-  flex: 0 0 auto;
-  justify-content: flex-start;
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
 }
 
-.sidebar-user-wrapper2 {
-  flex: 0 0 auto;
-  justify-content: flex-start;
+.post-icons {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 4px;
+  display: flex;
   flex-direction: row;
-  align-items: center;
-  display: flex;
-}
-
-.sidebar-user-avatar {
-  margin-right: 12px;
   justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
-  display: flex;
-  flex-direction: column;
 }

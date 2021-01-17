@@ -2,84 +2,70 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer-main">
       <div className="footer-div-main">
-        <div className="footer-div-top">
-          <div className="footer-div-top-placeholder">
-            <a
-              href="https://about.instagram.com/"
-              rel="nofollow noopener noreferrer"
-              target="_blank"
-              className="footer-text"
-            >
+        <ul className="footer-ul">
+          <li className="footer-li">
+            <a className="footer-li-item" href="https://about.instagram.com/">
               About
             </a>
-            <a
-              href="https://about.instagram.com/blog/"
-              rel="nofollow noopener noreferrer"
-              target="_blank"
-              className="footer-text"
-            >
-              Blog
-            </a>
-            <a href="/about/jobs/" className="footer-text">
-              Jobs
-            </a>
-            <a
-              href="https://help.instagram.com/"
-              rel="nofollow noopener noreferrer"
-              target="_blank"
-              className="footer-text"
-            >
+          </li>
+          <li className="footer-li">
+            <a className="footer-li-item" href="https://help.instagram.com/">
               Help
             </a>
-            <a href="/developer/" className="footer-text">
+          </li>
+          <li className="footer-li">
+            <a
+              className="footer-li-item"
+              href="https://about.instagram.com/blog/"
+            >
+              Press
+            </a>
+          </li>
+          <li className="footer-li">
+            <a className="footer-li-item" href="/developer/">
               API
             </a>
-            <a href="/legal/privacy/" className="footer-text">
+          </li>
+          <li className="footer-li">
+            <a className="footer-li-item" href="/about/jobs/">
+              Jobs
+            </a>
+          </li>
+          <li className="footer-li">
+            <a className="footer-li-item" href="/legal/privacy/">
               Privacy
             </a>
-            <a href="/legal/terms/" className="footer-text">
+          </li>
+          <li className="footer-li">
+            <a className="footer-li-item _vfM2" href="/legal/terms/">
               Terms
             </a>
-            <a href="/directory/profiles/" className="footer-text">
-              Top Accounts
-            </a>
-            <a href="/directory/hashtags/" className="footer-text">
-              Hashtags
-            </a>
-            <a href="/explore/locations/" className="footer-text">
+          </li>
+          <li className="footer-li">
+            <a className="footer-li-item" href="/explore/locations/">
               Locations
             </a>
-          </div>
-          <div className="footer-div-bottom-placeholder">
-            <a href="/topics/beauty/" className="footer-text">
-              Beauty
+          </li>
+          <li className="footer-li">
+            <a className="footer-li-item" href="/directory/profiles/">
+              Top Accounts
             </a>
-            <a href="/topics/dance-and-performance/" className="footer-text">
-              Dance &amp; Performance
+          </li>
+          <li className="footer-li ">
+            <a className="footer-li-item" href="/directory/hashtags/">
+              Hashtags
             </a>
-            <a href="/topics/fitness/" className="footer-text">
-              Fitness
-            </a>
-            <a href="/topics/food-and-drink/" className="footer-text">
-              Food &amp; Drink
-            </a>
-            <a href="/topics/home-and-garden/" className="footer-text">
-              Home &amp; Garden
-            </a>
-            <a href="/topics/music/" className="footer-text">
-              Music
-            </a>
-            <a href="/topics/visual-arts/" className="footer-text">
-              Visual Arts
-            </a>
-          </div>
-        </div>
-        <div className="footer-div-bottom">
-          <div className="footer-text">English</div>
-          <div className="footer-text">© 2021 Instagram from Facebook</div>
-        </div>
+          </li>
+          <li className="footer-li footer-li-item">Language</li>
+        </ul>
+        {/* <div className="footer-main-bottom">
+          <div className="footer-text">© 2021 INSTAGRAM FROM FACEBOOK</div>
+        </div> */}
+        <span className="footer-main-bottom">
+          © 2021 Instagram from Facebook
+        </span>
       </div>
     </footer>
   );
