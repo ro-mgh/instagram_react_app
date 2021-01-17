@@ -235,7 +235,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => ({
   signup(email, password, name, username) {
-    dispatch(signupUser(email, password, name, username));
+    return dispatch(signupUser(email, password, name, username));
   },
 });
 

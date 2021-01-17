@@ -24,7 +24,7 @@ export const signupUser = (
   console.log("AUTH REQUEST");
 
   if (password.length < 6) {
-    dispatch({
+    return dispatch({
       type: SIGNUP_ERROR,
       payload: {
         authMsgError: "Password length should be at least 6 characters",
@@ -32,39 +32,33 @@ export const signupUser = (
     });
   } else {
     try {
-      firebase
+      return firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then((data) => {
           console.log("data before email", data);
-          firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-              console.log("Updating user, username:", username);
-              user
-                .updateProfile({
-                  // <-- Update Method here
 
-                  displayName: username + "&&" + name,
-                })
-                .then(function () {
-                  dispatch({
-                    type: SIGNUP_SUCCESS,
-                    payload: {
-                      authMsgSuccess: "Your account was successfully created!",
-                      user,
-                    },
-                  });
-                });
-            } else {
-              dispatch({
-                type: SIGNUP_ERROR,
-                payload: {
-                  authMsgError:
-                    "Something went wrong, we couldn't create your account. Please try again.",
-                },
-              });
-            }
-          });
+          const user = firebase.auth().currentUser;
+          if (user) {
+            user.updateProfile({
+              displayName: username + "&&" + name,
+            });
+            return dispatch({
+              type: SIGNUP_SUCCESS,
+              payload: {
+                authMsgSuccess: "Your account was successfully created!",
+                user,
+              },
+            });
+          } else {
+            dispatch({
+              type: SIGNUP_ERROR,
+              payload: {
+                authMsgError:
+                  "Something went wrong, we couldn't create your account. Please try again.",
+              },
+            });
+          }
         })
         .catch(function (error) {
           dispatch({
