@@ -7,8 +7,8 @@ const post1 = {
   post: pic1,
   likes: 20,
   comments: [
-    { name: "user3", text: "Heey nice!" },
-    { name: "user4", text: "Heey sooo cool!" },
+    { id: 1, name: "user3", text: "Heey nice!" },
+    { id: 2, name: "user4", text: "Heey sooo cool!" },
   ],
 };
 const post2 = {
@@ -16,15 +16,15 @@ const post2 = {
   post: pic2,
   likes: 30,
   comments: [
-    { name: "user1", text: "Ooooh!" },
-    { name: "user4", text: "Cool!" },
+    { id: 3, name: "user1", text: "Ooooh!" },
+    { id: 4, name: "user4", text: "Cool!" },
   ],
 };
 const post3 = {
   username: "User3",
   post: pic3,
   likes: 5,
-  comments: [{ name: "user2", text: "Fine)" }],
+  comments: [{ id: 5, name: "user2", text: "Fine)" }],
 };
 
 const postsArr = [post1, post2, post3];

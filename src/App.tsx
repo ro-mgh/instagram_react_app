@@ -13,6 +13,9 @@ import store from "./store/store";
 import { Provider } from "react-redux";
 import firebase from "./services/firebase";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+import ProtectedProfile from "./views/ProtectedProfile";
+import ProtectedExplore from "./views/ProtectedExplore";
+import ProtectedPicture from "./views/ProtectedPicture";
 
 const rrfConfig = { userProfile: "users" };
 
@@ -32,6 +35,9 @@ function App() {
             <Route exact path="/">
               <Main />
             </Route>
+            <ProtectedProfile exact path="/profile" />
+            <ProtectedExplore exact path="/explore" />
+            <ProtectedPicture exact path="/picture" />
             <ProtectedSignin exact path="/signin" />
             <ProtectedSignup exact path="/signup" />
           </Switch>

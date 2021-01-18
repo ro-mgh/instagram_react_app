@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Post from "./post/Post";
-import postsArr from "../../../mocked_files/mocked_users";
+import postsArr from "../../../mocked_files/mocked_posts";
 
 // interface IPost {
 //   username: string;

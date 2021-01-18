@@ -109,7 +109,7 @@ const MenuDropdown = () => {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose} className={classes.text}>
-                      Profile
+                      <a href="/profile">Profile</a>
                     </MenuItem>
                     <MenuItem onClick={handleClose} className={classes.text}>
                       <Signout />

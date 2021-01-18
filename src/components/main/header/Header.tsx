@@ -54,7 +54,7 @@ const Header = () => {
               </a>
             </div>
             <div className="header-nav-icon">
-              <a href="/explore/" tabIndex={0}>
+              <a href="/explore" tabIndex={0}>
                 <svg
                   aria-label="Find People"
                   className=""

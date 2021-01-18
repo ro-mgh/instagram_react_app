@@ -1074,11 +1074,252 @@ footer {
   height: 100%;
 }
 
-.post-icons {
+.post-likes {
   padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 8px;
+  color: rgba(var(--f75, 38, 38, 38), 1);
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.post-comments-wrapper {
+  margin: 0 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.post-comment-field {
+  margin-bottom: 4px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.post-comment-user {
+  margin-right: 4px;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+  font-weight: 600;
+  /* overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 5px;
+    margin-left: -5px; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.post-comment-text {
+  overflow-wrap: break-word;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.post-comments-add {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+  font-size: 14px;
+  line-height: 18px;
+  min-height: 56px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.post-icons-svg {
+  display: block;
+  position: relative;
+  fill: rgb(38, 38, 38);
+  height: 24;
+  width: 24;
+  overflow: hidden;
+  margin: 8px;
+}
+
+.post-icons-wrapper {
+  padding-left: 8px;
   padding-right: 16px;
   margin-top: 4px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+}
+
+button {
+  appearance: button;
+  text-rendering: auto;
+  color: inherit;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: pointer;
+  background-color: inherit;
+  box-sizing: border-box;
+  margin: 0em;
+  font: inherit;
+  padding: 0px;
+  border: 0;
+  border-color: inherit;
+}
+
+.post-comments-textarea {
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: textarea;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  flex-direction: column;
+  resize: auto;
+  cursor: text;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  border-width: 1px;
+  border-style: solid;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  padding: 2px;
+  height: 18px;
+  background: 0 0;
+  border: 0;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+  display: flex;
+  flex-grow: 1;
+  font-size: inherit;
+  max-height: 80px;
+  outline: 0;
+  padding: 0;
+  resize: none;
+  width: 0;
+}
+
+.post-comments-form {
+  display: flex;
+}
+
+/* user profile */
+
+.profile-wrapper {
+  padding: 30px 20px 0;
+  width: calc(100% - 40px);
+  margin: 0 auto 30px;
+  max-width: 935px;
+  margin-top: 54px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.userprofile-wrapper {
+  margin-bottom: 44px;
+  display: flex;
+  flex-flow: row;
+}
+
+.userprofile-avatar-wrapper {
+  flex-grow: 1;
+  margin-right: 30px;
+  flex-basis: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.userprofile-info-wrapper {
+  display: flex;
+  flex-flow: column;
+  flex-basis: 30px;
+  flex-grow: 2;
+}
+
+.userprofile-info-username {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 20px;
+}
+
+.userprofile-info-username-text {
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 32px;
+  margin: -5px 0 -6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+}
+
+.userprofile-editProfile-btn {
+  margin-left: 20px;
+  background-color: transparent;
+  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+  color: rgba(var(--f75, 38, 38, 38), 1);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 5px 9px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.userprofile-settings-btn {
+  margin-left: 13px;
+}
+
+.userprofile-info-subscribers {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 20px;
+}
+
+.userprofile-info-text {
+  margin-left: 0;
+  font-size: 16px;
+  margin-right: 40px;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  line-height: 18px;
+}
+
+.userprofile-info-boldText {
+  font-weight: 600;
+}
+
+.userprofile-info-name {
+  display: flex;
+  font-weight: 600;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.userpicture-wrapper {
+  border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
+  color: #8e8e8e;
+  
 }
