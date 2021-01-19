@@ -5,6 +5,7 @@ import pic3 from "../pictures/mocked_img_3.jpg";
 const mockedPicture = {
   id: 1,
   username: "User2",
+  avatar: "",
   post: pic3,
   likes: 30,
   comments: [

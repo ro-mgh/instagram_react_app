@@ -4,6 +4,7 @@ import pic3 from "../pictures/mocked_img_3.jpg";
 
 const post1 = {
   username: "User1",
+  avatar: "",
   post: pic1,
   likes: 20,
   comments: [
@@ -13,6 +14,7 @@ const post1 = {
 };
 const post2 = {
   username: "User2",
+  avatar: "",
   post: pic2,
   likes: 30,
   comments: [
@@ -22,6 +24,7 @@ const post2 = {
 };
 const post3 = {
   username: "User3",
+  avatar: "",
   post: pic3,
   likes: 5,
   comments: [{ id: 5, name: "user2", text: "Fine)" }],

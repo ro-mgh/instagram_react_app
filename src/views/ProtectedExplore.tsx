@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import Footer from "../components/footer/Footer";
 import { connect } from "react-redux";
 import Loader from "./Loader";
+import Explore from "../components/main/explore/Explore";
 
 interface IAuth {
   auth: {
@@ -18,9 +19,7 @@ const ProtectedExplore: FunctionComponent<IAuth> = ({ auth }) => {
         <Loader />
       ) : !auth.isEmpty ? (
         <Route path="/explore">
-          <div>
-            <Footer />
-          </div>
+          <Explore />
         </Route>
       ) : (
         <Redirect to="/" />

@@ -1427,3 +1427,13 @@ button {
 .picture-addcomments-field {
   flex-grow: 0;
 }
+
+.test {
+  margin-left: 100px;
+  display: flex;
+  background-color: khaki;
+  justify-content: center;
+  width: 300px;
+  height: 100px;
+  flex-flow: column;
+}

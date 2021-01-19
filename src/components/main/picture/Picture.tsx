@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../header/Header";
 import FooterBottom from "../../footer/FooterBottom";
-
 import mockedPicture from "../../../mocked_files/mocked_picture";
 import CommentsField from "../posts/post/CommentsField";
 import LikesField from "../posts/post/LikesField";

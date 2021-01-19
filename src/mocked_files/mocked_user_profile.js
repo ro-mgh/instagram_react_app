@@ -5,6 +5,7 @@ import pic3 from "../pictures/mocked_img_3.jpg";
 const mockedUser = {
   username: "romyagchenkov",
   name: "Roman",
+  avatar: "",
   followers: ["user2", "user3", "user4"],
   following: ["user2", "user3", "user4"],
   pictures: [
