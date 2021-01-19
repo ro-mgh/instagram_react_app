@@ -2,20 +2,18 @@ import pic1 from "../pictures/mocked_img_1.jpg";
 import pic2 from "../pictures/mocked_img_2.jpg";
 import pic3 from "../pictures/mocked_img_3.jpg";
 
-const mockedUser = {
-  username: "romyagchenkov",
-  name: "Roman",
-  followers: ["user2", "user3", "user4"],
-  following: ["user2", "user3", "user4"],
-  pictures: [
-    { pic: pic1, id: 1 },
-    { pic: pic3, id: 3 },
-    { pic: pic2, id: 2 },
-    { pic: pic1, id: 4 },
+const mockedPicture = {
+  id: 1,
+  username: "User2",
+  post: pic3,
+  likes: 30,
+  comments: [
+    { id: 3, name: "user1", text: "Ooooh!" },
+    { id: 4, name: "user4", text: "Cool!" },
   ],
 };
 
-export default mockedUser;
+export default mockedPicture;
 
 //const [state, setState] = useState({
 //      name: 'Param',

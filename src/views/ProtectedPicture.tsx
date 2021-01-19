@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import Footer from "../components/footer/Footer";
 import { connect } from "react-redux";
 import Loader from "./Loader";
+import Picture from "../components/main/picture/Picture";
 
 interface IAuth {
   auth: {
@@ -19,7 +20,7 @@ const ProtectedPicture: FunctionComponent<IAuth> = ({ auth }) => {
       ) : !auth.isEmpty ? (
         <Route path="/picture">
           <div>
-            <Footer />
+            <Picture />
           </div>
         </Route>
       ) : (

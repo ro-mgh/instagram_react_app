@@ -1064,6 +1064,7 @@ footer {
 
 .post-header-username {
   margin-left: 14px;
+  flex-grow: 1;
 }
 
 .post-img {
@@ -1321,5 +1322,108 @@ button {
 .userpicture-wrapper {
   border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
   color: #8e8e8e;
-  
+}
+
+.userpicture-actions-wrapper {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.userpicture-actions-a {
+  display: flex;
+  flex-flow: row;
+  margin-right: 60px;
+  text-decoration: none;
+  height: 52px;
+  align-items: center;
+}
+
+.userpicture-actions-text {
+  margin-left: 6px;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.userpicture-posts-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.userpicture-posts-img {
+  object-fit: cover;
+  height: 280px;
+  width: 280px;
+  cursor: pointer;
+  margin-bottom: 28px;
+  /* margin-right: 28px; */
+}
+
+/* picture */
+
+.picture-wrapper {
+  padding: 0;
+  width: calc(100% - 40px);
+  margin: 0 auto 30px;
+  max-width: 935px;
+  margin-top: 82px;
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  border-radius: 3px;
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  background-color: rgba(var(--d87, 255, 255, 255), 1);
+}
+
+.picture-img {
+  width: 60%;
+  object-fit: cover;
+  /* margin-right: 10px; */
+  /* margin-bottom: 28px; */
+}
+
+.picture-comments-wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.picture-comments-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 60px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+}
+
+.picture-header-username {
+  margin-left: 14px;
+}
+
+.picture-username-field {
+  flex-grow: 0;
+}
+
+.picture-comments-field {
+  flex-grow: 1;
+  border-bottom: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.picture-likes-field {
+  flex-grow: 0;
+}
+
+.picture-addcomments-field {
+  flex-grow: 0;
 }
