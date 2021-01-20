@@ -1,6 +1,7 @@
 import React from "react";
 
 import mockedUser from "../../../mocked_files/mocked_user_profile";
+import Gallery from "../explore/Gallery";
 
 const UserPictures = () => {
   return (
@@ -37,20 +38,9 @@ const UserPictures = () => {
           <span className="userpicture-actions-text">add new</span>
         </a>
       </div>
-      <div className="userpicture-posts-wrapper">
-        {mockedUser.pictures.map((picture) => {
-          return (
-            <a href="/picture" key={picture.id}>
-              <img
-                className="userpicture-posts-img"
-                src={picture.pic}
-                alt=""
-                key={picture.id}
-              ></img>
-            </a>
-          );
-        })}
-      </div>
+      {/* <div className="userpicture-wrapper-main"> */}
+      <Gallery {...mockedUser} />
+      {/* </div> */}
     </div>
   );
 };

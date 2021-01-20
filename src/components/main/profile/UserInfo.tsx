@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 import mockedUser from "../../../mocked_files/mocked_user_profile";
+import Modal from "./Modal";
+import Signout from "../signout/Signout";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,6 +17,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const UserInfo = () => {
   const classes = useStyles();
+  const [showModal, setModal] = useState(false);
+
+  const toggleModal = () => setModal(!showModal);
+
   return (
     <div>
       <div className="userprofile-wrapper">
@@ -26,7 +32,10 @@ const UserInfo = () => {
             <div className="userprofile-info-username-text">
               {mockedUser.username}
             </div>
-            <button className="userprofile-editProfile-btn">
+            <button
+              className="userprofile-editProfile-btn"
+              onClick={toggleModal}
+            >
               Edit Profile
             </button>
             <button className="userprofile-settings-btn">
@@ -45,6 +54,22 @@ const UserInfo = () => {
                 ></path>
               </svg>
             </button>
+            {showModal ? (
+              <Modal>
+                <div className="modal">
+                  <div className="modal-wrapper">
+                    <h2 className="modal-text">Change Profile Photo</h2>
+                    <button className="modal-button">Upload Photo</button>
+                    <button className="modal-button modal-button-remove">
+                      Remove Current Photo
+                    </button>
+                    <button onClick={toggleModal} className="modal-button">
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </Modal>
+            ) : null}
           </div>
           <div className="userprofile-info-subscribers">
             <span className="userprofile-info-text">
