@@ -1425,6 +1425,10 @@ button {
   color: red;
 }
 
+.userpicture-actions-last {
+  margin-right: 0;
+}
+
 /* picture */
 
 .picture-wrapper {
