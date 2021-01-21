@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../../pictures/instagram_logo.png";
 import MenuDropdown from "./MenuDropdown";
+import SearchField from "./SearchField";
 
 // src / pictures / instagram_logo.png
 
@@ -21,22 +22,7 @@ const Header = () => {
             </div>
           </a>
         </div>
-        <div className="header-search-placeholder">
-          <input
-            className="header-search-input"
-            type="text"
-            autoCapitalize="none"
-            placeholder="Search"
-            onChange={handleChange}
-            value={search}
-          ></input>
-          <div className="header-search-button" role="button" tabIndex={0}>
-            <div className="header-search-div">
-              <span className="header-search-spanLogo"></span>
-              <span className="header-search-spanText">Search</span>
-            </div>
-          </div>
-        </div>
+        <SearchField />
         <div className="header-nav-placeholder">
           <div className="header-nav-div">
             <div className="header-nav-icon">

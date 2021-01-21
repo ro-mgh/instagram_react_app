@@ -12,10 +12,13 @@ const Explore = () => {
       <div className="explore-wrapper">
         <div className="explore-users-wrapper">
           <p className="explore-users-text">Discover People</p>
-          <Carousel />
+          <div className="explore-carousel-wrapper">
+            <Carousel />
+          </div>
         </div>
         <div className="explore-posts-wrapper">
           <p className="explore-users-text">Explore</p>
+
           <Gallery {...mockedPictures} />
         </div>
       </div>
