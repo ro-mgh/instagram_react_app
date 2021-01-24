@@ -43,13 +43,45 @@ export const signupUser = (
             user.updateProfile({
               displayName: username + "&&" + name,
             });
-            return dispatch({
-              type: SIGNUP_SUCCESS,
-              payload: {
-                authMsgSuccess: "Your account was successfully created!",
-                user,
-              },
-            });
+
+            user
+              .getIdToken(/* forceRefresh */ true)
+              .then(async function (idToken) {
+                try {
+                  const response = await fetch("http://localhost:3000/user", {
+                    method: "post",
+                    headers: {
+                      "Content-type": "application/json",
+                      Authorization: "Bearer " + idToken,
+                    },
+                    body: JSON.stringify({
+                      email: email,
+                      username: username,
+                      name: name,
+                    }),
+                  });
+                  if (response.ok) {
+                    // const jsonResponse = await response.json();
+                    // console.log(jsonResponse);
+                    return dispatch({
+                      type: SIGNUP_SUCCESS,
+                      payload: {
+                        authMsgSuccess:
+                          "Your account was successfully created!",
+                        user,
+                      },
+                    });
+                  } else {
+                    console.error("error adding new user to DB");
+                  }
+                } catch (e) {
+                  console.error("error adding new user to DB", e);
+                }
+              })
+              .catch(function (e) {
+                // Handle error
+                console.error("error adding new user to DB", e);
+              });
           } else {
             dispatch({
               type: SIGNUP_ERROR,

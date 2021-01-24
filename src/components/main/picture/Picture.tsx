@@ -6,8 +6,51 @@ import CommentsField from "../posts/post/CommentsField";
 import LikesField from "../posts/post/LikesField";
 import AddCommentField from "../posts/post/AddCommentField";
 import UserHeaderField from "../posts/post/UserHeaderField";
+import firebase from "../../../services/firebase";
 
 const Picture = () => {
+  const testrequest = async (e) => {
+    e.preventDefault();
+    firebase
+      .auth()
+      .currentUser.getIdToken(/* forceRefresh */ true)
+      .then(async function (idToken) {
+        // // Send token to your backend via HTTPS
+        // console.log(idToken);
+        // auth = idToken;
+        try {
+          const response = await fetch("http://localhost:3000/comment", {
+            method: "post",
+            // headers: {
+            //   "Content-type": "application/json",
+            //   Authorization: localStorage.getItem("token"),
+            // },
+            headers: {
+              "Content-type": "application/json",
+              Authorization: "Bearer " + idToken,
+            },
+            body: JSON.stringify({
+              userId: 4,
+              postId: 1,
+              comment: "one more",
+            }),
+          });
+          if (response.ok) {
+            const jsonResponse = await response.json();
+            console.log(jsonResponse);
+          } else {
+            console.error("error");
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      })
+      .catch(function (error) {
+        // Handle error
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <Header />
@@ -37,6 +80,7 @@ const Picture = () => {
             <AddCommentField {...mockedPicture} />
           </div>
         </div>
+        <button onClick={testrequest}>test</button>
       </div>
       <FooterBottom />
     </div>

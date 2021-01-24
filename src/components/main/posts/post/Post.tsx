@@ -20,7 +20,7 @@ const Post = (props) => {
   return (
     <article className="post-wrapper">
       <UserHeaderField {...props} />
-      <img className="post-img" src={props.post} alt=""></img>
+      <img className="post-img" src={props.image} alt=""></img>
       <LikesField {...props} />
       <CommentsField {...props} />
       <AddCommentField {...props} />

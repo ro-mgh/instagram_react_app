@@ -49,7 +49,7 @@ const LikesField = (props) => {
           {/* </button> */}
         </div>
       </div>
-      <div className="post-likes">{props.likes + " likes"}</div>
+      <div className="post-likes">{props.likes.length || 0} likes</div>
     </div>
   );
 };

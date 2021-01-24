@@ -16,14 +16,18 @@ const UserHeaderField = (props) => {
   return (
     <div className="post-header">
       <a href="/user" className="sidebar-user-avatar">
-        <Avatar alt="A" src="" className={classes.medium} />
+        <Avatar
+          alt="A"
+          src={props.author.avatar || ""}
+          className={classes.medium}
+        />
       </a>
       <div className="post-header-username">
         <a className="username-font" href="/user">
-          {props.username}
+          {props.author.username}
         </a>
       </div>
-      <button className="follow-button">Follow</button>
+      {/* <button className="follow-button">Follow</button> */}
     </div>
   );
 };
