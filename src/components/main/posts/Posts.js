@@ -22,7 +22,7 @@ const Posts = () => {
         .currentUser.getIdToken(/* forceRefresh */ true)
         .then(async function (idToken) {
           try {
-            const response = await fetch("http://localhost:3000/post/user/2", {
+            const response = await fetch("http://localhost:3000/post/user/", {
               method: "get",
               headers: {
                 "Content-type": "application/json",
@@ -47,7 +47,7 @@ const Posts = () => {
           console.log(error);
         });
     };
-    getPosts();
+    // getPosts();
     setLoading(false);
   }, []);
 

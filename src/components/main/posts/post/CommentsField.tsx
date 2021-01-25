@@ -38,7 +38,7 @@ const CommentsField = (props) => {
           console.log(error);
         });
     };
-    getComments();
+    // getComments();
   }, []);
 
   return (

@@ -58,6 +58,7 @@ export const signupUser = (
                       email: email,
                       username: username,
                       name: name,
+                      id: user.uid + "",
                     }),
                   });
                   if (response.ok) {
