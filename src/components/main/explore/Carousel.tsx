@@ -1,22 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
-import mockedUsersArr from "../../../mocked_files/mocked_explore_list";
+import { useSelector } from "react-redux";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Avatar from "@material-ui/core/Avatar";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    medium: {
-      width: theme.spacing(7),
-      height: theme.spacing(7),
-    },
-  })
-);
+import CarouselUser from "./CarouselUser";
+import { useDispatch } from "react-redux";
+import { exploreUsers } from "../../../store/actions/exploreUsers";
 
 const Carousel = () => {
-  const classes = useStyles();
+  const users = useSelector((state) => state.dataReducer.users);
+  const dispatch = useDispatch();
   const settings = {
     // dots: true,
     lazyLoad: true,
@@ -31,28 +24,19 @@ const Carousel = () => {
     slidesToScroll: 2,
   };
 
+  useEffect(() => {
+    dispatch(exploreUsers());
+  }, []);
+
   const sliders = () => {
-    return mockedUsersArr.map((user) => {
-      return (
-        <div key={user.username} className="carousel-wrapper">
-          <div className="carousel-user-wrapper">
-            <a href="/user" className="carousel-user-avatar">
-              <Avatar alt="A" src={user.avatar} className={classes.medium} />
-            </a>
-            <div className="post-header-username">
-              <a className="username-font" href="/user">
-                {user.username}
-              </a>
-            </div>
-            <button className="follow-button">Follow</button>
-          </div>
-        </div>
-      );
+    console.log("sliders: ", users);
+    return users.map((user) => {
+      return <CarouselUser {...user} key={user.id} />;
     });
   };
 
   return (
-    <div className="test">
+    <div className="">
       <Slider {...settings}>{sliders()}</Slider>
     </div>
   );

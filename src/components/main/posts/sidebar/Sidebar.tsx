@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import User from "./User";
 import Footer from "../../../footer/Footer";
-import firebase from "../../../../services/firebase";
+// import firebase from "../../../../services/firebase";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,61 +17,62 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Sidebar = () => {
   const classes = useStyles();
+  const user = useSelector((state) => state.authReducer.user);
+  const users = useSelector((state) => state.dataReducer.users);
+  // const [recommendUsers, setRecommendUsers] = useState([]);
 
-  const [recommendUsers, setRecommendUsers] = useState([]);
+  // useEffect(() => {
+  //   setRecommendUsers([]);
 
-  useEffect(() => {
-    setRecommendUsers([]);
+  //   const getUsers = async () => {
+  //     firebase
+  //       .auth()
+  //       .currentUser.getIdToken(/* forceRefresh */ true)
+  //       .then(async function (idToken) {
+  //         try {
+  //           const response = await fetch("http://localhost:3000/user", {
+  //             method: "get",
+  //             headers: {
+  //               "Content-type": "application/json",
+  //               Authorization: "Bearer " + idToken,
+  //             },
+  //           });
+  //           if (response.ok) {
+  //             const jsonResponse = await response.json();
 
-    const getUsers = async () => {
-      firebase
-        .auth()
-        .currentUser.getIdToken(/* forceRefresh */ true)
-        .then(async function (idToken) {
-          try {
-            const response = await fetch("http://localhost:3000/user", {
-              method: "get",
-              headers: {
-                "Content-type": "application/json",
-                Authorization: "Bearer " + idToken,
-              },
-            });
-            if (response.ok) {
-              const jsonResponse = await response.json();
-
-              setRecommendUsers(jsonResponse);
-            } else {
-              console.error("error");
-            }
-          } catch (e) {
-            console.error(e);
-          }
-        })
-        .catch(function (error) {
-          // Handle error
-          console.log(error);
-        });
-    };
-    getUsers();
-  }, []);
+  //             setRecommendUsers(jsonResponse);
+  //           } else {
+  //             console.error("error");
+  //           }
+  //         } catch (e) {
+  //           console.error(e);
+  //         }
+  //       })
+  //       .catch(function (error) {
+  //         // Handle error
+  //         console.log(error);
+  //       });
+  //   };
+  //   getUsers();
+  // }, []);
 
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar-user">
         <a href="/user">
-          <Avatar alt="A" src="" className={classes.large} />
+          <Avatar alt="A" src={user.photoURL} className={classes.large} />
         </a>
         <div className="sidebar-user-wrapper">
           <a className="username-font" href="/user">
-            roma
+            {user.displayName.split("&&")[0]}
           </a>
-          <div className="name-font">Roman Mgh</div>
+          <div className="name-font">{user.displayName.split("&&")[1]}</div>
         </div>
       </div>
       <div className="sidebar-suggestions-text">Suggestions For You</div>
       <div className="sidebar-suggestions-users">
-        {recommendUsers
-          ? recommendUsers.slice(0, 5).map((user) => {
+        {users
+          ? users.slice(0, 5).map((user) => {
               return <User {...user} key={user.id} />;
             })
           : null}

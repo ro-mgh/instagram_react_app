@@ -129,6 +129,7 @@ export const signinUser = (
       .signInWithEmailAndPassword(email, password)
       .then((data) => {
         console.log("Data from sign in", data);
+
         return dispatch({
           type: SIGNIN_SUCCESS,
           payload: {

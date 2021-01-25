@@ -12,3 +12,6 @@ export const SIGNOUT_ERROR = "SIGNOUT_ERROR";
 
 // VERIFY
 export const VERIFY_REQUEST = "VERIFY_REQUEST";
+
+// GET USERS
+export const GET_USERS = "GET_USERS";
