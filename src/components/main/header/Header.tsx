@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../../../pictures/instagram_logo.png";
 import MenuDropdown from "./MenuDropdown";
 import SearchField from "./SearchField";
+import { Link } from "react-router-dom";
 
 // src / pictures / instagram_logo.png
 
@@ -16,11 +17,13 @@ const Header = () => {
     <div className="header-main">
       <div className="header-main-container">
         <div className="header-logo-placeholder">
-          <a href="/" className="header-logo-a">
-            <div className="header-logo-div">
-              <img src={logo} alt=""></img>
+          <Link to="/">
+            <div className="header-logo-a">
+              <div className="header-logo-div">
+                <img src={logo} alt=""></img>
+              </div>
             </div>
-          </a>
+          </Link>
         </div>
         <SearchField />
         <div className="header-nav-placeholder">
@@ -40,7 +43,8 @@ const Header = () => {
               </a>
             </div>
             <div className="header-nav-icon">
-              <a href="/explore" tabIndex={0}>
+              <Link to="/explore">
+                {/* <a href="/explore" tabIndex={0}> */}
                 <svg
                   aria-label="Find People"
                   className=""
@@ -55,7 +59,7 @@ const Header = () => {
                     fillRule="evenodd"
                   ></path>
                 </svg>
-              </a>
+              </Link>
             </div>
             <div className="header-nav-icon">
               <MenuDropdown />

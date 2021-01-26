@@ -64,9 +64,11 @@ const Sidebar = () => {
         </a>
         <div className="sidebar-user-wrapper">
           <a className="username-font" href="/user">
-            {user.displayName.split("&&")[0]}
+            {user ? user.displayName.split("&&")[0] : null}
           </a>
-          <div className="name-font">{user.displayName.split("&&")[1]}</div>
+          <div className="name-font">
+            {user ? user.displayName.split("&&")[1] : null}
+          </div>
         </div>
       </div>
       <div className="sidebar-suggestions-text">Suggestions For You</div>

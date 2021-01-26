@@ -960,6 +960,7 @@ footer {
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
+  
 }
 
 .follow-button {
@@ -1062,6 +1063,7 @@ footer {
 .post-header-username {
   margin-left: 14px;
   flex-grow: 1;
+  text-align: center;
 }
 
 .post-img {

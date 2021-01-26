@@ -5,6 +5,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import mockedUser from "../../../mocked_files/mocked_user_profile";
 import Modal from "./Modal";
 import Signout from "../signout/Signout";
+import EditAvatar from "./EditAvatar";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,18 +57,7 @@ const UserInfo = () => {
             </button>
             {showModal ? (
               <Modal>
-                <div className="modal">
-                  <div className="modal-wrapper">
-                    <h2 className="modal-text">Change Profile Photo</h2>
-                    <button className="modal-button">Upload Photo</button>
-                    <button className="modal-button modal-button-remove">
-                      Remove Current Photo
-                    </button>
-                    <button onClick={toggleModal} className="modal-button">
-                      Cancel
-                    </button>
-                  </div>
-                </div>
+                <EditAvatar onClick={toggleModal} />
               </Modal>
             ) : null}
           </div>

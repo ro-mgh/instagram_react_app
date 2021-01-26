@@ -28,8 +28,8 @@ const rrfProps = {
 
 function App() {
   return (
-    <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <Provider store={store}>
         <Router>
           <Switch>
             <Route exact path="/">
@@ -42,8 +42,8 @@ function App() {
             <ProtectedSignup exact path="/signup" />
           </Switch>
         </Router>
-      </ReactReduxFirebaseProvider>
-    </Provider>
+      </Provider>
+    </ReactReduxFirebaseProvider>
   );
 }
 
