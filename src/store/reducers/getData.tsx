@@ -1,7 +1,12 @@
-import { GET_USERS } from "../actions/actionTypes";
+import {
+  GET_USERS,
+  GET_USER,
+  GET_USERS_POSTS,
+  GET_USER_POSTS,
+} from "../actions/actionTypes";
 
 const INITIAL_STATE = {
-  user: [],
+  user: {},
   users: [],
   usersPosts: [],
   userPosts: [],
@@ -13,6 +18,21 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         users: action.payload.users,
+      };
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload.user,
+      };
+    case GET_USERS_POSTS:
+      return {
+        ...state,
+        usersPosts: action.payload.usersPosts,
+      };
+    case GET_USER_POSTS:
+      return {
+        ...state,
+        userPosts: action.payload.userPosts,
       };
     default:
       return state;

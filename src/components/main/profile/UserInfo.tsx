@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { useSelector } from "react-redux";
 
 import mockedUser from "../../../mocked_files/mocked_user_profile";
 import Modal from "./Modal";
-import Signout from "../signout/Signout";
 import EditAvatar from "./EditAvatar";
+import { userData } from "../../../store/actions/userData";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,6 +21,12 @@ const useStyles = makeStyles((theme: Theme) =>
 const UserInfo = () => {
   const classes = useStyles();
   const [showModal, setModal] = useState(false);
+  const user = useSelector((state) => state.dataReducer.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(userData());
+  }, []);
 
   const toggleModal = () => setModal(!showModal);
 
@@ -26,12 +34,16 @@ const UserInfo = () => {
     <div>
       <div className="userprofile-wrapper">
         <div className="userprofile-avatar-wrapper">
-          <Avatar alt="A" src="" className={classes.extraLarge} />
+          <Avatar
+            alt="A"
+            src={user.avatar || ""}
+            className={classes.extraLarge}
+          />
         </div>
         <div className="userprofile-info-wrapper">
           <div className="userprofile-info-username">
             <div className="userprofile-info-username-text">
-              {mockedUser.username}
+              {user.username || ""}
             </div>
             <button
               className="userprofile-editProfile-btn"
@@ -64,24 +76,26 @@ const UserInfo = () => {
           <div className="userprofile-info-subscribers">
             <span className="userprofile-info-text">
               <span className="userprofile-info-boldText">
-                {mockedUser.pictures.length + " "}
-              </span>
+                {Object.entries(user).length ? user.posts.length : 0}
+              </span>{" "}
               posts
             </span>
             <span className="userprofile-info-text">
               <span className="userprofile-info-boldText">
-                {mockedUser.pictures.length + " "}
-              </span>
+                {Object.entries(user).length ? user.Following.length : 0}
+              </span>{" "}
               followers
             </span>
             <span className="userprofile-info-text">
               <span className="userprofile-info-boldText">
-                {mockedUser.pictures.length + " "}
-              </span>
+                {Object.entries(user).length ? user.followingIds.length : 0}
+              </span>{" "}
               following
             </span>
           </div>
-          <div className="userprofile-info-name">{mockedUser.name}</div>
+          <div className="userprofile-info-name">
+            {Object.entries(user).length ? user.name : ""}
+          </div>
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ const User = (props) => {
   const [isFollow, setFollow] = useState(false);
 
   const handleFollow = async () => {
+    setFollow(true);
     firebase
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
@@ -34,7 +35,6 @@ const User = (props) => {
           );
           if (response.ok) {
             // const jsonResponse = await response.json();
-            setFollow(true);
           } else {
             console.error("error");
           }
@@ -49,6 +49,7 @@ const User = (props) => {
   };
 
   const handleUnfollow = async () => {
+    setFollow(false);
     firebase
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
@@ -66,7 +67,6 @@ const User = (props) => {
           );
           if (response.ok) {
             // const jsonResponse = await response.json();
-            setFollow(false);
           } else {
             console.error("error");
           }

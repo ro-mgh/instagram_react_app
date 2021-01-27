@@ -4,6 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import User from "./User";
 import Footer from "../../../footer/Footer";
+import { Link } from "react-router-dom";
 // import firebase from "../../../../services/firebase";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -59,13 +60,15 @@ const Sidebar = () => {
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar-user">
-        <a href="/user">
+        <Link to="/profile">
           <Avatar alt="A" src={user.photoURL} className={classes.large} />
-        </a>
+        </Link>
         <div className="sidebar-user-wrapper">
-          <a className="username-font" href="/user">
-            {user ? user.displayName.split("&&")[0] : null}
-          </a>
+          <div className="username-font">
+            <Link to="/profile">
+              {user ? user.displayName.split("&&")[0] : null}
+            </Link>
+          </div>
           <div className="name-font">
             {user ? user.displayName.split("&&")[1] : null}
           </div>

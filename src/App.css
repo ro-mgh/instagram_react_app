@@ -960,7 +960,6 @@ footer {
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
-  
 }
 
 .follow-button {
@@ -1063,7 +1062,7 @@ footer {
 .post-header-username {
   margin-left: 14px;
   flex-grow: 1;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .post-img {
@@ -1618,4 +1617,16 @@ button {
 }
 .slick-next:before {
   color: black !important;
+}
+
+/* image inputs */
+
+.image-input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.image-input-label {
+  padding-top: 10px;
 }

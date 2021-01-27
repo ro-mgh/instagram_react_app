@@ -9,6 +9,7 @@ import MenuList from "@material-ui/core/MenuList";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Signout from "../signout/Signout";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -109,7 +110,7 @@ const MenuDropdown = () => {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose} className={classes.text}>
-                      <a href="/profile">Profile</a>
+                      <Link to="/profile">Profile</Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose} className={classes.text}>
                       <Signout />

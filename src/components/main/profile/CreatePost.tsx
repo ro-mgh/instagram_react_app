@@ -1,20 +1,20 @@
 import React, { useMemo, useCallback } from "react";
+import { useSelector } from "react-redux";
 import { useDropzone } from "react-dropzone";
+import S3 from "react-aws-s3";
+import firebase from "../../../services/firebase";
+
+const config = {
+  bucketName: "insta-project",
+  region: "ap-northeast-2",
+  accessKeyId: process.env.REACT_APP_S3_ACCESSKEY,
+  secretAccessKey: process.env.REACT_APP_S3_SECRETKEY,
+};
+
+const ReactS3Client = new S3(config);
 
 const baseStyle = {
   //   flex: 1,
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   alignItems: "center",
-  //   padding: "20px",
-  //   borderWidth: 4,
-  //   borderRadius: 2,
-  //   borderColor: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-  //   borderStyle: "dashed",
-  //   backgroundColor: "#fafafa",
-  //   color: "#bdbdbd",
-  //   outline: "none",
-  //   transition: "border .24s ease-in-out",
 };
 
 const activeStyle = {
@@ -31,9 +31,49 @@ const rejectStyle = {
 };
 
 function CreatePost(props) {
+  const user = useSelector((state) => state.authReducer.user);
+
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
-    console.log(acceptedFiles[0]);
+
+    if (acceptedFiles && acceptedFiles[0]) {
+      const file = acceptedFiles[0];
+      ReactS3Client.uploadFile(file, user.uid + "&&" + Date.now())
+        .then((data) => {
+          const user = firebase.auth().currentUser;
+          if (user) {
+            user
+              .getIdToken(/* forceRefresh */ true)
+              .then(async function (idToken) {
+                try {
+                  const response = await fetch("http://localhost:3000/post", {
+                    method: "post",
+                    headers: {
+                      "Content-type": "application/json",
+                      Authorization: "Bearer " + idToken,
+                    },
+                    body: JSON.stringify({
+                      authorId: user.uid,
+                      image: data.location,
+                    }),
+                  });
+                  if (response.ok) {
+                    // const jsonResponse = await response.json();
+                    // console.log(jsonResponse);
+                    console.log("updated succesfully in DB");
+                  } else {
+                    console.error("error updating  to DB");
+                  }
+                } catch (e) {
+                  console.error("error updating  to DB", e);
+                }
+              });
+          } else {
+            console.error("error updating  to DB");
+          }
+        })
+        .catch((err) => console.error(err));
+    }
   }, []);
 
   const {

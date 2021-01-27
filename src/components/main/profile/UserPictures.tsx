@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import mockedUser from "../../../mocked_files/mocked_user_profile";
 import Gallery from "../explore/Gallery";
@@ -6,6 +7,7 @@ import CreatePost from "./CreatePost";
 
 const UserPictures = () => {
   const [showPosts, setPosts] = useState(true);
+  const user = useSelector((state) => state.dataReducer.user);
 
   const toggleView = () => setPosts(!showPosts);
 
@@ -47,7 +49,7 @@ const UserPictures = () => {
           </button>
         </div>
       </div>
-      {showPosts ? <Gallery {...mockedUser} /> : <CreatePost />}
+      {showPosts ? <Gallery {...user} /> : <CreatePost />}
     </div>
   );
 };

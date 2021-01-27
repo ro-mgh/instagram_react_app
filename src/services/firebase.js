@@ -12,20 +12,13 @@ import "firebase/auth";
 dotenv.config();
 // Your app's Firebase configuration
 var firebaseConfig = {
-  // apiKey: process.env.FIREBASE_API_KEY,
-  // authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  // projectId: process.env.FIREBASE_PROJECT_ID,
-  // storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  // messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  // appId: process.env.FIREBASE_APP_ID,
-  // measurementId: process.env.FIREBASE_MEASUREMENTID,
-  apiKey: "AIzaSyBSM65P5z_9FikGh-QDxQ2ivzU6fiGOkP8",
-  authDomain: "fb-instaapp.firebaseapp.com",
-  projectId: "fb-instaapp",
-  storageBucket: "fb-instaapp.appspot.com",
-  messagingSenderId: "623116021000",
-  appId: "1:623116021000:web:8cbbaae0d86fdc8f1590bd",
-  measurementId: "G-55B76TLNCP",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID,
 };
 
 // Initialize Firebase

@@ -20,6 +20,7 @@ const CarouselUser = (props) => {
   const [isFollow, setFollow] = useState(false);
 
   const handleFollow = async () => {
+    setFollow(true);
     firebase
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
@@ -37,7 +38,6 @@ const CarouselUser = (props) => {
           );
           if (response.ok) {
             // const jsonResponse = await response.json();
-            setFollow(true);
           } else {
             console.error("error");
           }
@@ -52,6 +52,7 @@ const CarouselUser = (props) => {
   };
 
   const handleUnfollow = async () => {
+    setFollow(false);
     firebase
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
@@ -69,7 +70,6 @@ const CarouselUser = (props) => {
           );
           if (response.ok) {
             // const jsonResponse = await response.json();
-            setFollow(false);
           } else {
             console.error("error");
           }
