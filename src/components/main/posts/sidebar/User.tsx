@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import firebase from "../../../../services/firebase";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -82,13 +83,15 @@ const User = (props) => {
 
   return (
     <div className="sidebar-user user-container">
-      <a href="/user" className="sidebar-user-avatar">
-        <Avatar alt="A" src={props.avatar} className={classes.medium} />
-      </a>
+      <Link to={"/profile/" + props.id}>
+        <div className="sidebar-user-avatar">
+          <Avatar alt="A" src={props.avatar} className={classes.medium} />
+        </div>
+      </Link>
       <div className="sidebar-user-wrapper">
-        <a className="username-font " href="/user">
-          {props.username}
-        </a>
+        <Link to={"/profile/" + props.id}>
+          <div className="username-font">{props.username}</div>
+        </Link>
       </div>
       {isFollow ? (
         <button className="follow-button" onClick={handleUnfollow}>

@@ -59,8 +59,7 @@ const Posts = () => {
       <div className="posts-wrapper">
         {userPosts.length ? (
           userPosts.map((post) => {
-            console.log(post);
-            return <Post {...post} key={post.username} />;
+            return <Post {...post} key={post.id} />;
           })
         ) : (
           <div>Loading</div>

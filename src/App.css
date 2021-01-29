@@ -1145,6 +1145,10 @@ footer {
   margin: 8px;
 }
 
+.post-icons-like {
+  fill: rgb(237, 73, 86);
+}
+
 .post-icons-wrapper {
   padding-left: 8px;
   padding-right: 16px;

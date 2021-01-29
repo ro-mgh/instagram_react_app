@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
+import { useSelector } from "react-redux";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Signout from "../signout/Signout";
@@ -42,6 +43,7 @@ const MenuDropdown = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
+  const user = useSelector((state) => state.authReducer.user);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -110,7 +112,7 @@ const MenuDropdown = () => {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose} className={classes.text}>
-                      <Link to="/profile">Profile</Link>
+                      <Link to={"/profile/" + user.uid}>Profile</Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose} className={classes.text}>
                       <Signout />

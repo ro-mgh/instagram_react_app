@@ -18,11 +18,7 @@ const ProtectedPicture: FunctionComponent<IAuth> = ({ auth }) => {
       {!auth.isLoaded ? (
         <Loader />
       ) : !auth.isEmpty ? (
-        <Route path="/picture">
-          <div>
-            <Picture />
-          </div>
-        </Route>
+        <Route path="/picture/:pictureId" component={Picture} />
       ) : (
         <Redirect to="/" />
       )}

@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../header/Header";
-import Footer from "../../footer/Footer";
 import UserInfo from "./UserInfo";
 import UserPictures from "./UserPictures";
 import FooterBottom from "../../footer/FooterBottom";
+import { useSelector } from "react-redux";
+import ProfileInfo from "./ProfileInfo";
 
-const Profile = () => {
+const Profile = ({ match, location }) => {
+  const user = useSelector((state) => state.authReducer.user);
+  // useEffect(() => {}, []);
+
   return (
     <div>
       <Header />
       <div className="profile-wrapper">
-        <UserInfo />
-        <UserPictures />
+        {match.params.userId === user.uid ? (
+          <div>
+            <UserInfo />
+            <UserPictures />
+          </div>
+        ) : (
+          <ProfileInfo {...match} />
+        )}
       </div>
       <FooterBottom />
     </div>

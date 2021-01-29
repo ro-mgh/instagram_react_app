@@ -72,44 +72,47 @@ const EditAvatar = (props) => {
     e.preventDefault();
     ReactS3Client.deleteFile(user.uid)
       .then((data) => {
-        const user = firebase.auth().currentUser;
-        if (user) {
-          user.updateProfile({
-            photoURL: "",
-          });
-          user
-            .getIdToken(/* forceRefresh */ true)
-            .then(async function (idToken) {
-              try {
-                const response = await fetch(
-                  "http://localhost:3000/user/" + user.uid,
-                  {
-                    method: "put",
-                    headers: {
-                      "Content-type": "application/json",
-                      Authorization: "Bearer " + idToken,
-                    },
-                    body: JSON.stringify({
-                      avatar: "",
-                    }),
-                  }
-                );
-                if (response.ok) {
-                  // const jsonResponse = await response.json();
-                  // console.log(jsonResponse);
-                  console.log("updated succesfully in DB");
-                } else {
-                  console.error("error updating photo to DB");
-                }
-              } catch (e) {
-                console.error("error updating photo to DB", e);
-              }
-            });
-        } else {
-          console.error("error updating photo to DB");
-        }
+        console.log("Photo deleted");
       })
       .catch((err) => console.error(err));
+    try {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        user.updateProfile({
+          photoURL: "",
+        });
+        user.getIdToken(/* forceRefresh */ true).then(async function (idToken) {
+          try {
+            const response = await fetch(
+              "http://localhost:3000/user/" + user.uid,
+              {
+                method: "put",
+                headers: {
+                  "Content-type": "application/json",
+                  Authorization: "Bearer " + idToken,
+                },
+                body: JSON.stringify({
+                  avatar: "",
+                }),
+              }
+            );
+            if (response.ok) {
+              // const jsonResponse = await response.json();
+              // console.log(jsonResponse);
+              console.log("updated succesfully in DB");
+            } else {
+              console.error("error updating photo to DB");
+            }
+          } catch (e) {
+            console.error("error updating photo to DB", e);
+          }
+        });
+      } else {
+        console.error("error updating photo to DB");
+      }
+    } catch (e) {
+      console.error("error updating photo to DB");
+    }
   };
 
   return (

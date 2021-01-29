@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../../../../services/firebase";
+import { Link } from "react-router-dom";
 
 const CommentsField = (props) => {
-  const [comments, setComments] = useState([]);
-
   useEffect(() => {
-    setComments([]);
-
     const getComments = async () => {
       firebase
         .auth()
@@ -25,7 +22,6 @@ const CommentsField = (props) => {
             );
             if (response.ok) {
               const jsonResponse = await response.json();
-              setComments(jsonResponse);
             } else {
               console.error("error");
             }
@@ -44,13 +40,15 @@ const CommentsField = (props) => {
   return (
     <div>
       <div className="post-comments-wrapper">
-        {comments.length
-          ? comments.map((comment) => {
+        {props.comments.length
+          ? props.comments.map((comment) => {
               return (
                 <div className="post-comment-field" key={comment.id}>
-                  <span className="post-comment-user">
-                    {comment.user.username}
-                  </span>
+                  <Link to={"/profile/" + comment.user.id}>
+                    <span className="post-comment-user">
+                      {comment.user.username}
+                    </span>
+                  </Link>
                   <span className="post-comment-text">{comment.comment}</span>
                 </div>
               );

@@ -1,6 +1,7 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,19 +16,20 @@ const UserHeaderField = (props) => {
   const classes = useStyles();
   return (
     <div className="post-header">
-      <a href="/user" className="sidebar-user-avatar">
-        <Avatar
-          alt="A"
-          src={props.author.avatar || ""}
-          className={classes.medium}
-        />
-      </a>
+      <Link to={"/profile/" + props.author.id}>
+        <div className="sidebar-user-avatar">
+          <Avatar
+            alt="A"
+            src={props.author.avatar || ""}
+            className={classes.medium}
+          />
+        </div>
+      </Link>
       <div className="post-header-username">
-        <a className="username-font" href="/user">
-          {props.author.username}
-        </a>
+        <Link to={"/profile/" + props.author.id}>
+          <div className="username-font">{props.author.username}</div>
+        </Link>
       </div>
-      {/* <button className="follow-button">Follow</button> */}
     </div>
   );
 };

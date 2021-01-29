@@ -60,12 +60,12 @@ const Sidebar = () => {
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar-user">
-        <Link to="/profile">
+        <Link to={"/profile/" + user.uid}>
           <Avatar alt="A" src={user.photoURL} className={classes.large} />
         </Link>
         <div className="sidebar-user-wrapper">
           <div className="username-font">
-            <Link to="/profile">
+            <Link to={"/profile/" + user.uid}>
               {user ? user.displayName.split("&&")[0] : null}
             </Link>
           </div>

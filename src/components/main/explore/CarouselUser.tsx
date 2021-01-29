@@ -4,6 +4,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import firebase from "../../../services/firebase";
 import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -86,13 +87,15 @@ const CarouselUser = (props) => {
   return (
     <div key={props.id} className="carousel-wrapper">
       <div className="carousel-user-wrapper">
-        <a href="/user" className="carousel-user-avatar">
-          <Avatar alt="A" src={props.avatar} className={classes.medium} />
-        </a>
+        <Link to={"/profile/" + props.id}>
+          <div className="carousel-user-avatar">
+            <Avatar alt="A" src={props.avatar} className={classes.medium} />
+          </div>
+        </Link>
         <div className="post-header-username">
-          <a className="username-font" href="/user">
-            {props.username}
-          </a>
+          <Link to={"/profile/" + props.id}>
+            <div className="username-font">{props.username}</div>
+          </Link>
         </div>
         {isFollow ? (
           <button className="follow-button" onClick={handleUnfollow}>

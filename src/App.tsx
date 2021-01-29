@@ -35,9 +35,9 @@ function App() {
             <Route exact path="/">
               <Main />
             </Route>
-            <ProtectedProfile exact path="/profile" />
+            <ProtectedProfile path="/profile/:userId" />
             <ProtectedExplore exact path="/explore" />
-            <ProtectedPicture exact path="/picture" />
+            <ProtectedPicture path="/picture/:pictureId" />
             <ProtectedSignin exact path="/signin" />
             <ProtectedSignup exact path="/signup" />
           </Switch>

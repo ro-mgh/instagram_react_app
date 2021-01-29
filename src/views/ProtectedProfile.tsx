@@ -18,11 +18,7 @@ const ProtectedProfile: FunctionComponent<IAuth> = ({ auth }) => {
       {!auth.isLoaded ? (
         <Loader />
       ) : !auth.isEmpty ? (
-        <Route path="/profile">
-          <div>
-            <Profile />
-          </div>
-        </Route>
+        <Route path="/profile/:userId" component={Profile} />
       ) : (
         <Redirect to="/" />
       )}
