@@ -1,5 +1,6 @@
 import React, { useMemo, useCallback } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
@@ -32,6 +33,7 @@ const rejectStyle = {
 
 function CreatePost(props) {
   const user = useSelector((state) => state.authReducer.user);
+  const dispatch = useDispatch();
 
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
@@ -60,6 +62,8 @@ function CreatePost(props) {
                   if (response.ok) {
                     // const jsonResponse = await response.json();
                     // console.log(jsonResponse);
+                    dispatch(userData());
+                    dispatch(userPosts());
                     console.log("updated succesfully in DB");
                   } else {
                     console.error("error updating  to DB");

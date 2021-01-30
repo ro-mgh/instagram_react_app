@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Sidebar from "./sidebar/Sidebar";
 import Post from "./post/Post";
-import firebase from "../../../services/firebase";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // interface IPost {
 //   username: string;
@@ -62,7 +62,9 @@ const Posts = () => {
             return <Post {...post} key={post.id} />;
           })
         ) : (
-          <div>Loading</div>
+          <div className="mainfield-progress-wrapper">
+            <CircularProgress size={30} />
+          </div>
         )}
       </div>
       <Sidebar />

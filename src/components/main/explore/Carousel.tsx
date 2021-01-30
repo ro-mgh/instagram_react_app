@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CarouselUser from "./CarouselUser";
 import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Carousel = () => {
   const users = useSelector((state) => state.dataReducer.users);
@@ -29,7 +30,6 @@ const Carousel = () => {
   }, []);
 
   const sliders = () => {
-    console.log("sliders: ", users);
     return users.map((user) => {
       return <CarouselUser {...user} key={user.id} />;
     });
@@ -37,7 +37,13 @@ const Carousel = () => {
 
   return (
     <div className="">
-      <Slider {...settings}>{sliders()}</Slider>
+      {users.length ? (
+        <Slider {...settings}>{sliders()}</Slider>
+      ) : (
+        <div className="mainfield-progress-wrapper">
+          <CircularProgress size={30} />
+        </div>
+      )}
     </div>
   );
 };

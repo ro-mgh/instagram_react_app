@@ -2,6 +2,7 @@ import React, { useState, useEffect, FunctionComponent } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import firebase from "../../../services/firebase";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import ProfilePictures from "./ProfilePictures";
 
@@ -73,46 +74,54 @@ const ProfileInfo: FunctionComponent = (props) => {
 
   return (
     <div>
-      <div className="userprofile-wrapper">
-        <div className="userprofile-avatar-wrapper">
-          <Avatar
-            alt="A"
-            src={user.avatar || ""}
-            className={classes.extraLarge}
-          />
-        </div>
-        <div className="userprofile-info-wrapper">
-          <div className="userprofile-info-username">
-            <div className="userprofile-info-username-text">
-              {user.username || ""}
+      {user.id ? (
+        <div>
+          <div className="userprofile-wrapper">
+            <div className="userprofile-avatar-wrapper">
+              <Avatar
+                alt="A"
+                src={user.avatar || ""}
+                className={classes.extraLarge}
+              />
+            </div>
+            <div className="userprofile-info-wrapper">
+              <div className="userprofile-info-username">
+                <div className="userprofile-info-username-text">
+                  {user.username || ""}
+                </div>
+              </div>
+              <div className="userprofile-info-subscribers">
+                <span className="userprofile-info-text">
+                  <span className="userprofile-info-boldText">
+                    {Object.entries(user).length ? user.posts.length : 0}
+                  </span>{" "}
+                  posts
+                </span>
+                <span className="userprofile-info-text">
+                  <span className="userprofile-info-boldText">
+                    {Object.entries(user).length ? user.Following.length : 0}
+                  </span>{" "}
+                  followers
+                </span>
+                <span className="userprofile-info-text">
+                  <span className="userprofile-info-boldText">
+                    {Object.entries(user).length ? user.followingIds.length : 0}
+                  </span>{" "}
+                  following
+                </span>
+              </div>
+              <div className="userprofile-info-name">
+                {Object.entries(user).length ? user.name : ""}
+              </div>
             </div>
           </div>
-          <div className="userprofile-info-subscribers">
-            <span className="userprofile-info-text">
-              <span className="userprofile-info-boldText">
-                {Object.entries(user).length ? user.posts.length : 0}
-              </span>{" "}
-              posts
-            </span>
-            <span className="userprofile-info-text">
-              <span className="userprofile-info-boldText">
-                {Object.entries(user).length ? user.Following.length : 0}
-              </span>{" "}
-              followers
-            </span>
-            <span className="userprofile-info-text">
-              <span className="userprofile-info-boldText">
-                {Object.entries(user).length ? user.followingIds.length : 0}
-              </span>{" "}
-              following
-            </span>
-          </div>
-          <div className="userprofile-info-name">
-            {Object.entries(user).length ? user.name : ""}
-          </div>
+          <ProfilePictures {...user} />
         </div>
-      </div>
-      <ProfilePictures {...user} />
+      ) : (
+        <div className="progress-wrapper">
+          <CircularProgress />
+        </div>
+      )}
     </div>
   );
 };

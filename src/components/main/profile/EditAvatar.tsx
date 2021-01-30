@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { userData } from "../../../store/actions/userData";
 import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
 
@@ -14,6 +16,7 @@ const ReactS3Client = new S3(config);
 
 const EditAvatar = (props) => {
   const user = useSelector((state) => state.authReducer.user);
+  const dispatch = useDispatch();
 
   const toggleModal = () => {
     props.onClick();
@@ -49,6 +52,7 @@ const EditAvatar = (props) => {
                   if (response.ok) {
                     // const jsonResponse = await response.json();
                     // console.log(jsonResponse);
+                    dispatch(userData());
                     console.log("updated succesfully in DB");
                   } else {
                     console.error("error updating photo to DB");

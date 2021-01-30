@@ -1223,6 +1223,30 @@ button {
   display: flex;
 }
 
+.post-viewComments {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  margin-bottom: 4px;
+  padding: 0 16px;
+}
+
+.post-date {
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  line-height: 18px;
+  margin-bottom: 9px;
+  padding-left: 16px;
+  /* margin-bottom: 4px; */
+}
+
 /* user profile */
 
 .profile-wrapper {
@@ -1497,6 +1521,7 @@ button {
 .picture-img {
   width: 60%;
   object-fit: cover;
+
   /* margin-right: 10px; */
   /* margin-bottom: 28px; */
 }
@@ -1633,4 +1658,34 @@ button {
 
 .image-input-label {
   padding-top: 10px;
+}
+
+/* circular progress */
+
+.progress-wrapper {
+  margin-top: 82px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 500px;
+  align-items: center;
+}
+
+.MuiCircularProgress-colorPrimary {
+  color: grey !important;
+}
+
+.mainfield-progress-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.suggestions-progress-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+    height: 100px;
 }

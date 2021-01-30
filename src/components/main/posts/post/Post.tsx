@@ -6,6 +6,7 @@ import LikesField from "./LikesField";
 import AddCommentField from "./AddCommentField";
 import UserHeaderField from "./UserHeaderField";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,7 +41,15 @@ const Post = (props) => {
       <UserHeaderField {...post} />
       <img className="post-img" src={post.image} alt=""></img>
       <LikesField {...post} />
-      <CommentsField {...post} />
+      {post.comments.length > 2 ? (
+        <Link to={"/picture/" + post.id}>
+          <div className="post-viewComments">
+            View all {post.comments.length} comments
+          </div>
+        </Link>
+      ) : null}
+      <CommentsField commentsArr={post.comments.slice(-2)} />
+      <div className="post-date">{new Date(post.createdAt).toDateString()}</div>
       <AddCommentField {...post} onAddComment={handleCommentAdd} />
     </article>
   );

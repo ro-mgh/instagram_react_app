@@ -5,7 +5,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import User from "./User";
 import Footer from "../../../footer/Footer";
 import { Link } from "react-router-dom";
-// import firebase from "../../../../services/firebase";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,42 +20,6 @@ const Sidebar = () => {
   const classes = useStyles();
   const user = useSelector((state) => state.authReducer.user);
   const users = useSelector((state) => state.dataReducer.users);
-  // const [recommendUsers, setRecommendUsers] = useState([]);
-
-  // useEffect(() => {
-  //   setRecommendUsers([]);
-
-  //   const getUsers = async () => {
-  //     firebase
-  //       .auth()
-  //       .currentUser.getIdToken(/* forceRefresh */ true)
-  //       .then(async function (idToken) {
-  //         try {
-  //           const response = await fetch("http://localhost:3000/user", {
-  //             method: "get",
-  //             headers: {
-  //               "Content-type": "application/json",
-  //               Authorization: "Bearer " + idToken,
-  //             },
-  //           });
-  //           if (response.ok) {
-  //             const jsonResponse = await response.json();
-
-  //             setRecommendUsers(jsonResponse);
-  //           } else {
-  //             console.error("error");
-  //           }
-  //         } catch (e) {
-  //           console.error(e);
-  //         }
-  //       })
-  //       .catch(function (error) {
-  //         // Handle error
-  //         console.log(error);
-  //       });
-  //   };
-  //   getUsers();
-  // }, []);
 
   return (
     <div className="sidebar-wrapper">
@@ -76,11 +40,15 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-suggestions-text">Suggestions For You</div>
       <div className="sidebar-suggestions-users">
-        {users
-          ? users.slice(0, 5).map((user) => {
-              return <User {...user} key={user.id} />;
-            })
-          : null}
+        {users.length ? (
+          users.slice(0, 5).map((user) => {
+            return <User {...user} key={user.id} />;
+          })
+        ) : (
+          <div className="suggestions-progress-wrapper">
+            <CircularProgress size={20} />
+          </div>
+        )}
       </div>
       <Footer />
     </div>

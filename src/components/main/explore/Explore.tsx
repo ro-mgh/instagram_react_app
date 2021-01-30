@@ -5,6 +5,7 @@ import Header from "../header/Header";
 import Gallery from "./Gallery";
 import { explorePosts } from "../../../store/actions/exploreUsers";
 import { useDispatch, useSelector } from "react-redux";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Explore = () => {
   const usersPostsArr = useSelector((state) => state.dataReducer.usersPosts);
@@ -27,7 +28,13 @@ const Explore = () => {
         </div>
         <div className="explore-posts-wrapper">
           <p className="explore-users-text">Explore</p>
-          <Gallery {...{ posts: usersPostsArr }} />
+          {usersPostsArr.length ? (
+            <Gallery {...{ posts: usersPostsArr }} />
+          ) : (
+            <div className="mainfield-progress-wrapper">
+              <CircularProgress size={30} />
+            </div>
+          )}
         </div>
       </div>
       <FooterBottom />

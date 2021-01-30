@@ -8,6 +8,7 @@ import AddCommentField from "../posts/post/AddCommentField";
 import UserHeaderField from "../posts/post/UserHeaderField";
 import firebase from "../../../services/firebase";
 import { useSelector } from "react-redux";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Picture = ({ match, location }) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -21,6 +22,7 @@ const Picture = ({ match, location }) => {
     },
     comments: [],
     likes: [],
+    createdAt: "",
   });
 
   useEffect(() => {
@@ -84,23 +86,32 @@ const Picture = ({ match, location }) => {
   return (
     <div>
       <Header />
-      <div className="picture-wrapper">
-        <img src={post.image} className="picture-img" alt=""></img>
-        <div className="picture-comments-wrapper">
-          <div className="picture-username-field">
-            <UserHeaderField {...post} />
-          </div>
-          <div className="picture-comments-field">
-            <CommentsField {...post} />
-          </div>
-          <div className="picture-likes-field">
-            <LikesField {...post} />
-          </div>
-          <div className="picture-addcomments-field">
-            <AddCommentField {...post} onAddComment={handleCommentAdd} />
+      {post.id ? (
+        <div className="picture-wrapper">
+          <img src={post.image} className="picture-img" alt=""></img>
+          <div className="picture-comments-wrapper">
+            <div className="picture-username-field">
+              <UserHeaderField {...post} />
+            </div>
+            <div className="picture-comments-field">
+              <CommentsField commentsArr={post.comments} />
+            </div>
+            <div className="picture-likes-field">
+              <LikesField {...post} />
+            </div>
+            <div className="post-date">
+              {new Date(post.createdAt).toDateString()}
+            </div>
+            <div className="picture-addcomments-field">
+              <AddCommentField {...post} onAddComment={handleCommentAdd} />
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="progress-wrapper">
+          <CircularProgress />
+        </div>
+      )}
       <FooterBottom />
     </div>
   );
