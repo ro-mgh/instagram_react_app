@@ -2,7 +2,11 @@ import React, { useState, useEffect, FunctionComponent } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import firebase from "../../../services/firebase";
+import { useSelector } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { exploreUsers } from "../../../store/actions/exploreUsers";
+import { useDispatch } from "react-redux";
+import { RouteComponentProps } from "react-router-dom";
 
 import ProfilePictures from "./ProfilePictures";
 
@@ -15,8 +19,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const ProfileInfo: FunctionComponent = (props) => {
+const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const allUsersFromStore = useSelector((state) => state.dataReducer.users);
+
   const [user, setUser] = useState({
     id: "",
     username: "",
@@ -28,49 +35,57 @@ const ProfileInfo: FunctionComponent = (props) => {
   });
 
   useEffect(() => {
-    const getUserData = () => {
-      try {
-        const user = firebase.auth().currentUser;
-        if (user) {
-          user
-            .getIdToken(/* forceRefresh */ true)
-            .then(async function (idToken) {
-              try {
-                const response = await fetch(
-                  "http://localhost:3000/user/" + props.params.userId,
-                  {
-                    method: "get",
-                    headers: {
-                      "Content-type": "application/json",
-                      Authorization: "Bearer " + idToken,
-                    },
-                  }
-                );
-                if (response.ok) {
-                  const jsonResponse = await response.json();
-                  console.log("responseUser", jsonResponse);
-                  setUser(jsonResponse);
-                } else {
-                  console.error("error");
-                }
-              } catch (e) {
-                console.error(e);
-              }
-            })
-            .catch(function (error) {
-              // Handle error
-              console.log(error);
-            });
-        } else {
-          console.log("error in getting user's data");
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
+    if (allUsersFromStore[props.params.userId]) {
+      setUser(allUsersFromStore[props.params.userId]);
+    } else {
+      dispatch(exploreUsers());
+    }
+  }, [allUsersFromStore]);
 
-    getUserData();
-  }, []);
+  // useEffect(() => {
+  //   const getUserData = () => {
+  //     try {
+  //       const user = firebase.auth().currentUser;
+  //       if (user) {
+  //         user
+  //           .getIdToken(/* forceRefresh */ true)
+  //           .then(async function (idToken) {
+  //             try {
+  //               const response = await fetch(
+  //                 "http://localhost:3000/user/" + props.params.userId,
+  //                 {
+  //                   method: "get",
+  //                   headers: {
+  //                     "Content-type": "application/json",
+  //                     Authorization: "Bearer " + idToken,
+  //                   },
+  //                 }
+  //               );
+  //               if (response.ok) {
+  //                 const jsonResponse = await response.json();
+  //                 console.log("responseUser", jsonResponse);
+  //                 setUser(jsonResponse);
+  //               } else {
+  //                 console.error("error");
+  //               }
+  //             } catch (e) {
+  //               console.error(e);
+  //             }
+  //           })
+  //           .catch(function (error) {
+  //             // Handle error
+  //             console.log(error);
+  //           });
+  //       } else {
+  //         console.log("error in getting user's data");
+  //       }
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   };
+
+  //   getUserData();
+  // }, []);
 
   return (
     <div>

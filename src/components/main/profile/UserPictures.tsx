@@ -5,9 +5,9 @@ import mockedUser from "../../../mocked_files/mocked_user_profile";
 import Gallery from "../explore/Gallery";
 import CreatePost from "./CreatePost";
 
-const UserPictures = () => {
+const UserPictures = (props) => {
   const [showPosts, setPosts] = useState(true);
-  const user = useSelector((state) => state.dataReducer.user);
+  // const user = useSelector((state) => state.dataReducer.user);
 
   const toggleView = () => setPosts(!showPosts);
 
@@ -49,7 +49,7 @@ const UserPictures = () => {
           </button>
         </div>
       </div>
-      {showPosts ? <Gallery {...user} /> : <CreatePost />}
+      {showPosts ? <Gallery {...props} /> : <CreatePost />}
     </div>
   );
 };

@@ -3,18 +3,28 @@ import FooterBottom from "../../footer/FooterBottom";
 import Carousel from "./Carousel";
 import Header from "../header/Header";
 import Gallery from "./Gallery";
-import { explorePosts } from "../../../store/actions/exploreUsers";
-import { useDispatch, useSelector } from "react-redux";
+// import { explorePosts } from "../../../store/actions/exploreUsers";
+// import { useDispatch, useSelector } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useQuery } from "react-query";
+import { fetchNotFollowingPosts } from "../../../utils/fetchingData";
 
 const Explore = () => {
-  const usersPostsArr = useSelector((state) => state.dataReducer.usersPosts);
+  // const usersPostsArr = useSelector((state) => state.dataReducer.usersPosts);
+  // const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
+  const { isLoading, error, data } = useQuery(
+    "notFollowingPosts",
+    fetchNotFollowingPosts
+  );
 
-  useEffect(() => {
-    dispatch(explorePosts());
-  }, []);
+  if (error) {
+    console.log("An error has occurred: " + error.message);
+  }
+
+  // useEffect(() => {
+  //   dispatch(explorePosts());
+  // }, []);
 
   return (
     <div>
@@ -28,8 +38,8 @@ const Explore = () => {
         </div>
         <div className="explore-posts-wrapper">
           <p className="explore-users-text">Explore</p>
-          {usersPostsArr.length ? (
-            <Gallery {...{ posts: usersPostsArr }} />
+          {!isLoading ? (
+            <Gallery {...{ posts: data }} />
           ) : (
             <div className="mainfield-progress-wrapper">
               <CircularProgress size={30} />

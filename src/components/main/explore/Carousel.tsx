@@ -7,10 +7,14 @@ import CarouselUser from "./CarouselUser";
 import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { getArrayOfUnkhownUsers } from "../../../utils/helpers";
 
 const Carousel = () => {
-  const users = useSelector((state) => state.dataReducer.users);
-  const dispatch = useDispatch();
+  // const users = useSelector((state) => state.dataReducer.users);
+  const user = useSelector((state) => state.authReducer.user);
+  const allUsersFromStore = useSelector((state) => state.dataReducer.users);
+  const [newUsers, setNewUsers] = useState([]);
+  // const dispatch = useDispatch();
   const settings = {
     // dots: true,
     lazyLoad: true,
@@ -26,18 +30,22 @@ const Carousel = () => {
   };
 
   useEffect(() => {
-    dispatch(exploreUsers());
-  }, []);
+    if (Object.entries(allUsersFromStore).length > 0) {
+      const unkhownUsers = getArrayOfUnkhownUsers(user.uid, allUsersFromStore);
+
+      setNewUsers(unkhownUsers);
+    }
+  }, [allUsersFromStore]);
 
   const sliders = () => {
-    return users.map((user) => {
+    return newUsers.map((user) => {
       return <CarouselUser {...user} key={user.id} />;
     });
   };
 
   return (
     <div className="">
-      {users.length ? (
+      {newUsers.length ? (
         <Slider {...settings}>{sliders()}</Slider>
       ) : (
         <div className="mainfield-progress-wrapper">

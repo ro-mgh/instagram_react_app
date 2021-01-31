@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
+import { exploreUsers } from "../../../store/actions/exploreUsers";
 
 const config = {
   bucketName: "insta-project",
@@ -62,8 +63,8 @@ function CreatePost(props) {
                   if (response.ok) {
                     // const jsonResponse = await response.json();
                     // console.log(jsonResponse);
-                    dispatch(userData());
-                    dispatch(userPosts());
+                    // dispatch(userData());
+                    dispatch(exploreUsers());
                     console.log("updated succesfully in DB");
                   } else {
                     console.error("error updating  to DB");

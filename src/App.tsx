@@ -17,6 +17,10 @@ import ProtectedProfile from "./views/ProtectedProfile";
 import ProtectedExplore from "./views/ProtectedExplore";
 import ProtectedPicture from "./views/ProtectedPicture";
 
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+const queryClient = new QueryClient();
+
 const rrfConfig = { userProfile: "users" };
 
 const rrfProps = {
@@ -30,18 +34,20 @@ function App() {
   return (
     <ReactReduxFirebaseProvider {...rrfProps}>
       <Provider store={store}>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <Main />
-            </Route>
-            <ProtectedProfile path="/profile/:userId" />
-            <ProtectedExplore exact path="/explore" />
-            <ProtectedPicture path="/picture/:pictureId" />
-            <ProtectedSignin exact path="/signin" />
-            <ProtectedSignup exact path="/signup" />
-          </Switch>
-        </Router>
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <Main />
+              </Route>
+              <ProtectedProfile path="/profile/:userId" />
+              <ProtectedExplore exact path="/explore" />
+              <ProtectedPicture path="/picture/:pictureId" />
+              <ProtectedSignin exact path="/signin" />
+              <ProtectedSignup exact path="/signup" />
+            </Switch>
+          </Router>
+        </QueryClientProvider>
       </Provider>
     </ReactReduxFirebaseProvider>
   );

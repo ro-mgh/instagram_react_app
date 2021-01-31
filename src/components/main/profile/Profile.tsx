@@ -17,7 +17,7 @@ const Profile = ({ match, location }) => {
         {match.params.userId === user.uid ? (
           <div>
             <UserInfo />
-            <UserPictures />
+            {/* <UserPictures /> */}
           </div>
         ) : (
           <ProfileInfo {...match} />

@@ -6,6 +6,7 @@ import User from "./User";
 import Footer from "../../../footer/Footer";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { getArrayOfUnkhownUsers } from "../../../../utils/helpers";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,7 +20,18 @@ const useStyles = makeStyles((theme: Theme) =>
 const Sidebar = () => {
   const classes = useStyles();
   const user = useSelector((state) => state.authReducer.user);
-  const users = useSelector((state) => state.dataReducer.users);
+  const allUsersFromStore = useSelector((state) => state.dataReducer.users);
+  const [newUsers, setNewUsers] = useState([]);
+
+  useEffect(() => {
+    if (Object.entries(allUsersFromStore).length > 0) {
+      const unkhownUsers = getArrayOfUnkhownUsers(user.uid, allUsersFromStore);
+
+      setNewUsers(unkhownUsers);
+
+      console.log("newUsersArray: ", unkhownUsers);
+    }
+  }, [allUsersFromStore]);
 
   return (
     <div className="sidebar-wrapper">
@@ -40,8 +52,8 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-suggestions-text">Suggestions For You</div>
       <div className="sidebar-suggestions-users">
-        {users.length ? (
-          users.slice(0, 5).map((user) => {
+        {newUsers.length ? (
+          newUsers.slice(0, 5).map((user) => {
             return <User {...user} key={user.id} />;
           })
         ) : (

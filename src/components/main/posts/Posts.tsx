@@ -3,22 +3,22 @@ import { useSelector } from "react-redux";
 import Sidebar from "./sidebar/Sidebar";
 import Post from "./post/Post";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
-// interface IPost {
-//   username: string;
-//   post: string;
-// }
+import { useQuery } from "react-query";
+import { fetchPosts } from "../../../utils/fetchingData";
 
 const Posts = () => {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setLoading] = useState(false);
-  const userPosts = useSelector((state) => state.dataReducer.userPosts);
+  // const [posts, setPosts] = useState([]);
+  // const userPosts = useSelector((state) => state.dataReducer.userPosts);
+
+  const { isLoading, error, data } = useQuery("userPosts", fetchPosts);
+
+  if (error) {
+    console.log("An error has occurred: " + error.message);
+  }
 
   useEffect(() => {
-    setPosts([]);
-
+    // setPosts([]);
     // setLoading(true);
-
     // const getPosts = async () => {
     //   firebase
     //     .auth()
@@ -57,8 +57,8 @@ const Posts = () => {
   return (
     <div className="mainfield-wrapper">
       <div className="posts-wrapper">
-        {userPosts.length ? (
-          userPosts.map((post) => {
+        {!isLoading ? (
+          data.map((post) => {
             return <Post {...post} key={post.id} />;
           })
         ) : (

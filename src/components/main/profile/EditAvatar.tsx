@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { userData } from "../../../store/actions/userData";
+import { exploreUsers } from "../../../store/actions/exploreUsers";
 import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
 
@@ -52,7 +52,7 @@ const EditAvatar = (props) => {
                   if (response.ok) {
                     // const jsonResponse = await response.json();
                     // console.log(jsonResponse);
-                    dispatch(userData());
+                    dispatch(exploreUsers());
                     console.log("updated succesfully in DB");
                   } else {
                     console.error("error updating photo to DB");
