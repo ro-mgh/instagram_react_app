@@ -7,6 +7,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import { useDispatch } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
+import { SET_ERROR } from "../../../store/actions/actionTypes";
 
 import ProfilePictures from "./ProfilePictures";
 
@@ -63,15 +64,29 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
           if (response.ok) {
             // const jsonResponse = await response.json();
           } else {
-            console.error("error");
+            dispatch({
+              type: SET_ERROR,
+              payload: {
+                error: "Follow: error connecting to DB",
+              },
+            });
           }
         } catch (e) {
-          console.error(e);
+          dispatch({
+            type: SET_ERROR,
+            payload: {
+              error: "Follow: error connecting to DB",
+            },
+          });
         }
       })
       .catch(function (error) {
-        // Handle error
-        console.log(error);
+        dispatch({
+          type: SET_ERROR,
+          payload: {
+            error: "Follow: error connecting to DB",
+          },
+        });
       });
   };
 
@@ -95,62 +110,32 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
           if (response.ok) {
             // const jsonResponse = await response.json();
           } else {
-            console.error("error");
+            dispatch({
+              type: SET_ERROR,
+              payload: {
+                error: "Unfollow: error connecting to DB",
+              },
+            });
           }
         } catch (e) {
-          console.error(e);
+          dispatch({
+            type: SET_ERROR,
+            payload: {
+              error: "Unfollow: error connecting to DB",
+            },
+          });
         }
       })
       .catch(function (error) {
         // Handle error
-        console.log(error);
+        dispatch({
+          type: SET_ERROR,
+          payload: {
+            error: "Unfollow: error connecting to DB",
+          },
+        });
       });
   };
-
-  // useEffect(() => {
-  //   const getUserData = () => {
-  //     try {
-  //       const user = firebase.auth().currentUser;
-  //       if (user) {
-  //         user
-  //           .getIdToken(/* forceRefresh */ true)
-  //           .then(async function (idToken) {
-  //             try {
-  //               const response = await fetch(
-  //                 "http://localhost:3000/user/" + props.params.userId,
-  //                 {
-  //                   method: "get",
-  //                   headers: {
-  //                     "Content-type": "application/json",
-  //                     Authorization: "Bearer " + idToken,
-  //                   },
-  //                 }
-  //               );
-  //               if (response.ok) {
-  //                 const jsonResponse = await response.json();
-  //                 console.log("responseUser", jsonResponse);
-  //                 setUser(jsonResponse);
-  //               } else {
-  //                 console.error("error");
-  //               }
-  //             } catch (e) {
-  //               console.error(e);
-  //             }
-  //           })
-  //           .catch(function (error) {
-  //             // Handle error
-  //             console.log(error);
-  //           });
-  //       } else {
-  //         console.log("error in getting user's data");
-  //       }
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
-
-  //   getUserData();
-  // }, []);
 
   return (
     <div>

@@ -5,6 +5,7 @@ import { useDropzone } from "react-dropzone";
 import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
+import { SET_ERROR } from "../../../store/actions/actionTypes";
 
 const config = {
   bucketName: "insta-project",
@@ -61,23 +62,41 @@ function CreatePost(props) {
                     }),
                   });
                   if (response.ok) {
-                    // const jsonResponse = await response.json();
-                    // console.log(jsonResponse);
-                    // dispatch(userData());
                     dispatch(exploreUsers());
-                    console.log("updated succesfully in DB");
                   } else {
-                    console.error("error updating  to DB");
+                    dispatch({
+                      type: SET_ERROR,
+                      payload: {
+                        error: "Adding post: error connecting to DB",
+                      },
+                    });
                   }
                 } catch (e) {
-                  console.error("error updating  to DB", e);
+                  dispatch({
+                    type: SET_ERROR,
+                    payload: {
+                      error: "Adding post: error connecting to DB",
+                    },
+                  });
                 }
               });
           } else {
-            console.error("error updating  to DB");
+            dispatch({
+              type: SET_ERROR,
+              payload: {
+                error: "Adding post: error connecting to firebase",
+              },
+            });
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          dispatch({
+            type: SET_ERROR,
+            payload: {
+              error: "Adding post: error connecting to S3",
+            },
+          });
+        });
     }
   }, []);
 

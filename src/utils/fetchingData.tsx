@@ -21,21 +21,21 @@ export const fetchPosts = async () => {
             if (response.ok) {
               return response.json();
             } else {
-              console.error("error");
+              throw new Error("Fetching posts: error connecting to DB");
             }
           } catch (e) {
-            console.error(e);
+            throw new Error("Fetching posts: error connecting to DB");
           }
         })
         .catch(function (error) {
           // Handle error
-          console.log(error);
+          throw new Error("Fetching posts: error connecting to DB");
         });
     } else {
-      console.log("error in getting user's data");
+      throw new Error("Fetching posts: error connecting to firebase");
     }
   } catch (e) {
-    console.log(e);
+    throw new Error("Fetching posts: error connecting to DB");
   }
 };
 
@@ -56,17 +56,17 @@ export const fetchNotFollowingPosts = async () => {
           if (response.ok) {
             return response.json();
           } else {
-            console.error("error");
+            throw new Error("Fetching random posts: error connecting to DB");
           }
         } catch (e) {
-          console.error(e);
+          throw new Error("Fetching random posts: error connecting to DB");
         }
       })
       .catch(function (error) {
         // Handle error
-        console.log(error);
+        throw new Error("Fetching random posts: error connecting to firebase");
       });
   } catch (e) {
-    console.log(e);
+    throw new Error("Fetching random posts: error connecting to DB");
   }
 };

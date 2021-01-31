@@ -4,14 +4,15 @@ import Carousel from "./Carousel";
 import Header from "../header/Header";
 import Gallery from "./Gallery";
 // import { explorePosts } from "../../../store/actions/exploreUsers";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useQuery } from "react-query";
 import { fetchNotFollowingPosts } from "../../../utils/fetchingData";
+import { SET_ERROR } from "../../../store/actions/actionTypes";
 
 const Explore = () => {
   // const usersPostsArr = useSelector((state) => state.dataReducer.usersPosts);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const { isLoading, error, data } = useQuery(
     "notFollowingPosts",
@@ -19,7 +20,10 @@ const Explore = () => {
   );
 
   if (error) {
-    console.log("An error has occurred: " + error.message);
+    dispatch({
+      type: SET_ERROR,
+      payload: { error: error.message },
+    });
   }
 
   // useEffect(() => {

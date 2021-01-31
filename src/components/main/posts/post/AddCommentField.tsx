@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import firebase from "../../../../services/firebase";
+import { useDispatch } from "react-redux";
+import { SET_ERROR } from "../../../../store/actions/actionTypes";
 
 const AddCommentField = ({ onAddComment, id }) => {
+  const dispatch = useDispatch();
   const [text, setText] = useState("");
 
   const handleCommentAdd = async (event) => {
@@ -28,25 +31,38 @@ const AddCommentField = ({ onAddComment, id }) => {
                     comment: text,
                   }),
                 });
-                if (response.ok) {
-                  const jsonResponse = await response.json();
-                  console.log("Comment was added");
-                } else {
-                  console.error("error");
+                if (!response.ok) {
+                  dispatch({
+                    type: SET_ERROR,
+                    payload: {
+                      error: "Adding comment: error connecting to DB",
+                    },
+                  });
                 }
               } catch (e) {
-                console.error(e);
+                dispatch({
+                  type: SET_ERROR,
+                  payload: { error: "Adding comment: error connecting to DB" },
+                });
               }
             })
             .catch(function (error) {
-              // Handle error
-              console.log(error);
+              dispatch({
+                type: SET_ERROR,
+                payload: { error: "Adding comment: error connecting to DB" },
+              });
             });
         } else {
-          console.log("error in getting user's data");
+          dispatch({
+            type: SET_ERROR,
+            payload: { error: "Adding comment: error connecting to firebase" },
+          });
         }
       } catch (e) {
-        console.log(e);
+        dispatch({
+          type: SET_ERROR,
+          payload: { error: "Adding comment: error connecting to DB" },
+        });
       }
     }
   };

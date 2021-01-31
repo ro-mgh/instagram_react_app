@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Header from "../header/Header";
 import FooterBottom from "../../footer/FooterBottom";
-// import mockedPicture from "../../../mocked_files/mocked_picture";
 import CommentsField from "../posts/post/CommentsField";
 import LikesField from "../posts/post/LikesField";
 import AddCommentField from "../posts/post/AddCommentField";
 import UserHeaderField from "../posts/post/UserHeaderField";
 import firebase from "../../../services/firebase";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import AlertPop from "../errors/AlertPop";
+import { SET_ERROR } from "../../../store/actions/actionTypes";
 
 const Picture = ({ match, location }) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
   const [post, setPost] = useState({
     id: "",
@@ -46,24 +48,39 @@ const Picture = ({ match, location }) => {
                 );
                 if (response.ok) {
                   const jsonResponse = await response.json();
-                  console.log("post from db: ", jsonResponse);
+
                   setPost(jsonResponse);
                 } else {
-                  console.error("error");
+                  dispatch({
+                    type: SET_ERROR,
+                    payload: { error: "Post: error connecting to DB" },
+                  });
                 }
               } catch (e) {
-                console.error(e);
+                dispatch({
+                  type: SET_ERROR,
+                  payload: { error: "Post: error connecting to DB" },
+                });
               }
             })
             .catch(function (error) {
               // Handle error
-              console.log(error);
+              dispatch({
+                type: SET_ERROR,
+                payload: { error: "Post: error connecting to DB" },
+              });
             });
         } else {
-          console.log("error in getting user's data");
+          dispatch({
+            type: SET_ERROR,
+            payload: { error: "Post: error connecting to firebase" },
+          });
         }
       } catch (e) {
-        console.log(e);
+        dispatch({
+          type: SET_ERROR,
+          payload: { error: "Post: error connecting to DB" },
+        });
       }
     };
     getPost();
@@ -113,6 +130,7 @@ const Picture = ({ match, location }) => {
         </div>
       )}
       <FooterBottom />
+      <AlertPop />
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import firebase from "../../../../services/firebase";
 import { Link } from "react-router-dom";
+import { SET_ERROR } from "../../../../store/actions/actionTypes";
 
 const LikesField = (props) => {
   const user = useSelector((state) => state.authReducer.user);
+  const dispatch = useDispatch();
   const [like, setLike] = useState(false);
   const [alreadyLiked, setAlreadyLiked] = useState(false);
 
@@ -43,25 +45,46 @@ const LikesField = (props) => {
                     }),
                   }
                 );
-                if (response.ok) {
-                  const jsonResponse = await response.json();
-                  console.log("like was removed from DB");
-                } else {
-                  console.error("error");
+                if (!response.ok) {
+                  dispatch({
+                    type: SET_ERROR,
+                    payload: {
+                      error: "Like: error connecting to DB",
+                    },
+                  });
                 }
               } catch (e) {
-                console.error(e);
+                dispatch({
+                  type: SET_ERROR,
+                  payload: {
+                    error: "Like: error connecting to DB",
+                  },
+                });
               }
             })
             .catch(function (error) {
-              // Handle error
-              console.log(error);
+              dispatch({
+                type: SET_ERROR,
+                payload: {
+                  error: "Like: error connecting to firebase",
+                },
+              });
             });
         } else {
-          console.log("error in getting user's data");
+          dispatch({
+            type: SET_ERROR,
+            payload: {
+              error: "Like: error connecting to DB",
+            },
+          });
         }
       } catch (e) {
-        console.log(e);
+        dispatch({
+          type: SET_ERROR,
+          payload: {
+            error: "Like: error connecting to DB",
+          },
+        });
       }
     } else {
       setLike(true);
@@ -86,25 +109,46 @@ const LikesField = (props) => {
                     }),
                   }
                 );
-                if (response.ok) {
-                  // const jsonResponse = await response.json();
-                  console.log("like was uploaded to DB");
-                } else {
-                  console.error("error");
+                if (!response.ok) {
+                  dispatch({
+                    type: SET_ERROR,
+                    payload: {
+                      error: "Unlike: error connecting to DB",
+                    },
+                  });
                 }
               } catch (e) {
-                console.error(e);
+                dispatch({
+                  type: SET_ERROR,
+                  payload: {
+                    error: "Unlike: error connecting to DB",
+                  },
+                });
               }
             })
             .catch(function (error) {
-              // Handle error
-              console.log(error);
+              dispatch({
+                type: SET_ERROR,
+                payload: {
+                  error: "Unlike: error connecting to firebase",
+                },
+              });
             });
         } else {
-          console.log("error in getting user's data");
+          dispatch({
+            type: SET_ERROR,
+            payload: {
+              error: "Unlike: error connecting to firebase",
+            },
+          });
         }
       } catch (e) {
-        console.log(e);
+        dispatch({
+          type: SET_ERROR,
+          payload: {
+            error: "Unlike: error connecting to DB",
+          },
+        });
       }
     }
   };

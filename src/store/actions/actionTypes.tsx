@@ -16,11 +16,15 @@ export const VERIFY_REQUEST = "VERIFY_REQUEST";
 // GET USERS
 export const GET_USERS = "GET_USERS";
 
-// GET USER
-export const GET_USER = "GET_USER";
+// // GET USER
+// export const GET_USER = "GET_USER";
 
-// GET USERS POST
-export const GET_USERS_POSTS = "GET_USERS_POSTS";
+// // GET USERS POST
+// export const GET_USERS_POSTS = "GET_USERS_POSTS";
 
-// GET USER POST
-export const GET_USER_POSTS = "GET_USER_POSTS";
+// // GET USER POST
+// export const GET_USER_POSTS = "GET_USER_POSTS";
+
+// ERRORS
+export const SET_ERROR = "SET_ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";

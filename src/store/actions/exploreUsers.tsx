@@ -1,4 +1,4 @@
-import { GET_USERS, GET_USERS_POSTS } from "./actionTypes";
+import { GET_USERS, SET_ERROR } from "./actionTypes";
 import { normalize, schema } from "normalizr";
 import firebase from "../../services/firebase";
 import { Action } from "redux";
@@ -38,18 +38,37 @@ export const exploreUsers = (): ThunkAction<
               payload: { users: normalizedData.entities.users },
             });
           } else {
-            console.error("error");
+            dispatch({
+              type: SET_ERROR,
+              payload: {
+                error: "Get all users: error connecting to DB",
+              },
+            });
           }
         } catch (e) {
-          console.error(e);
+          dispatch({
+            type: SET_ERROR,
+            payload: {
+              error: "Get all users: error connecting to DB",
+            },
+          });
         }
       })
       .catch(function (error) {
-        // Handle error
-        console.log(error);
+        dispatch({
+          type: SET_ERROR,
+          payload: {
+            error: "Get all users: error connecting to firebase",
+          },
+        });
       });
   } catch (e) {
-    console.log(e);
+    dispatch({
+      type: SET_ERROR,
+      payload: {
+        error: "Get all users: error connecting to DB",
+      },
+    });
   }
 };
 

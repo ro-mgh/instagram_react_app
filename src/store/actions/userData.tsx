@@ -1,4 +1,3 @@
-import { GET_USER, GET_USER_POSTS } from "./actionTypes";
 import firebase from "../../services/firebase";
 import { Action } from "redux";
 import { RootState } from "../reducers/index";

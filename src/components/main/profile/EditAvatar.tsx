@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
+import { SET_ERROR } from "../../../store/actions/actionTypes";
 
 const config = {
   bucketName: "insta-project",
@@ -50,27 +51,43 @@ const EditAvatar = (props) => {
                     }
                   );
                   if (response.ok) {
-                    // const jsonResponse = await response.json();
-                    // console.log(jsonResponse);
                     dispatch(exploreUsers());
-                    console.log("updated succesfully in DB");
                   } else {
-                    console.error("error updating photo to DB");
+                    dispatch({
+                      type: SET_ERROR,
+                      payload: {
+                        error: "Uploading avatar: error connecting to DB",
+                      },
+                    });
                   }
                 } catch (e) {
-                  console.error("error updating photo to DB", e);
+                  dispatch({
+                    type: SET_ERROR,
+                    payload: {
+                      error: "Uploading avatar: error connecting to DB",
+                    },
+                  });
                 }
               });
           } else {
-            console.error("error updating photo to DB");
+            dispatch({
+              type: SET_ERROR,
+              payload: {
+                error: "Uploading avatar: error connecting to firebase",
+              },
+            });
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          dispatch({
+            type: SET_ERROR,
+            payload: {
+              error: "Uploading avatar: error connecting to S3",
+            },
+          });
+        });
     }
   };
-
-  // {bucket: "insta-project", key: "testFile.png",
-  //   location: "https://insta-project.s3-ap-northeast-2.amazonaws.com/testFile.png", status: 204}
 
   const deleteAvatar = (e) => {
     e.preventDefault();
@@ -78,7 +95,9 @@ const EditAvatar = (props) => {
       .then((data) => {
         console.log("Photo deleted");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+      });
     try {
       const user = firebase.auth().currentUser;
       if (user) {
@@ -101,21 +120,39 @@ const EditAvatar = (props) => {
               }
             );
             if (response.ok) {
-              // const jsonResponse = await response.json();
-              // console.log(jsonResponse);
-              console.log("updated succesfully in DB");
+              dispatch(exploreUsers());
             } else {
-              console.error("error updating photo to DB");
+              dispatch({
+                type: SET_ERROR,
+                payload: {
+                  error: "Delete avatar: error connecting to DB",
+                },
+              });
             }
           } catch (e) {
-            console.error("error updating photo to DB", e);
+            dispatch({
+              type: SET_ERROR,
+              payload: {
+                error: "Delete avatar: error connecting to DB",
+              },
+            });
           }
         });
       } else {
-        console.error("error updating photo to DB");
+        dispatch({
+          type: SET_ERROR,
+          payload: {
+            error: "Delete avatar: error connecting to firebase",
+          },
+        });
       }
     } catch (e) {
-      console.error("error updating photo to DB");
+      dispatch({
+        type: SET_ERROR,
+        payload: {
+          error: "Delete avatar: error connecting to firebase",
+        },
+      });
     }
   };
 

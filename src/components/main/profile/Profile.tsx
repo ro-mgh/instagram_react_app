@@ -5,6 +5,7 @@ import UserPictures from "./UserPictures";
 import FooterBottom from "../../footer/FooterBottom";
 import { useSelector } from "react-redux";
 import ProfileInfo from "./ProfileInfo";
+import AlertPop from "../errors/AlertPop";
 
 const Profile = ({ match, location }) => {
   const user = useSelector((state) => state.authReducer.user);
@@ -17,10 +18,13 @@ const Profile = ({ match, location }) => {
         {match.params.userId === user.uid ? (
           <div>
             <UserInfo />
-            {/* <UserPictures /> */}
+            <AlertPop />
           </div>
         ) : (
-          <ProfileInfo {...match} />
+          <div>
+            <ProfileInfo {...match} />
+            <AlertPop />
+          </div>
         )}
       </div>
       <FooterBottom />

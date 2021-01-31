@@ -5,6 +5,7 @@ import firebase from "../../../services/firebase";
 import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import { Link } from "react-router-dom";
+import { SET_ERROR } from "../../../store/actions/actionTypes";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,18 +38,24 @@ const CarouselUser = (props) => {
               },
             }
           );
-          if (response.ok) {
-            // const jsonResponse = await response.json();
-          } else {
-            console.error("error");
+          if (!response.ok) {
+            dispatch({
+              type: SET_ERROR,
+              payload: { error: "Follow: error connecting to DB" },
+            });
           }
         } catch (e) {
-          console.error(e);
+          dispatch({
+            type: SET_ERROR,
+            payload: { error: "Follow: error connecting to DB" },
+          });
         }
       })
       .catch(function (error) {
-        // Handle error
-        console.log(error);
+        dispatch({
+          type: SET_ERROR,
+          payload: { error: "Follow: error connecting to firebase" },
+        });
       });
   };
 
@@ -69,18 +76,24 @@ const CarouselUser = (props) => {
               },
             }
           );
-          if (response.ok) {
-            // const jsonResponse = await response.json();
-          } else {
-            console.error("error");
+          if (!response.ok) {
+            dispatch({
+              type: SET_ERROR,
+              payload: { error: "Unfollow: error connecting to DB" },
+            });
           }
         } catch (e) {
-          console.error(e);
+          dispatch({
+            type: SET_ERROR,
+            payload: { error: "Unfollow: error connecting to DB" },
+          });
         }
       })
       .catch(function (error) {
-        // Handle error
-        console.log(error);
+        dispatch({
+          type: SET_ERROR,
+          payload: { error: "Unfollow: error connecting to DB" },
+        });
       });
   };
 

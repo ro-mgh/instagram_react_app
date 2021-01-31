@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import mockedUser from "../../../mocked_files/mocked_user_profile";
-
 const Gallery = (props) => {
   //pictures [] as prop
   return (
