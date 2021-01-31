@@ -14,7 +14,8 @@ const Carousel = () => {
   const user = useSelector((state) => state.authReducer.user);
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [newUsers, setNewUsers] = useState([]);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   const settings = {
     // dots: true,
     lazyLoad: true,
@@ -32,8 +33,9 @@ const Carousel = () => {
   useEffect(() => {
     if (Object.entries(allUsersFromStore).length > 0) {
       const unkhownUsers = getArrayOfUnkhownUsers(user.uid, allUsersFromStore);
-
       setNewUsers(unkhownUsers);
+    } else {
+      dispatch(exploreUsers());
     }
   }, [allUsersFromStore]);
 

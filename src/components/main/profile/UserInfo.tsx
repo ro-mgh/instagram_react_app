@@ -7,7 +7,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import mockedUser from "../../../mocked_files/mocked_user_profile";
 import Modal from "./Modal";
 import EditAvatar from "./EditAvatar";
-import { userData } from "../../../store/actions/userData";
 import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import UserPictures from "./UserPictures";

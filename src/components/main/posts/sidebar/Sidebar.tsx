@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import User from "./User";
@@ -7,6 +7,7 @@ import Footer from "../../../footer/Footer";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getArrayOfUnkhownUsers } from "../../../../utils/helpers";
+import { exploreUsers } from "../../../../store/actions/exploreUsers";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,14 +23,14 @@ const Sidebar = () => {
   const user = useSelector((state) => state.authReducer.user);
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [newUsers, setNewUsers] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (Object.entries(allUsersFromStore).length > 0) {
       const unkhownUsers = getArrayOfUnkhownUsers(user.uid, allUsersFromStore);
-
       setNewUsers(unkhownUsers);
-
-      console.log("newUsersArray: ", unkhownUsers);
+    } else {
+      dispatch(exploreUsers());
     }
   }, [allUsersFromStore]);
 

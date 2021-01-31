@@ -23,6 +23,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
+  const [isFollow, setFollow] = useState(false);
 
   const [user, setUser] = useState({
     id: "",
@@ -41,6 +42,70 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
       dispatch(exploreUsers());
     }
   }, [allUsersFromStore]);
+
+  const handleFollow = async () => {
+    setFollow(true);
+    firebase
+      .auth()
+      .currentUser.getIdToken(/* forceRefresh */ true)
+      .then(async function (idToken) {
+        try {
+          const response = await fetch(
+            "http://localhost:3000/follow/" + props.params.userId,
+            {
+              method: "post",
+              headers: {
+                "Content-type": "application/json",
+                Authorization: "Bearer " + idToken,
+              },
+            }
+          );
+          if (response.ok) {
+            // const jsonResponse = await response.json();
+          } else {
+            console.error("error");
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      })
+      .catch(function (error) {
+        // Handle error
+        console.log(error);
+      });
+  };
+
+  const handleUnfollow = async () => {
+    setFollow(false);
+    firebase
+      .auth()
+      .currentUser.getIdToken(/* forceRefresh */ true)
+      .then(async function (idToken) {
+        try {
+          const response = await fetch(
+            "http://localhost:3000/follow/" + props.params.userId,
+            {
+              method: "delete",
+              headers: {
+                "Content-type": "application/json",
+                Authorization: "Bearer " + idToken,
+              },
+            }
+          );
+          if (response.ok) {
+            // const jsonResponse = await response.json();
+          } else {
+            console.error("error");
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      })
+      .catch(function (error) {
+        // Handle error
+        console.log(error);
+      });
+  };
 
   // useEffect(() => {
   //   const getUserData = () => {
@@ -104,6 +169,22 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
                 <div className="userprofile-info-username-text">
                   {user.username || ""}
                 </div>
+
+                {isFollow ? (
+                  <button
+                    className="userprofile-editProfile-btn"
+                    onClick={handleUnfollow}
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    className="userprofile-editProfile-btn"
+                    onClick={handleFollow}
+                  >
+                    Follow
+                  </button>
+                )}
               </div>
               <div className="userprofile-info-subscribers">
                 <span className="userprofile-info-text">

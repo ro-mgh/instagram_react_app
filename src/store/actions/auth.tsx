@@ -6,6 +6,7 @@ import {
   SIGNOUT_SUCCESS,
   SIGNOUT_ERROR,
   VERIFY_REQUEST,
+  GET_USERS,
 } from "./actionTypes";
 import firebase from "../../services/firebase";
 import { Action } from "redux";
@@ -176,6 +177,10 @@ export const signoutUser = (): ThunkAction<
         dispatch({
           type: SIGNOUT_ERROR,
           payload: { authMsgError: "Signout error. Please try again." },
+        });
+        dispatch({
+          type: GET_USERS,
+          payload: { users: {} },
         });
       });
   } catch (err) {
