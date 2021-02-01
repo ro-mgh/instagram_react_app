@@ -38,7 +38,9 @@ const CarouselUser = (props) => {
               },
             }
           );
-          if (!response.ok) {
+          if (response.ok) {
+            dispatch(exploreUsers());
+          } else {
             dispatch({
               type: SET_ERROR,
               payload: { error: "Follow: error connecting to DB" },
@@ -77,6 +79,8 @@ const CarouselUser = (props) => {
             }
           );
           if (!response.ok) {
+            dispatch(exploreUsers());
+          } else {
             dispatch({
               type: SET_ERROR,
               payload: { error: "Unfollow: error connecting to DB" },
@@ -105,9 +109,11 @@ const CarouselUser = (props) => {
             <Avatar alt="A" src={props.avatar} className={classes.medium} />
           </div>
         </Link>
-        <div className="post-header-username">
+        <div className="div-username-explore">
           <Link to={"/profile/" + props.id}>
-            <div className="username-font">{props.username}</div>
+            <div className="username-font  username-font-explore">
+              {props.username}
+            </div>
           </Link>
         </div>
         {isFollow ? (

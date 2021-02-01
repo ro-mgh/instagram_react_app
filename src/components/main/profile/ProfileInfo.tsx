@@ -62,7 +62,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
             }
           );
           if (response.ok) {
-            // const jsonResponse = await response.json();
+            dispatch(exploreUsers());
           } else {
             dispatch({
               type: SET_ERROR,
@@ -108,7 +108,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
             }
           );
           if (response.ok) {
-            // const jsonResponse = await response.json();
+            dispatch(exploreUsers());
           } else {
             dispatch({
               type: SET_ERROR,

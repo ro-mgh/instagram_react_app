@@ -5,7 +5,7 @@ const ProfilePictures = (props) => {
   return (
     <div className="userpicture-wrapper">
       <div className="userpicture-actions-wrapper">
-        <div className="userpicture-actions-a">
+        <div className="userpicture-actions-a profilepicture-actions-a">
           <div>
             <svg
               aria-label="Posts"
@@ -25,8 +25,9 @@ const ProfilePictures = (props) => {
           </div>
         </div>
       </div>
-
-      <Gallery {...props} />
+      <div>
+        <Gallery {...props} />
+      </div>
     </div>
   );
 };

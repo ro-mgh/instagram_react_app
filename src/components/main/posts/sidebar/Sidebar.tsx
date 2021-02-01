@@ -43,7 +43,9 @@ const Sidebar = () => {
         <div className="sidebar-user-wrapper">
           <div className="username-font">
             <Link to={"/profile/" + user.uid}>
-              {user ? user.displayName.split("&&")[0] : null}
+              <div className="username-font">
+                {user ? user.displayName.split("&&")[0] : null}
+              </div>
             </Link>
           </div>
           <div className="name-font">

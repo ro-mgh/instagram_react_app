@@ -172,15 +172,15 @@ export const signoutUser = (): ThunkAction<
           type: SIGNOUT_SUCCESS,
           payload: { authMsgSuccess: "You've been signed out succesfully" },
         });
+        dispatch({
+          type: GET_USERS,
+          payload: { users: {} },
+        });
       })
       .catch(() => {
         dispatch({
           type: SIGNOUT_ERROR,
           payload: { authMsgError: "Signout error. Please try again." },
-        });
-        dispatch({
-          type: GET_USERS,
-          payload: { users: {} },
         });
       });
   } catch (err) {

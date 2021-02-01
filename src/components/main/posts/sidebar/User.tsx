@@ -5,6 +5,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import firebase from "../../../../services/firebase";
 import { Link } from "react-router-dom";
 import { SET_ERROR } from "../../../../store/actions/actionTypes";
+import { exploreUsers } from "../../../../store/actions/exploreUsers";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,7 +38,9 @@ const User = (props) => {
               },
             }
           );
-          if (!response.ok) {
+          if (response.ok) {
+            dispatch(exploreUsers());
+          } else {
             dispatch({
               type: SET_ERROR,
               payload: {
@@ -81,7 +84,9 @@ const User = (props) => {
               },
             }
           );
-          if (!response.ok) {
+          if (response.ok) {
+            dispatch(exploreUsers());
+          } else {
             dispatch({
               type: SET_ERROR,
               payload: {

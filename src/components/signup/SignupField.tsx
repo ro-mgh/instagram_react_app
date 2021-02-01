@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import Signup from "./Signup";
 import link1 from "../../pictures/link_signup_appstore.png";
 import link2 from "../../pictures/link_signup_googlestore.png";
+import { Link } from "react-router-dom";
 
 const SignupField: FunctionComponent = () => {
   return (
@@ -62,9 +63,11 @@ const SignupField: FunctionComponent = () => {
       <div className="sign-redirect">
         <p className="sign-redirect-p">
           Have an account?{" "}
-          <a href="/signin" className="sign-redirect-a">
-            <span className="sign-redirect-span">Log in</span>
-          </a>
+          <Link to="/signin">
+            <div className="sign-redirect-a">
+              <span className="sign-redirect-span">Log in</span>
+            </div>
+          </Link>
         </p>
       </div>
       <p className="sign-links-p">Get the app.</p>

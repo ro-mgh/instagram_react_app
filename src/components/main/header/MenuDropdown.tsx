@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme: Theme) =>
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
     },
+    link: {
+      color: "rgba(var(--i1d, 38, 38, 38), 1)",
+    },
   })
 );
 
@@ -104,7 +107,6 @@ const MenuDropdown = () => {
               }}
             >
               <Paper className={classes.paperDropdown}>
-                {/* <div className="menudd-rhomb"></div> */}
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
                     autoFocusItem={open}
@@ -112,7 +114,14 @@ const MenuDropdown = () => {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose} className={classes.text}>
-                      <Link to={"/profile/" + user.uid}>Profile</Link>
+                      <div className="search-user-wrapper">
+                        <Link
+                          to={"/profile/" + user.uid}
+                          className={classes.link}
+                        >
+                          Profile
+                        </Link>
+                      </div>
                     </MenuItem>
                     <MenuItem onClick={handleClose} className={classes.text}>
                       <Signout />
