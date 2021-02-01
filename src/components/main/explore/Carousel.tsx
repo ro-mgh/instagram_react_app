@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getArrayOfUnkhownUsers } from "../../../utils/helpers";
+import { useMediaQuery } from "react-responsive";
 
 const Carousel = () => {
   // const users = useSelector((state) => state.dataReducer.users);
@@ -15,6 +16,9 @@ const Carousel = () => {
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [newUsers, setNewUsers] = useState([]);
   const dispatch = useDispatch();
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 900px)" });
+
+  const slidesToShow = isTabletOrMobile ? 3 : 4;
 
   const settings = {
     // dots: true,
@@ -26,7 +30,7 @@ const Carousel = () => {
     // initialSlide: 2,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: slidesToShow,
     slidesToScroll: 2,
   };
 

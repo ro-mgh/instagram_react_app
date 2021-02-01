@@ -915,6 +915,18 @@ footer {
   padding: 0 20px;
 }
 
+.mainfield-wrapper-mobile {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 94px;
+  display: flex;
+  max-width: 975px;
+  justify-content: center;
+  align-items: center;
+  /* flex-flow: column nowrap; */
+  padding: 0 20px;
+}
+
 /* sidebar */
 
 .sidebar-wrapper {
@@ -1378,16 +1390,32 @@ button {
 .userpicture-posts-wrapper {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .userpicture-posts-img {
   object-fit: cover;
-  height: 280px;
-  width: 280px;
+  /* height: 280px;
+  width: 280px; */
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
   cursor: pointer;
-  margin-bottom: 28px;
+  position: absolute;
+
+  /* margin-bottom: 28px; */
   /* margin-right: 28px; */
+}
+
+.userpicture-gallery-wrapper {
+  position: relative;
+  width: 30%;
+  padding-bottom: 30%;
+  float: left;
+  height: 0;
+  margin: 1.6%;
+
+  /* width: 280px; */
 }
 
 .modal {
@@ -1687,5 +1715,5 @@ button {
   justify-content: center;
   align-content: center;
   align-items: center;
-    height: 100px;
+  height: 100px;
 }
