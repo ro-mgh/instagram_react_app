@@ -211,7 +211,7 @@ footer {
 }
 
 .sign-logo {
-  margin: 22px auto 12px;
+  margin: 22px 0;
   background-repeat: no-repeat;
   background-position: 0 -130px;
   height: 51px;
@@ -603,7 +603,7 @@ footer {
 }
 
 .sign-up-logo {
-  margin: 22px auto 12px;
+  margin: 22px 0;
 }
 
 .sign-up-terms {
@@ -1759,4 +1759,35 @@ a {
   align-content: center;
   align-items: center;
   height: 100px;
+}
+
+/* custom logo */
+
+.customlogo-wrapper {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.customlogo-div {
+  margin-left: 5px;
+  font-family: "Lobster", cursive;
+  color: rgb(36, 31, 32);
+  padding-bottom: 5px;
+  font-size: 19px;
+}
+
+.customlogo-wrapper-sign {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.customlogo-div-sign {
+  margin-left: 6px;
+  font-family: "Lobster", cursive;
+  color: rgb(36, 31, 32);
+  padding-bottom: 9px;
+  font-size: 24px;
 }

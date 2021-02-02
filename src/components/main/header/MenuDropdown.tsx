@@ -89,7 +89,7 @@ const MenuDropdown = () => {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          <Avatar alt="A" src="" className={classes.small} />
+          <Avatar alt="A" src={user.photoURL} className={classes.small} />
         </Button>
         <Popper
           open={open}

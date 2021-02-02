@@ -170,7 +170,7 @@ const EditAvatar = (props) => {
           className="image-input"
           onChange={uploadAvatar}
           type="file"
-          accept="image/png"
+          accept="image/png, image/jpeg"
           alt=""
           id="upload-photo"
         />

@@ -19,8 +19,11 @@ const Header = () => {
         <div className="header-logo-placeholder">
           <Link to="/">
             <div className="header-logo-a">
-              <div className="header-logo-div">
-                <img src={logo} alt=""></img>
+              <div className="customlogo-wrapper">
+                <div className="header-logo-div">
+                  <img src={logo} alt=""></img>
+                </div>
+                <div className="customlogo-div"> | by RM</div>
               </div>
             </div>
           </Link>

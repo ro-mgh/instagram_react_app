@@ -8,7 +8,10 @@ const SignupField: FunctionComponent = () => {
   return (
     <div className="div-sign-form">
       <div className="sign-mainfield">
-        <h1 className="sign-logo sign-up-logo">Insta</h1>
+        <div className="customlogo-wrapper-sign">
+          <h1 className="sign-logo sign-up-logo">Insta</h1>
+          <div className="customlogo-div-sign"> | by RM</div>
+        </div>
         <h2 className="sign-up-text">
           Sign up to see photos and videos from your friends.
         </h2>

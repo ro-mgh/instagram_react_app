@@ -44,12 +44,16 @@ const Sidebar = () => {
           <div className="username-font">
             <Link to={"/profile/" + user.uid}>
               <div className="username-font">
-                {user ? user.displayName.split("&&")[0] : null}
+                {Object.entries(user).length
+                  ? user.displayName.split("&&")[0]
+                  : null}
               </div>
             </Link>
           </div>
           <div className="name-font">
-            {user ? user.displayName.split("&&")[1] : null}
+            {Object.entries(user).length
+              ? user.displayName.split("&&")[1]
+              : null}
           </div>
         </div>
       </div>

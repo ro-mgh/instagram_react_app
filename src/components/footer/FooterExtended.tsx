@@ -78,7 +78,7 @@ const FooterExtended = () => {
         </div>
         <div className="footer-div-bottom">
           <div className="footer-text">English</div>
-          <div className="footer-text">© 2021 Instagram from Facebook</div>
+          <div className="footer-text">© 2021 Instagram by RM</div>
         </div>
       </div>
     </footer>

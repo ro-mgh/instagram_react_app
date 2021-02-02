@@ -63,9 +63,7 @@ const Footer = () => {
         {/* <div className="footer-main-bottom">
           <div className="footer-text">© 2021 INSTAGRAM FROM FACEBOOK</div>
         </div> */}
-        <span className="footer-main-bottom">
-          © 2021 Instagram from Facebook
-        </span>
+        <span className="footer-main-bottom">© 2021 Instagram by RM</span>
       </div>
     </footer>
   );
