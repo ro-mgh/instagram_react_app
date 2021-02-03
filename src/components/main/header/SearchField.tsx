@@ -73,7 +73,7 @@ const SearchField = () => {
     if (anchorEl && anchorEl.contains(event.target as HTMLElement)) {
       return;
     }
-    // setSearch("");
+    setSearch("");
     setOpen(false);
   };
 

@@ -8,6 +8,7 @@ import { exploreUsers } from "../../../store/actions/exploreUsers";
 import { useDispatch } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
+import { useMediaQuery } from "react-responsive";
 
 import ProfilePictures from "./ProfilePictures";
 
@@ -25,6 +26,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
   const dispatch = useDispatch();
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [isFollow, setFollow] = useState(false);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 800px)" });
 
   const [user, setUser] = useState({
     id: "",
@@ -142,13 +144,15 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
       {user.id ? (
         <div>
           <div className="userprofile-wrapper">
-            <div className="userprofile-avatar-wrapper">
-              <Avatar
-                alt="A"
-                src={user.avatar || ""}
-                className={classes.extraLarge}
-              />
-            </div>
+            {!isTabletOrMobile ? (
+              <div className="userprofile-avatar-wrapper">
+                <Avatar
+                  alt="A"
+                  src={user.avatar || ""}
+                  className={classes.extraLarge}
+                />
+              </div>
+            ) : null}
             <div className="userprofile-info-wrapper">
               <div className="userprofile-info-username">
                 <div className="userprofile-info-username-text">

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import Home from "./main/Home";
 import Loader from "../views/Loader";
 // import PropTypes from 'prop-types';
+import { useMediaQuery } from "react-responsive";
 
 interface IAuth {
   auth: {
@@ -15,6 +16,7 @@ interface IAuth {
 }
 
 const Main: FunctionComponent<IAuth> = ({ auth }) => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1000px)" });
   return (
     <div>
       {!auth.isLoaded ? (
@@ -24,7 +26,7 @@ const Main: FunctionComponent<IAuth> = ({ auth }) => {
       ) : (
         <div>
           <article className="article-sign">
-            <PhoneAnimation />
+            {!isTabletOrMobile ? <PhoneAnimation /> : null}
             <SigninField />
           </article>
           <FooterExtended />

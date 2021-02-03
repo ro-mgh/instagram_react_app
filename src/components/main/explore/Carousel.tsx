@@ -16,9 +16,10 @@ const Carousel = () => {
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [newUsers, setNewUsers] = useState([]);
   const dispatch = useDispatch();
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 900px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 900px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 620px)" });
 
-  const slidesToShow = isTabletOrMobile ? 3 : 4;
+  const slidesToShow = isTablet ? (isMobile ? 2 : 3) : 4;
 
   const settings = {
     // dots: true,

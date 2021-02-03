@@ -31,9 +31,11 @@ const Posts = () => {
         <div className="mainfield-wrapper">
           <div className="posts-wrapper">
             {!isLoading ? (
-              data.map((post) => {
-                return <Post {...post} key={post.id} />;
-              })
+              data ? (
+                data.map((post) => {
+                  return <Post {...post} key={post.id} />;
+                })
+              ) : null
             ) : (
               <div className="mainfield-progress-wrapper">
                 <CircularProgress size={30} />
@@ -46,9 +48,11 @@ const Posts = () => {
         <div className="mainfield-wrapper-mobile">
           <div className="posts-wrapper">
             {!isLoading ? (
-              data.map((post) => {
-                return <Post {...post} key={post.id} />;
-              })
+              data ? (
+                data.map((post) => {
+                  return <Post {...post} key={post.id} />;
+                })
+              ) : null
             ) : (
               <div className="mainfield-progress-wrapper">
                 <CircularProgress size={30} />

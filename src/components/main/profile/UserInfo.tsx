@@ -10,6 +10,7 @@ import EditAvatar from "./EditAvatar";
 import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import UserPictures from "./UserPictures";
+import { useMediaQuery } from "react-responsive";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,6 +36,7 @@ const UserInfo = () => {
     Following: [],
   });
   const dispatch = useDispatch();
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 800px)" });
 
   useEffect(() => {
     if (allUsersFromStore[userAuth.uid]) {
@@ -51,13 +53,15 @@ const UserInfo = () => {
       {user.id ? (
         <div>
           <div className="userprofile-wrapper">
-            <div className="userprofile-avatar-wrapper">
-              <Avatar
-                alt="A"
-                src={user.avatar || ""}
-                className={classes.extraLarge}
-              />
-            </div>
+            {!isTabletOrMobile ? (
+              <div className="userprofile-avatar-wrapper">
+                <Avatar
+                  alt="A"
+                  src={user.avatar || ""}
+                  className={classes.extraLarge}
+                />
+              </div>
+            ) : null}
             <div className="userprofile-info-wrapper">
               <div className="userprofile-info-username">
                 <div className="userprofile-info-username-text">

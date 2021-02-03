@@ -22,8 +22,6 @@ export const signupUser = (
 ): ThunkAction<void, RootState, unknown, Action<string>> => async (
   dispatch
 ) => {
-  console.log("AUTH REQUEST");
-
   if (password.length < 6) {
     return dispatch({
       type: SIGNUP_ERROR,
@@ -74,15 +72,32 @@ export const signupUser = (
                       },
                     });
                   } else {
-                    console.error("error adding new user to DB");
+                    user.delete();
+                    return dispatch({
+                      type: SIGNUP_ERROR,
+                      payload: {
+                        authMsgError: "Error adding new user to DB",
+                      },
+                    });
                   }
                 } catch (e) {
-                  console.error("error adding new user to DB", e);
+                  user.delete();
+                  return dispatch({
+                    type: SIGNUP_ERROR,
+                    payload: {
+                      authMsgError: "Error adding new user to DB",
+                    },
+                  });
                 }
               })
               .catch(function (e) {
-                // Handle error
-                console.error("error adding new user to DB", e);
+                user.delete();
+                return dispatch({
+                  type: SIGNUP_ERROR,
+                  payload: {
+                    authMsgError: "Error adding new user to DB",
+                  },
+                });
               });
           } else {
             dispatch({
@@ -169,12 +184,12 @@ export const signoutUser = (): ThunkAction<
       .signOut()
       .then(() => {
         dispatch({
-          type: SIGNOUT_SUCCESS,
-          payload: { authMsgSuccess: "You've been signed out succesfully" },
-        });
-        dispatch({
           type: GET_USERS,
           payload: { users: {} },
+        });
+        dispatch({
+          type: SIGNOUT_SUCCESS,
+          payload: { authMsgSuccess: "You've been signed out succesfully" },
         });
       })
       .catch(() => {

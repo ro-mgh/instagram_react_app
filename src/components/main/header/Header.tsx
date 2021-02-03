@@ -3,15 +3,12 @@ import logo from "../../../pictures/instagram_logo.png";
 import MenuDropdown from "./MenuDropdown";
 import SearchField from "./SearchField";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 // src / pictures / instagram_logo.png
 
 const Header = () => {
-  const [search, setSearch] = useState("");
-
-  const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
-  };
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 620px)" });
 
   return (
     <div className="header-main">
@@ -23,12 +20,14 @@ const Header = () => {
                 <div className="header-logo-div">
                   <img src={logo} alt=""></img>
                 </div>
-                <div className="customlogo-div"> | by RM</div>
+                {!isTabletOrMobile ? (
+                  <div className="customlogo-div"> | by RM</div>
+                ) : null}
               </div>
             </div>
           </Link>
         </div>
-        <SearchField />
+        {!isTabletOrMobile ? <SearchField /> : null}
         <div className="header-nav-placeholder">
           <div className="header-nav-div">
             <div className="header-nav-icon">

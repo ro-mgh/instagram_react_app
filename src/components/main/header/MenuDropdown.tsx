@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     link: {
       color: "rgba(var(--i1d, 38, 38, 38), 1)",
+      width: "100%",
     },
   })
 );
@@ -114,14 +115,12 @@ const MenuDropdown = () => {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose} className={classes.text}>
-                      <div className="search-user-wrapper">
-                        <Link
-                          to={"/profile/" + user.uid}
-                          className={classes.link}
-                        >
-                          Profile
-                        </Link>
-                      </div>
+                      <Link
+                        to={"/profile/" + user.uid}
+                        className={classes.link}
+                      >
+                        <div className="search-user-wrapper">Profile</div>
+                      </Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose} className={classes.text}>
                       <Signout />

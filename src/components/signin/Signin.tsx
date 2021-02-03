@@ -44,7 +44,19 @@ const Signin = ({ signin, auth, authMsgError, authMsgSuccess }) => {
 
     await signin(values.username, values.password);
 
-    console.log("Signin clicked");
+    setValues({
+      ...values,
+      username: "",
+      password: "",
+    });
+  };
+
+  const signInAsDemoUser = async (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+    await signin("demouser@example.com", "123456");
+
     setValues({
       ...values,
       username: "",
@@ -53,106 +65,116 @@ const Signin = ({ signin, auth, authMsgError, authMsgSuccess }) => {
   };
 
   return (
-    <div className="sign-form-div">
-      <form className="sign-form" noValidate>
-        {authMsgSuccess ? (
-          <Alert severity="success">{authMsgSuccess}</Alert>
-        ) : authMsgError ? (
-          <Alert severity="error">{authMsgError}</Alert>
-        ) : null}
-        <div className="sign-input-field">
-          <label className={"sign-input-label"}>
-            <span
-              className={
-                values.username === ""
-                  ? "sign-input-span"
-                  : "sign-input-span sign-input-span-onfulfil"
-              }
-            >
-              Phone number, username, or email
-            </span>
-            <input
-              aria-label="Phone number, username, or email"
-              aria-required="true"
-              autoCapitalize="off"
-              autoCorrect="off"
-              maxLength={75}
-              name="username"
-              type="text"
-              className={
-                values.username === ""
-                  ? "sign-input-form"
-                  : "sign-input-form sign-input-form-onfulfil"
-              }
-              value={values.username}
-              onChange={handleChange("username")}
-            ></input>
-          </label>
-        </div>
-        <div className="sign-input-field">
-          <label className={"sign-input-label"}>
-            <span
-              className={
-                values.password === ""
-                  ? "sign-input-span"
-                  : "sign-input-span sign-input-span-onfulfil"
-              }
-            >
-              Password
-            </span>
-            <input
-              aria-label="Password"
-              aria-required="true"
-              autoCapitalize="off"
-              autoCorrect="off"
-              name="password"
-              type={values.showPassword ? "text" : "password"}
-              className={
-                values.password === ""
-                  ? "sign-input-form"
-                  : "sign-input-form sign-input-form-onfulfil"
-              }
-              value={values.password}
-              onChange={handleChange("password")}
-            ></input>
-          </label>
-          <div>
-            {values.password ? (
-              <div className="sign-password-enddiv">
-                {values.showPassword ? (
-                  <button
-                    className="sign-showpassw-button"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    Hide
-                  </button>
-                ) : (
-                  <button
-                    className="sign-showpassw-button"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    Show
-                  </button>
-                )}
-              </div>
-            ) : null}
+    <div>
+      <div className="signin-demouser-wrapper">
+        <button
+          className="sign-up-loginFacebook signin-demouser"
+          onClick={signInAsDemoUser}
+        >
+          Sign in as demouser
+        </button>
+      </div>
+      <div className="sign-form-div">
+        <form className="sign-form" noValidate>
+          {authMsgSuccess ? (
+            <Alert severity="success">{authMsgSuccess}</Alert>
+          ) : authMsgError ? (
+            <Alert severity="error">{authMsgError}</Alert>
+          ) : null}
+          <div className="sign-input-field">
+            <label className={"sign-input-label"}>
+              <span
+                className={
+                  values.username === ""
+                    ? "sign-input-span"
+                    : "sign-input-span sign-input-span-onfulfil"
+                }
+              >
+                Phone number, username, or email
+              </span>
+              <input
+                aria-label="Phone number, username, or email"
+                aria-required="true"
+                autoCapitalize="off"
+                autoCorrect="off"
+                maxLength={75}
+                name="username"
+                type="text"
+                className={
+                  values.username === ""
+                    ? "sign-input-form"
+                    : "sign-input-form sign-input-form-onfulfil"
+                }
+                value={values.username}
+                onChange={handleChange("username")}
+              ></input>
+            </label>
           </div>
-        </div>
-        <div className="sign-button-div">
-          {/* <Button type="submit" style={buttonSubmit}>
+          <div className="sign-input-field">
+            <label className={"sign-input-label"}>
+              <span
+                className={
+                  values.password === ""
+                    ? "sign-input-span"
+                    : "sign-input-span sign-input-span-onfulfil"
+                }
+              >
+                Password
+              </span>
+              <input
+                aria-label="Password"
+                aria-required="true"
+                autoCapitalize="off"
+                autoCorrect="off"
+                name="password"
+                type={values.showPassword ? "text" : "password"}
+                className={
+                  values.password === ""
+                    ? "sign-input-form"
+                    : "sign-input-form sign-input-form-onfulfil"
+                }
+                value={values.password}
+                onChange={handleChange("password")}
+              ></input>
+            </label>
+            <div>
+              {values.password ? (
+                <div className="sign-password-enddiv">
+                  {values.showPassword ? (
+                    <button
+                      className="sign-showpassw-button"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      Hide
+                    </button>
+                  ) : (
+                    <button
+                      className="sign-showpassw-button"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      Show
+                    </button>
+                  )}
+                </div>
+              ) : null}
+            </div>
+          </div>
+          <div className="sign-button-div">
+            {/* <Button type="submit" style={buttonSubmit}>
             Log in
           </Button> */}
 
-          <button
-            className="sign-button-submit"
-            onClick={signinUserWithEmailAndPasswordHandler}
-          >
-            Log in
-          </button>
-        </div>
-      </form>
+            <button
+              className="sign-button-submit"
+              onClick={signinUserWithEmailAndPasswordHandler}
+            >
+              Log in
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

@@ -20,13 +20,24 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Sidebar = () => {
   const classes = useStyles();
-  const user = useSelector((state) => state.authReducer.user);
+  const authUser = useSelector((state) => state.authReducer.user);
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [newUsers, setNewUsers] = useState([]);
+  const [user, setUser] = useState({
+    uid: "",
+    displayName: "",
+    photoURL: "",
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (Object.entries(allUsersFromStore).length > 0) {
+    if (Object.entries(authUser).length) {
+      setUser(authUser);
+    }
+  }, [authUser]);
+
+  useEffect(() => {
+    if (Object.entries(allUsersFromStore).length > 0 && user.uid) {
       const unkhownUsers = getArrayOfUnkhownUsers(user.uid, allUsersFromStore);
       setNewUsers(unkhownUsers);
     } else {
@@ -44,16 +55,12 @@ const Sidebar = () => {
           <div className="username-font">
             <Link to={"/profile/" + user.uid}>
               <div className="username-font">
-                {Object.entries(user).length
-                  ? user.displayName.split("&&")[0]
-                  : null}
+                {user.displayName ? user.displayName.split("&&")[0] : ""}
               </div>
             </Link>
           </div>
           <div className="name-font">
-            {Object.entries(user).length
-              ? user.displayName.split("&&")[1]
-              : null}
+            {user.displayName ? user.displayName.split("&&")[1] : ""}
           </div>
         </div>
       </div>

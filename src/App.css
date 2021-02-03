@@ -1791,3 +1791,13 @@ a {
   padding-bottom: 9px;
   font-size: 24px;
 }
+
+.signin-demouser {
+  margin-top: 0px;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.signin-demouser-wrapper {
+  display: flex;
+}
