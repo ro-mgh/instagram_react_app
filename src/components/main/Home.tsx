@@ -9,7 +9,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(exploreUsers());
+    // dispatch(exploreUsers());
   }, []);
 
   return (

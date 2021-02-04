@@ -23,18 +23,19 @@ const Sidebar = () => {
   const authUser = useSelector((state) => state.authReducer.user);
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [newUsers, setNewUsers] = useState([]);
-  const [user, setUser] = useState({
-    uid: "",
-    displayName: "",
-    photoURL: "",
-  });
+  const [user, setUser] = useState(authUser);
+  // useState({
+  //   uid: "",
+  //   displayName: "",
+  //   photoURL: "",
+  // });
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (Object.entries(authUser).length) {
-      setUser(authUser);
-    }
-  }, [authUser]);
+  // useEffect(() => {
+  //   if (Object.entries(authUser).length) {
+  //     setUser(authUser);
+  //   }
+  // }, [authUser]);
 
   useEffect(() => {
     if (Object.entries(allUsersFromStore).length > 0 && user.uid) {
