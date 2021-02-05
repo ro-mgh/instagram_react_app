@@ -11,7 +11,7 @@ export const exploreUsers = (): ThunkAction<
   unknown,
   Action<string>
 > => async (dispatch) => {
-  console.log("I was here");
+  // console.log("I was here");
   try {
     firebase
       .auth()
@@ -66,7 +66,7 @@ export const exploreUsers = (): ThunkAction<
     dispatch({
       type: SET_ERROR,
       payload: {
-        error: "Get all users: error connecting to DB",
+        error: "",
       },
     });
   }

@@ -12,6 +12,7 @@ import firebase from "../../services/firebase";
 import { Action } from "redux";
 import { RootState } from "../reducers/index";
 import { ThunkAction } from "redux-thunk";
+import queryClient from "../../utils/queryClient";
 
 // Signing up with Firebase
 export const signupUser = (
@@ -187,6 +188,7 @@ export const signoutUser = (): ThunkAction<
           type: GET_USERS,
           payload: { users: {} },
         });
+        queryClient.clear();
         dispatch({
           type: SIGNOUT_SUCCESS,
           payload: { authMsgSuccess: "You've been signed out succesfully" },

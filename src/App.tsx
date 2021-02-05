@@ -16,10 +16,11 @@ import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import ProtectedProfile from "./views/ProtectedProfile";
 import ProtectedExplore from "./views/ProtectedExplore";
 import ProtectedPicture from "./views/ProtectedPicture";
+import queryClient from "./utils/queryClient";
 
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 const rrfConfig = { userProfile: "users" };
 
