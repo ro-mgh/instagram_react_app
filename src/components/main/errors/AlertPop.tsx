@@ -4,6 +4,8 @@ import Alert from "@material-ui/lab/Alert";
 import { useDispatch, useSelector } from "react-redux";
 import { CLEAR_ERROR } from "../../../store/actions/actionTypes";
 
+// creacting alert snakbar components ("listening" to redux errors obj)
+
 const AlertPop = () => {
   const errorMsg = useSelector((state) => state.errorReducer.error);
   const [error, setError] = useState(errorMsg);

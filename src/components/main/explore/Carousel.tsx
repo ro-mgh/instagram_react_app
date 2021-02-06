@@ -11,10 +11,9 @@ import { getArrayOfUnkhownUsers } from "../../../utils/helpers";
 import { useMediaQuery } from "react-responsive";
 
 const Carousel = () => {
-  // const users = useSelector((state) => state.dataReducer.users);
+  const [newUsers, setNewUsers] = useState([]);
   const user = useSelector((state) => state.authReducer.user);
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
-  const [newUsers, setNewUsers] = useState([]);
   const dispatch = useDispatch();
   const isTablet = useMediaQuery({ query: "(max-width: 900px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 620px)" });
@@ -22,19 +21,14 @@ const Carousel = () => {
   const slidesToShow = isTablet ? (isMobile ? 2 : 3) : 4;
 
   const settings = {
-    // dots: true,
     lazyLoad: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 2,
-    // slidesToScroll: 1,
-    // initialSlide: 2,
     infinite: false,
     speed: 500,
     slidesToShow: slidesToShow,
     slidesToScroll: 2,
   };
 
+  // setting all unknown users to useState arr
   useEffect(() => {
     if (Object.entries(allUsersFromStore).length > 0) {
       const unkhownUsers = getArrayOfUnkhownUsers(user.uid, allUsersFromStore);

@@ -1,3 +1,5 @@
+// function is used to extract unknown users from all users obj
+
 export const getArrayOfUnkhownUsers = (userId, allUsers) => {
   if (allUsers.hasOwnProperty(userId)) {
     const userFollowingIdsArrOfObjects = allUsers[userId].followingIds;

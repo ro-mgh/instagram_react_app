@@ -37,6 +37,7 @@ const Sidebar = () => {
   //   }
   // }, [authUser]);
 
+  // getting all unknown users
   useEffect(() => {
     if (Object.entries(allUsersFromStore).length > 0 && user.uid) {
       const unkhownUsers = getArrayOfUnkhownUsers(user.uid, allUsersFromStore);

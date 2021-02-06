@@ -11,7 +11,6 @@ import { fetchNotFollowingPosts } from "../../../utils/fetchingData";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
 
 const Explore = () => {
-  // const usersPostsArr = useSelector((state) => state.dataReducer.usersPosts);
   const dispatch = useDispatch();
 
   const { isLoading, error, data } = useQuery(
@@ -25,10 +24,6 @@ const Explore = () => {
       payload: { error: error.message },
     });
   }
-
-  // useEffect(() => {
-  //   dispatch(explorePosts());
-  // }, []);
 
   return (
     <div>

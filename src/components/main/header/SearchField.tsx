@@ -50,9 +50,10 @@ const SearchField = () => {
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [search, setSearch] = useState("");
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
+  // finding match by name or username in all users
   useEffect(() => {
     const usersArr = Object.values(allUsersFromStore);
 

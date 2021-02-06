@@ -11,6 +11,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import AlertPop from "../errors/AlertPop";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
 
+// post/image page
+
 const Picture = ({ match, location }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
@@ -27,6 +29,7 @@ const Picture = ({ match, location }) => {
     createdAt: "",
   });
 
+  // getting post info from DB
   useEffect(() => {
     const getPost = () => {
       try {

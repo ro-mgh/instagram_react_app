@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+// dropdown menu component for user avatar (opens profile & signout)
 const MenuDropdown = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);

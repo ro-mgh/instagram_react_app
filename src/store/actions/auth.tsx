@@ -40,6 +40,8 @@ export const signupUser = (
 
           const user = firebase.auth().currentUser;
           if (user) {
+            // updating profile info
+
             user.updateProfile({
               displayName: username + "&&" + name,
             });
@@ -47,6 +49,8 @@ export const signupUser = (
             user
               .getIdToken(/* forceRefresh */ true)
               .then(async function (idToken) {
+                // adding user to DB
+
                 try {
                   const response = await fetch("http://localhost:3000/user", {
                     method: "post",
@@ -145,8 +149,6 @@ export const signinUser = (
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((data) => {
-        console.log("Data from sign in", data);
-
         return dispatch({
           type: SIGNIN_SUCCESS,
           payload: {
@@ -154,7 +156,6 @@ export const signinUser = (
             user: data.user,
           },
         });
-        // callback();
       })
       .catch(() => {
         dispatch({
@@ -184,10 +185,12 @@ export const signoutUser = (): ThunkAction<
       .auth()
       .signOut()
       .then(() => {
+        // clearing redux
         dispatch({
           type: GET_USERS,
           payload: { users: {} },
         });
+        // clearing cashe
         queryClient.clear();
         dispatch({
           type: SIGNOUT_SUCCESS,

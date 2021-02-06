@@ -8,17 +8,8 @@ import UserHeaderField from "./UserHeaderField";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    medium: {
-      width: theme.spacing(5),
-      height: theme.spacing(5),
-    },
-  })
-);
-
+// post component on a main page
 const Post = (props) => {
-  const classes = useStyles();
   const [post, setPost] = useState(props);
   const user = useSelector((state) => state.authReducer.user);
 

@@ -5,13 +5,13 @@ import { Action } from "redux";
 import { RootState } from "../reducers/index";
 import { ThunkAction } from "redux-thunk";
 
+// getting list of all users from DB
 export const exploreUsers = (): ThunkAction<
   void,
   RootState,
   unknown,
   Action<string>
 > => async (dispatch) => {
-  // console.log("I was here");
   try {
     firebase
       .auth()
@@ -27,6 +27,8 @@ export const exploreUsers = (): ThunkAction<
           });
           if (response.ok) {
             const jsonResponse = await response.json();
+
+            // normalizing data
 
             const myData = { users: jsonResponse };
             const user = new schema.Entity("users");

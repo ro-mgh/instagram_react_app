@@ -1,5 +1,7 @@
 import firebase from "../services/firebase";
 
+// fetching posts of user following
+
 export const fetchPosts = async () => {
   try {
     const user = firebase.auth().currentUser;
@@ -38,6 +40,8 @@ export const fetchPosts = async () => {
     throw new Error("Fetching posts: error connecting to DB");
   }
 };
+
+// fetching pictures for explore page
 
 export const fetchNotFollowingPosts = async () => {
   try {
