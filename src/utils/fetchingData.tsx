@@ -2,7 +2,7 @@ import firebase from "../services/firebase";
 
 // fetching posts of user following
 
-export const fetchPosts = async () => {
+export const fetchPosts = async ({ pageParam = 0 }) => {
   try {
     const user = firebase.auth().currentUser;
     if (user) {
@@ -11,7 +11,7 @@ export const fetchPosts = async () => {
         .then(async function (idToken) {
           try {
             const response = await fetch(
-              "http://localhost:3000/post/user/" + user.uid,
+              "http://localhost:3000/post/user/page/" + pageParam,
               {
                 method: "get",
                 headers: {
@@ -43,7 +43,6 @@ export const fetchPosts = async () => {
 
 // fetching pictures for explore page
 
-// export const fetchNotFollowingPosts = async () => {
 export const fetchNotFollowingPosts = async ({ pageParam = 0 }) => {
   try {
     return firebase

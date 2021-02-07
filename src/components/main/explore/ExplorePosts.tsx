@@ -20,7 +20,7 @@ const ExplorePosts = () => {
     isFetching,
     isFetchingNextPage,
     status,
-  } = useInfiniteQuery("projects", fetchNotFollowingPosts, {
+  } = useInfiniteQuery("explorePosts", fetchNotFollowingPosts, {
     getNextPageParam: (lastPage, pages) => {
       return lastPage.nextCursor;
     },

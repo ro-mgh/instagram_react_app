@@ -13,6 +13,10 @@ const Post = (props) => {
   const [post, setPost] = useState(props);
   const user = useSelector((state) => state.authReducer.user);
 
+  // useState(() => {
+  //   setPost(props);
+  // }, [props]);
+
   const handleCommentAdd = (text) => {
     const newComment = {
       comments: [
