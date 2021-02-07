@@ -7,24 +7,13 @@ import Gallery from "./Gallery";
 import { useDispatch, useSelector } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useQuery } from "react-query";
+import { useInfiniteQuery } from "react-query";
+
 import { fetchNotFollowingPosts } from "../../../utils/fetchingData";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
+import ExplorePosts from "./ExplorePosts";
 
 const Explore = () => {
-  const dispatch = useDispatch();
-
-  const { isLoading, error, data } = useQuery(
-    "notFollowingPosts",
-    fetchNotFollowingPosts
-  );
-
-  if (error) {
-    dispatch({
-      type: SET_ERROR,
-      payload: { error: error.message },
-    });
-  }
-
   return (
     <div>
       <Header />
@@ -35,16 +24,7 @@ const Explore = () => {
             <Carousel />
           </div>
         </div>
-        <div className="explore-posts-wrapper">
-          <p className="explore-users-text">Explore</p>
-          {!isLoading ? (
-            <Gallery {...{ posts: data }} />
-          ) : (
-            <div className="mainfield-progress-wrapper">
-              <CircularProgress size={30} />
-            </div>
-          )}
-        </div>
+        <ExplorePosts />
       </div>
       <FooterBottom />
     </div>

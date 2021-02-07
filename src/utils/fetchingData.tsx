@@ -43,20 +43,24 @@ export const fetchPosts = async () => {
 
 // fetching pictures for explore page
 
-export const fetchNotFollowingPosts = async () => {
+// export const fetchNotFollowingPosts = async () => {
+export const fetchNotFollowingPosts = async ({ pageParam = 0 }) => {
   try {
     return firebase
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
       .then(async function (idToken) {
         try {
-          const response = await fetch("http://localhost:3000/post", {
-            method: "get",
-            headers: {
-              "Content-type": "application/json",
-              Authorization: "Bearer " + idToken,
-            },
-          });
+          const response = await fetch(
+            "http://localhost:3000/post/page/" + pageParam,
+            {
+              method: "get",
+              headers: {
+                "Content-type": "application/json",
+                Authorization: "Bearer " + idToken,
+              },
+            }
+          );
           if (response.ok) {
             return response.json();
           } else {
