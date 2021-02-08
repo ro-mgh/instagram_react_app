@@ -27,7 +27,6 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [isFollow, setFollow] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 800px)" });
-
   const [user, setUser] = useState({
     id: "",
     username: "",
@@ -44,7 +43,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
     } else {
       dispatch(exploreUsers());
     }
-  }, [allUsersFromStore]);
+  }, [props.params.userId, allUsersFromStore]);
 
   const handleFollow = async () => {
     setFollow(true);
