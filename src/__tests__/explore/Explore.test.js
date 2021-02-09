@@ -9,22 +9,8 @@ jest.mock("react-responsive", () => ({
   useMediaQuery: jest.fn(),
 }));
 
-jest.mock("react-query", () => ({
-  useInfiniteQuery: jest.fn(
-    (() => {
-      return {
-        data: {},
-        error: "",
-        fetchNextPage: jest.fn(),
-        hasNextPage: jest.fn(),
-        isFetching: false,
-        isFetchingNextPage: false,
-        status: "loading",
-      };
-    })()
-  ),
-  QueryClient: jest.fn(),
-}));
+import { useInfiniteQuery, QueryClient } from "react-query";
+jest.mock("react-query");
 
 import Explore from "../../components/main/explore/Explore";
 
@@ -49,6 +35,17 @@ afterEach(() => {
 
 describe("rendering Explore component", () => {
   it("renders Explore component", () => {
+    const QueryClient = jest.fn();
+    useInfiniteQuery.mockReturnValue({
+      data: {},
+      error: "",
+      fetchNextPage: jest.fn(),
+      hasNextPage: jest.fn(),
+      isFetching: false,
+      isFetchingNextPage: false,
+      status: "loading",
+    });
+
     const history = createMemoryHistory();
 
     let store = mockStore({
@@ -60,12 +57,9 @@ describe("rendering Explore component", () => {
       },
     });
 
-    // const queryClient = new QueryClient();
-    // const wrapper = ({ children }) => (
-    //   <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    // );
+    store.dispatch = jest.fn();
 
-    render(
+    const component = render(
       <Provider store={store}>
         <Router history={history}>
           <Explore />
@@ -73,8 +67,8 @@ describe("rendering Explore component", () => {
       </Provider>
     );
 
-    screen.debug();
-    expect(useMediaQuery).toHaveBeenCalled();
+    // screen.debug();
+    expect(component.container).toMatchSnapshot();
     expect(screen.getByTestId("explore")).toBeInTheDocument();
   });
 });

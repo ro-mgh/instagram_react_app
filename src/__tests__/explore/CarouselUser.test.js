@@ -32,7 +32,7 @@ describe("rendering CarouselUser component", () => {
       store: "",
     });
 
-    render(
+    const component = render(
       <Provider store={store}>
         <Router history={history}>
           <CarouselUser {..._user} />
@@ -41,6 +41,7 @@ describe("rendering CarouselUser component", () => {
     );
 
     // screen.debug();
+    expect(component.container).toMatchSnapshot();
     expect(screen.getByTestId("carousel-user")).toBeInTheDocument();
   });
 });

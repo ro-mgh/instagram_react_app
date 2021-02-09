@@ -33,24 +33,30 @@ const ExplorePosts = () => {
     });
   }
 
+  if (!data) {
+    console.log(useInfiniteQuery);
+  }
+
   return (
     <div className="explore-posts-wrapper">
       <p className="explore-users-text">Explore</p>
       {status !== "loading" ? (
-        <InfiniteScroll
-          dataLength={data.pages.length}
-          next={fetchNextPage}
-          hasMore={hasNextPage}
-          loader={
-            <div className="mainfield-progress-wrapper">
-              <CircularProgress size={20} />
-            </div>
-          }
-        >
-          {data.pages.map((page, i) => {
-            return <Gallery {...{ posts: page.data }} key={i} />;
-          })}
-        </InfiniteScroll>
+        data ? (
+          <InfiniteScroll
+            dataLength={data.pages.length}
+            next={fetchNextPage}
+            hasMore={hasNextPage}
+            loader={
+              <div className="mainfield-progress-wrapper">
+                <CircularProgress size={20} />
+              </div>
+            }
+          >
+            {data.pages.map((page, i) => {
+              return <Gallery {...{ posts: page.data }} key={i} />;
+            })}
+          </InfiniteScroll>
+        ) : null
       ) : (
         // <div>
         //   {data.pages.map((page, i) => {
