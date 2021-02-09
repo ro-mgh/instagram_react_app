@@ -1,10 +1,351 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`rendering Main component renders Main component with no user auth, and redirecting to signin 1`] = `
+<div>
+  <div>
+    <div>
+      <article
+        class="article-sign"
+      >
+        <div
+          class="div-sign-phone"
+        >
+          <div
+            class="div-sign-phone-top"
+          >
+            <img
+              alt=""
+              class="div-sign-photo-img"
+              src="phone_signup_carousel_1.jpg"
+            />
+          </div>
+        </div>
+        <div
+          class="div-sign-form"
+        >
+          <div
+            class="sign-mainfield"
+          >
+            <div
+              class="customlogo-wrapper-sign"
+            >
+              <h1
+                class="sign-logo"
+              >
+                Insta
+              </h1>
+              <div
+                class="customlogo-div-sign"
+              >
+                 | by RM
+              </div>
+            </div>
+            <div
+              data-testid="signin"
+            >
+              <div
+                class="signin-demouser-wrapper"
+              >
+                <button
+                  class="sign-up-loginFacebook signin-demouser"
+                >
+                  Sign in as demouser
+                </button>
+              </div>
+              <div
+                class="sign-form-div"
+              >
+                <form
+                  class="sign-form"
+                  novalidate=""
+                >
+                  <div
+                    class="sign-input-field"
+                  >
+                    <label
+                      class="sign-input-label"
+                    >
+                      <span
+                        class="sign-input-span"
+                      >
+                        Phone number, username, or email
+                      </span>
+                      <input
+                        aria-label="Phone number, username, or email"
+                        aria-required="true"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        class="sign-input-form"
+                        maxlength="75"
+                        name="username"
+                        type="text"
+                        value=""
+                      />
+                    </label>
+                  </div>
+                  <div
+                    class="sign-input-field"
+                  >
+                    <label
+                      class="sign-input-label"
+                    >
+                      <span
+                        class="sign-input-span"
+                      >
+                        Password
+                      </span>
+                      <input
+                        aria-label="Password"
+                        aria-required="true"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        class="sign-input-form"
+                        name="password"
+                        type="password"
+                        value=""
+                      />
+                    </label>
+                    <div />
+                  </div>
+                  <div
+                    class="sign-button-div"
+                  >
+                    <button
+                      class="sign-button-submit"
+                    >
+                      Log in
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div
+              class="sign-or"
+            >
+              <div
+                class="sign-or-dash"
+              />
+              <div
+                class="sign-or-text"
+              >
+                or
+              </div>
+              <div
+                class="sign-or-dash"
+              />
+            </div>
+            <button
+              class="sign-loginFacebook"
+            >
+              <span
+                class="sign-loginFacebook-logo"
+              />
+              <span
+                class="sign-loginFacebook-text"
+              >
+                Log in with Facebook
+              </span>
+            </button>
+            <p
+              class="sign-forgot-password"
+            >
+              Forgot password?
+            </p>
+          </div>
+          <div
+            class="sign-redirect"
+          >
+            <div
+              class="sign-redirect-p"
+            >
+              Don't have an account?
+               
+              <a
+                href="/signup"
+              >
+                <div
+                  class="sign-redirect-a"
+                >
+                  <span
+                    class="sign-redirect-span"
+                  >
+                    Sign up
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <p
+            class="sign-links-p"
+          >
+            Get the app.
+          </p>
+          <div
+            class="sign-links-div"
+          >
+            <img
+              alt=""
+              class="sign-links-img"
+              src="link_signup_appstore.png"
+            />
+            <img
+              alt=""
+              class="sign-links-img"
+              src="link_signup_googlestore.png"
+            />
+          </div>
+        </div>
+      </article>
+      <footer>
+        <div
+          class="footer-div-main"
+        >
+          <div
+            class="footer-div-top"
+          >
+            <div
+              class="footer-div-top-placeholder"
+            >
+              <a
+                class="footer-text"
+                href="https://about.instagram.com/"
+                rel="nofollow noopener noreferrer"
+                target="_blank"
+              >
+                About
+              </a>
+              <a
+                class="footer-text"
+                href="https://about.instagram.com/blog/"
+                rel="nofollow noopener noreferrer"
+                target="_blank"
+              >
+                Blog
+              </a>
+              <a
+                class="footer-text"
+                href="/about/jobs/"
+              >
+                Jobs
+              </a>
+              <a
+                class="footer-text"
+                href="https://help.instagram.com/"
+                rel="nofollow noopener noreferrer"
+                target="_blank"
+              >
+                Help
+              </a>
+              <a
+                class="footer-text"
+                href="/developer/"
+              >
+                API
+              </a>
+              <a
+                class="footer-text"
+                href="/legal/privacy/"
+              >
+                Privacy
+              </a>
+              <a
+                class="footer-text"
+                href="/legal/terms/"
+              >
+                Terms
+              </a>
+              <a
+                class="footer-text"
+                href="/directory/profiles/"
+              >
+                Top Accounts
+              </a>
+              <a
+                class="footer-text"
+                href="/directory/hashtags/"
+              >
+                Hashtags
+              </a>
+              <a
+                class="footer-text"
+                href="/explore/locations/"
+              >
+                Locations
+              </a>
+            </div>
+            <div
+              class="footer-div-bottom-placeholder"
+            >
+              <a
+                class="footer-text"
+                href="/topics/beauty/"
+              >
+                Beauty
+              </a>
+              <a
+                class="footer-text"
+                href="/topics/dance-and-performance/"
+              >
+                Dance & Performance
+              </a>
+              <a
+                class="footer-text"
+                href="/topics/fitness/"
+              >
+                Fitness
+              </a>
+              <a
+                class="footer-text"
+                href="/topics/food-and-drink/"
+              >
+                Food & Drink
+              </a>
+              <a
+                class="footer-text"
+                href="/topics/home-and-garden/"
+              >
+                Home & Garden
+              </a>
+              <a
+                class="footer-text"
+                href="/topics/music/"
+              >
+                Music
+              </a>
+              <a
+                class="footer-text"
+                href="/topics/visual-arts/"
+              >
+                Visual Arts
+              </a>
+            </div>
+          </div>
+          <div
+            class="footer-div-bottom"
+          >
+            <div
+              class="footer-text"
+            >
+              English
+            </div>
+            <div
+              class="footer-text"
+            >
+              © 2021 Instagram by RM
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`rendering Main component renders Main component without props 1`] = `
 <div>
   <div>
     <div
-      data-testid="Loader"
+      data-testid="loader"
     >
       <span>
         <svg

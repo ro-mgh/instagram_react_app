@@ -25,14 +25,14 @@ const SigninField: FunctionComponent = () => {
         <p className="sign-forgot-password">Forgot password?</p>
       </div>
       <div className="sign-redirect">
-        <p className="sign-redirect-p">
+        <div className="sign-redirect-p">
           Don&apos;t have an account?{" "}
           <Link to="/signup">
             <div className="sign-redirect-a">
               <span className="sign-redirect-span">Sign up</span>
             </div>
           </Link>
-        </p>
+        </div>
       </div>
       <p className="sign-links-p">Get the app.</p>
       <div className="sign-links-div">

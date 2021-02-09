@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import SigninField from "../components/signin/SigninField";
 import Footer from "../components/footer/Footer";
 import { connect } from "react-redux";
+import Loader from "./Loader";
 
 interface IAuth {
   auth: {
@@ -20,7 +21,9 @@ const ProtectedSignin: FunctionComponent<IAuth> = ({ auth }) => {
 
   return (
     <div>
-      {!auth.isEmpty ? (
+      {!auth.isLoaded ? (
+        <Loader />
+      ) : !auth.isEmpty ? (
         <Redirect to="/" />
       ) : (
         <Route path="/signin">

@@ -4,11 +4,12 @@ import { render, screen } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 
-import Main from "../components/Main";
-
 import configureStore from "redux-mock-store";
 
 import { Provider } from "react-redux";
+
+import SignupField from "../components/signup/SignupField";
+// import ProtectedSignup from "../views/ProtectedSignup";
 
 const mockStore = configureStore([]);
 
@@ -24,34 +25,12 @@ afterEach(() => {
   container = null;
 });
 
-describe("rendering Main component", () => {
+describe("rendering Signup component", () => {
   let store;
   let component;
   const history = createMemoryHistory();
 
-  // beforeEach(() => {});
-
-  it("renders Main component without props", () => {
-    store = mockStore({
-      firebaseReducer: {
-        auth: "tbc",
-      },
-    });
-
-    component = render(
-      <Provider store={store}>
-        <Router history={history}>
-          <Main />
-        </Router>
-      </Provider>
-    );
-
-    // screen.debug();
-    expect(component.container).toMatchSnapshot();
-    expect(screen.getByTestId("loader")).toBeInTheDocument();
-  });
-
-  it("renders Main component with no user auth, and redirecting to signin", () => {
+  it("renders Signup component without user", () => {
     store = mockStore({
       firebaseReducer: {
         auth: {
@@ -68,14 +47,12 @@ describe("rendering Main component", () => {
     component = render(
       <Provider store={store}>
         <Router history={history}>
-          <Main />
+          <SignupField />
         </Router>
       </Provider>
     );
     // screen.debug();
     expect(component.container).toMatchSnapshot();
-    expect(screen.getByTestId("signin")).toBeInTheDocument();
+    expect(screen.getByTestId("signup")).toBeInTheDocument();
   });
 });
-
-// add mainfield test with loaded true, isEmpty false

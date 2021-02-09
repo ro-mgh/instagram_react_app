@@ -60,7 +60,7 @@ const Signup = ({ signup, auth, authMsgError, authMsgSuccess }) => {
   };
 
   return (
-    <div className="sign-form-div">
+    <div className="sign-form-div" data-testid="signup">
       <form className="sign-form" noValidate>
         {authMsgSuccess ? (
           <Alert severity="success">{authMsgSuccess}</Alert>

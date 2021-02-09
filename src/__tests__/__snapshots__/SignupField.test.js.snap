@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering Signup component renders Signup component without user 1`] = `
+<div>
+  <div
+    class="div-sign-form"
+  >
+    <div
+      class="sign-mainfield"
+    >
+      <div
+        class="customlogo-wrapper-sign"
+      >
+        <h1
+          class="sign-logo sign-up-logo"
+        >
+          Insta
+        </h1>
+        <div
+          class="customlogo-div-sign"
+        >
+           | by RM
+        </div>
+      </div>
+      <h2
+        class="sign-up-text"
+      >
+        Sign up to see photos and videos from your friends.
+      </h2>
+      <button
+        class="sign-up-loginFacebook"
+      >
+        <span
+          class="sign-up-loginFacebook-logo"
+        />
+        Log in with Facebook
+      </button>
+      <div
+        class="sign-or"
+      >
+        <div
+          class="sign-or-dash"
+        />
+        <div
+          class="sign-or-text"
+        >
+          or
+        </div>
+        <div
+          class="sign-or-dash"
+        />
+      </div>
+      <div
+        class="sign-form-div"
+        data-testid="signup"
+      >
+        <form
+          class="sign-form"
+          novalidate=""
+        >
+          <div
+            class="sign-input-field"
+          >
+            <label
+              class="sign-input-label"
+            >
+              <span
+                class="sign-input-span"
+              >
+                Mobile Number or Email
+              </span>
+              <input
+                aria-label="Mobile Number or Email"
+                aria-required="true"
+                autocapitalize="off"
+                autocorrect="off"
+                class="sign-input-form"
+                maxlength="75"
+                name="email"
+                type="text"
+                value=""
+              />
+            </label>
+          </div>
+          <div
+            class="sign-input-field"
+          >
+            <label
+              class="sign-input-label"
+            >
+              <span
+                class="sign-input-span"
+              >
+                Full Name
+              </span>
+              <input
+                aria-label="Full Name"
+                aria-required="true"
+                autocapitalize="off"
+                autocorrect="off"
+                class="sign-input-form"
+                maxlength="75"
+                name="name"
+                type="text"
+                value=""
+              />
+            </label>
+          </div>
+          <div
+            class="sign-input-field"
+          >
+            <label
+              class="sign-input-label"
+            >
+              <span
+                class="sign-input-span"
+              >
+                Username
+              </span>
+              <input
+                aria-label="Username"
+                aria-required="true"
+                autocapitalize="off"
+                autocorrect="off"
+                class="sign-input-form"
+                maxlength="75"
+                name="username"
+                type="text"
+                value=""
+              />
+            </label>
+          </div>
+          <div
+            class="sign-input-field"
+          >
+            <label
+              class="sign-input-label"
+            >
+              <span
+                class="sign-input-span"
+              >
+                Password
+              </span>
+              <input
+                aria-label="Password"
+                aria-required="true"
+                autocapitalize="off"
+                autocorrect="off"
+                class="sign-input-form"
+                name="password"
+                type="password"
+                value=""
+              />
+            </label>
+            <div />
+          </div>
+          <div
+            class="sign-button-div"
+          >
+            <button
+              class="sign-button-submit"
+            >
+              Log in
+            </button>
+          </div>
+        </form>
+      </div>
+      <p
+        class="sign-up-termsp"
+      >
+        By signing up, you agree to our
+        <a
+          class="sign-up-terms"
+          href="https://help.instagram.com/581066165581870"
+          rel="noreferrer"
+          tabindex="0"
+          target="_blank"
+        >
+           
+          Terms
+        </a>
+        ,
+         
+        <a
+          class="sign-up-terms"
+          href="https://help.instagram.com/519522125107875"
+          rel="noreferrer"
+          tabindex="0"
+          target="_blank"
+        >
+           
+          Data Policy
+           
+        </a>
+         
+        and
+         
+        <a
+          class="sign-up-terms"
+          href="https://help.instagram.com/519522125107875"
+          rel="noreferrer"
+          tabindex="0"
+          target="_blank"
+        >
+           
+          Cookies Policy
+        </a>
+        .
+      </p>
+    </div>
+    <div
+      class="sign-redirect"
+    >
+      <div
+        class="sign-redirect-p"
+      >
+        Have an account?
+         
+        <a
+          href="/signin"
+        >
+          <div
+            class="sign-redirect-a"
+          >
+            <span
+              class="sign-redirect-span"
+            >
+              Log in
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <p
+      class="sign-links-p"
+    >
+      Get the app.
+    </p>
+    <div
+      class="sign-links-div"
+    >
+      <img
+        alt=""
+        class="sign-links-img"
+        src="link_signup_appstore.png"
+      />
+      <img
+        alt=""
+        class="sign-links-img"
+        src="link_signup_googlestore.png"
+      />
+    </div>
+  </div>
+</div>
+`;

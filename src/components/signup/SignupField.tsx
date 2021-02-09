@@ -64,14 +64,14 @@ const SignupField: FunctionComponent = () => {
         </p>
       </div>
       <div className="sign-redirect">
-        <p className="sign-redirect-p">
+        <div className="sign-redirect-p">
           Have an account?{" "}
           <Link to="/signin">
             <div className="sign-redirect-a">
               <span className="sign-redirect-span">Log in</span>
             </div>
           </Link>
-        </p>
+        </div>
       </div>
       <p className="sign-links-p">Get the app.</p>
       <div className="sign-links-div">

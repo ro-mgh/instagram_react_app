@@ -65,7 +65,7 @@ const Signin = ({ signin, auth, authMsgError, authMsgSuccess }) => {
   };
 
   return (
-    <div>
+    <div data-testid="signin">
       <div className="signin-demouser-wrapper">
         <button
           className="sign-up-loginFacebook signin-demouser"
