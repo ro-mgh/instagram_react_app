@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const Gallery = (props) => {
   //pictures [] as prop
-  console.log("props for gallery ", props);
   return (
     <div className="userpicture-wrapper">
       <div className="userpicture-posts-wrapper">
