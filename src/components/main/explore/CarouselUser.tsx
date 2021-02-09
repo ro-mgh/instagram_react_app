@@ -102,7 +102,11 @@ const CarouselUser = (props) => {
   };
 
   return (
-    <div key={props.id} className="carousel-wrapper">
+    <div
+      key={props.id}
+      className="carousel-wrapper"
+      data-testid="carousel-user"
+    >
       <div className="carousel-user-wrapper">
         <Link to={"/profile/" + props.id}>
           <div className="carousel-user-avatar">

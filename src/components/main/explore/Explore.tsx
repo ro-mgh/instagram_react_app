@@ -15,7 +15,7 @@ import ExplorePosts from "./ExplorePosts";
 
 const Explore = () => {
   return (
-    <div>
+    <div data-testid="explore">
       <Header />
       <div className="explore-wrapper">
         <div className="explore-users-wrapper">

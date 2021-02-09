@@ -3,9 +3,9 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import { _propsGallery } from "../../__mocks__/server/posts";
+import { _propsGallery } from "../../../__mocks__/server/posts";
 
-import Gallery from "../components/main/explore/Gallery";
+import Gallery from "../../components/main/explore/Gallery";
 
 let container = null;
 beforeEach(() => {

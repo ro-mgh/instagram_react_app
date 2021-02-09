@@ -11,7 +11,7 @@ const Header = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 620px)" });
 
   return (
-    <div className="header-main">
+    <div className="header-main" data-testid="header">
       <div className="header-main-container">
         <div className="header-logo-placeholder">
           <Link to="/">

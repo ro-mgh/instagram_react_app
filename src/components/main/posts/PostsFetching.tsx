@@ -47,22 +47,24 @@ const PostsFetching = () => {
         ) : null */}
 
       {status !== "loading" ? (
-        <InfiniteScroll
-          dataLength={data.pages.length}
-          next={fetchNextPage}
-          hasMore={hasNextPage}
-          loader={
-            <div className="mainfield-progress-wrapper">
-              <CircularProgress size={20} />
-            </div>
-          }
-        >
-          {data.pages.map((page) => {
-            return page.data.map((post) => {
-              return <Post {...post} key={post.id} />;
-            });
-          })}
-        </InfiniteScroll>
+        data ? (
+          <InfiniteScroll
+            dataLength={data.pages ? data.pages.length : 0}
+            next={fetchNextPage}
+            hasMore={hasNextPage}
+            loader={
+              <div className="mainfield-progress-wrapper">
+                <CircularProgress size={20} />
+              </div>
+            }
+          >
+            {data.pages.map((page) => {
+              return page.data.map((post) => {
+                return <Post {...post} key={post.id} />;
+              });
+            })}
+          </InfiniteScroll>
+        ) : null
       ) : (
         <div className="mainfield-progress-wrapper">
           <CircularProgress size={30} />

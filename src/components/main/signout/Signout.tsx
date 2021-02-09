@@ -6,13 +6,15 @@ const Signout = ({ signout, auth }) => {
   const handleSignout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    console.log("Signout clicked");
-
     signout();
   };
 
   return (
-    <button onClick={handleSignout} className="signout-button">
+    <button
+      onClick={handleSignout}
+      className="signout-button"
+      data-testid="signout"
+    >
       Signout
     </button>
   );
