@@ -38,7 +38,8 @@ const EditAvatar = (props) => {
               .then(async function (idToken) {
                 try {
                   const response = await fetch(
-                    "http://localhost:3000/user/" + user.uid,
+                    "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/user/" +
+                      user.uid,
                     {
                       method: "put",
                       headers: {
@@ -107,7 +108,8 @@ const EditAvatar = (props) => {
         user.getIdToken(/* forceRefresh */ true).then(async function (idToken) {
           try {
             const response = await fetch(
-              "http://localhost:3000/user/" + user.uid,
+              "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/user/" +
+                user.uid,
               {
                 method: "put",
                 headers: {

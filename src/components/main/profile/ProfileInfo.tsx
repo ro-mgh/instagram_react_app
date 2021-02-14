@@ -53,7 +53,8 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "http://localhost:3000/follow/" + props.params.userId,
+            "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
+              props.params.userId,
             {
               method: "post",
               headers: {
@@ -99,7 +100,8 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "http://localhost:3000/follow/" + props.params.userId,
+            "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
+              props.params.userId,
             {
               method: "delete",
               headers: {

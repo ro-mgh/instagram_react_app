@@ -11,7 +11,8 @@ export const fetchPosts = async ({ pageParam = 0 }) => {
         .then(async function (idToken) {
           try {
             const response = await fetch(
-              "http://localhost:3000/post/user/page/" + pageParam,
+              "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/post/user/page/" +
+                pageParam,
               {
                 method: "get",
                 headers: {
@@ -51,7 +52,8 @@ export const fetchNotFollowingPosts = async ({ pageParam = 0 }) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "http://localhost:3000/post/page/" + pageParam,
+            "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/post/page/" +
+              pageParam,
             {
               method: "get",
               headers: {

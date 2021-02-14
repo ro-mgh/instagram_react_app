@@ -18,13 +18,16 @@ export const exploreUsers = (): ThunkAction<
       .currentUser.getIdToken(/* forceRefresh */ true)
       .then(async function (idToken) {
         try {
-          const response = await fetch("http://localhost:3000/user", {
-            method: "get",
-            headers: {
-              "Content-type": "application/json",
-              Authorization: "Bearer " + idToken,
-            },
-          });
+          const response = await fetch(
+            "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/user",
+            {
+              method: "get",
+              headers: {
+                "Content-type": "application/json",
+                Authorization: "Bearer " + idToken,
+              },
+            }
+          );
           if (response.ok) {
             const jsonResponse = await response.json();
 

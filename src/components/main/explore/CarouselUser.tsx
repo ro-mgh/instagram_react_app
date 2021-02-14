@@ -29,7 +29,8 @@ const CarouselUser = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "http://localhost:3000/follow/" + props.id,
+            "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
+              props.id,
             {
               method: "post",
               headers: {
@@ -69,7 +70,8 @@ const CarouselUser = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "http://localhost:3000/follow/" + props.id,
+            "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
+              props.id,
             {
               method: "delete",
               headers: {

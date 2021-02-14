@@ -52,19 +52,22 @@ export const signupUser = (
                 // adding user to DB
 
                 try {
-                  const response = await fetch("http://localhost:3000/user", {
-                    method: "post",
-                    headers: {
-                      "Content-type": "application/json",
-                      Authorization: "Bearer " + idToken,
-                    },
-                    body: JSON.stringify({
-                      email: email,
-                      username: username,
-                      name: name,
-                      id: user.uid + "",
-                    }),
-                  });
+                  const response = await fetch(
+                    "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/user",
+                    {
+                      method: "post",
+                      headers: {
+                        "Content-type": "application/json",
+                        Authorization: "Bearer " + idToken,
+                      },
+                      body: JSON.stringify({
+                        email: email,
+                        username: username,
+                        name: name,
+                        id: user.uid + "",
+                      }),
+                    }
+                  );
                   if (response.ok) {
                     // const jsonResponse = await response.json();
                     // console.log(jsonResponse);
