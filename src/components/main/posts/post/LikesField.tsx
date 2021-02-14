@@ -33,7 +33,7 @@ const LikesField = (props) => {
             .then(async function (idToken) {
               try {
                 const response = await fetch(
-                  "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/like/" +
+                  "https://insta-byrm-server.me.uk/like/" +
                     props.id,
                   {
                     method: "delete",
@@ -98,7 +98,7 @@ const LikesField = (props) => {
             .then(async function (idToken) {
               try {
                 const response = await fetch(
-                  "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/like/" +
+                  "https://insta-byrm-server.me.uk/like/" +
                     props.id,
                   {
                     method: "post",

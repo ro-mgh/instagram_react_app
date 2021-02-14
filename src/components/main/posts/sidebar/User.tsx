@@ -29,7 +29,7 @@ const User = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
+            "https://insta-byrm-server.me.uk/follow/" +
               props.id,
             {
               method: "post",
@@ -76,7 +76,7 @@ const User = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
+            "https://insta-byrm-server.me.uk/follow/" +
               props.id,
             {
               method: "delete",

@@ -40,7 +40,7 @@ const Picture = ({ match, location }) => {
             .then(async function (idToken) {
               try {
                 const response = await fetch(
-                  "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/post/" +
+                  "https://insta-byrm-server.me.uk/post/" +
                     match.params.pictureId,
                   {
                     method: "get",
