@@ -38,7 +38,7 @@ const EditAvatar = (props) => {
               .then(async function (idToken) {
                 try {
                   const response = await fetch(
-                    "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/user/" +
+                    "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/user/" +
                       user.uid,
                     {
                       method: "put",
@@ -108,7 +108,7 @@ const EditAvatar = (props) => {
         user.getIdToken(/* forceRefresh */ true).then(async function (idToken) {
           try {
             const response = await fetch(
-              "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/user/" +
+              "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/user/" +
                 user.uid,
               {
                 method: "put",

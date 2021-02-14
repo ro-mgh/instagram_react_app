@@ -53,7 +53,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
+            "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
               props.params.userId,
             {
               method: "post",
@@ -100,7 +100,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
+            "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/follow/" +
               props.params.userId,
             {
               method: "delete",

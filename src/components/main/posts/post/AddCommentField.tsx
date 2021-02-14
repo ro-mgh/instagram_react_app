@@ -20,7 +20,7 @@ const AddCommentField = ({ onAddComment, id }) => {
             .then(async function (idToken) {
               try {
                 const response = await fetch(
-                  "http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/comment",
+                  "https://thingproxy.freeboard.io/fetch/http://ec2-13-125-243-221.ap-northeast-2.compute.amazonaws.com/comment",
                   {
                     method: "post",
                     headers: {
