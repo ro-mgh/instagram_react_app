@@ -53,8 +53,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://insta-byrm-server.me.uk/follow/" +
-              props.params.userId,
+            "https://insta-byrm-server.me.uk/follow/" + props.params.userId,
             {
               method: "post",
               headers: {
@@ -100,8 +99,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://insta-byrm-server.me.uk/follow/" +
-              props.params.userId,
+            "https://insta-byrm-server.me.uk/follow/" + props.params.userId,
             {
               method: "delete",
               headers: {

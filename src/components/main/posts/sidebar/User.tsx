@@ -29,8 +29,7 @@ const User = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://insta-byrm-server.me.uk/follow/" +
-              props.id,
+            "https://insta-byrm-server.me.uk/follow/" + props.id,
             {
               method: "post",
               headers: {
@@ -76,8 +75,7 @@ const User = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://insta-byrm-server.me.uk/follow/" +
-              props.id,
+            "https://insta-byrm-server.me.uk/follow/" + props.id,
             {
               method: "delete",
               headers: {

@@ -18,16 +18,13 @@ export const exploreUsers = (): ThunkAction<
       .currentUser.getIdToken(/* forceRefresh */ true)
       .then(async function (idToken) {
         try {
-          const response = await fetch(
-            "https://insta-byrm-server.me.uk/user",
-            {
-              method: "get",
-              headers: {
-                "Content-type": "application/json",
-                Authorization: "Bearer " + idToken,
-              },
-            }
-          );
+          const response = await fetch("https://insta-byrm-server.me.uk/user", {
+            method: "get",
+            headers: {
+              "Content-type": "application/json",
+              Authorization: "Bearer " + idToken,
+            },
+          });
           if (response.ok) {
             const jsonResponse = await response.json();
 

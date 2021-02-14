@@ -29,8 +29,7 @@ const CarouselUser = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://insta-byrm-server.me.uk/follow/" +
-              props.id,
+            "https://insta-byrm-server.me.uk/follow/" + props.id,
             {
               method: "post",
               headers: {
@@ -70,8 +69,7 @@ const CarouselUser = (props) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://insta-byrm-server.me.uk/follow/" +
-              props.id,
+            "https://insta-byrm-server.me.uk/follow/" + props.id,
             {
               method: "delete",
               headers: {

@@ -33,8 +33,7 @@ const LikesField = (props) => {
             .then(async function (idToken) {
               try {
                 const response = await fetch(
-                  "https://insta-byrm-server.me.uk/like/" +
-                    props.id,
+                  "https://insta-byrm-server.me.uk/like/" + props.id,
                   {
                     method: "delete",
                     headers: {
@@ -98,8 +97,7 @@ const LikesField = (props) => {
             .then(async function (idToken) {
               try {
                 const response = await fetch(
-                  "https://insta-byrm-server.me.uk/like/" +
-                    props.id,
+                  "https://insta-byrm-server.me.uk/like/" + props.id,
                   {
                     method: "post",
                     headers: {

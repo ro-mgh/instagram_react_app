@@ -38,8 +38,7 @@ const EditAvatar = (props) => {
               .then(async function (idToken) {
                 try {
                   const response = await fetch(
-                    "https://insta-byrm-server.me.uk/user/" +
-                      user.uid,
+                    "https://insta-byrm-server.me.uk/user/" + user.uid,
                     {
                       method: "put",
                       headers: {
@@ -108,8 +107,7 @@ const EditAvatar = (props) => {
         user.getIdToken(/* forceRefresh */ true).then(async function (idToken) {
           try {
             const response = await fetch(
-              "https://insta-byrm-server.me.uk/user/" +
-                user.uid,
+              "https://insta-byrm-server.me.uk/user/" + user.uid,
               {
                 method: "put",
                 headers: {

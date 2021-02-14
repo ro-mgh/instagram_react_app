@@ -11,8 +11,7 @@ export const fetchPosts = async ({ pageParam = 0 }) => {
         .then(async function (idToken) {
           try {
             const response = await fetch(
-              "https://insta-byrm-server.me.uk/post/user/page/" +
-                pageParam,
+              "https://insta-byrm-server.me.uk/post/user/page/" + pageParam,
               {
                 method: "get",
                 headers: {
@@ -52,8 +51,7 @@ export const fetchNotFollowingPosts = async ({ pageParam = 0 }) => {
       .then(async function (idToken) {
         try {
           const response = await fetch(
-            "https://insta-byrm-server.me.uk/post/page/" +
-              pageParam,
+            "https://insta-byrm-server.me.uk/post/page/" + pageParam,
             {
               method: "get",
               headers: {
