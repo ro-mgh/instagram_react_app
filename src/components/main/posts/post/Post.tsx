@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import CommentsField from "./CommentsField";
 import LikesField from "./LikesField";
 import AddCommentField from "./AddCommentField";
@@ -13,10 +11,7 @@ const Post = (props) => {
   const [post, setPost] = useState(props);
   const user = useSelector((state) => state.authReducer.user);
 
-  // useState(() => {
-  //   setPost(props);
-  // }, [props]);
-
+  // handle comments add
   const handleCommentAdd = (text) => {
     const newComment = {
       comments: [

@@ -7,6 +7,7 @@ const AddCommentField = ({ onAddComment, id }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
 
+  // add comment to DB
   const handleCommentAdd = async (event) => {
     event.preventDefault();
     if (text) {

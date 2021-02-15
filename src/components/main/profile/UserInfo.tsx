@@ -4,7 +4,6 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import mockedUser from "../../../mocked_files/mocked_user_profile";
 import Modal from "./Modal";
 import EditAvatar from "./EditAvatar";
 import { useDispatch } from "react-redux";

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../../pictures/instagram_logo.png";
 import MenuDropdown from "./MenuDropdown";
 import SearchField from "./SearchField";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-
-// src / pictures / instagram_logo.png
 
 const Header = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 620px)" });

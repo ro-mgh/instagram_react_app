@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "../header/Header";
 import UserInfo from "./UserInfo";
-import UserPictures from "./UserPictures";
 import FooterBottom from "../../footer/FooterBottom";
 import { useSelector } from "react-redux";
 import ProfileInfo from "./ProfileInfo";
@@ -9,7 +8,6 @@ import AlertPop from "../errors/AlertPop";
 
 const Profile = ({ match, location }) => {
   const user = useSelector((state) => state.authReducer.user);
-  // useEffect(() => {}, []);
 
   return (
     <div>

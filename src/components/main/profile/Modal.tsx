@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 
 const modalRoot = document.getElementById("modal");
 
+// create modal for edit profile
 const Modal = ({ children }) => {
   const elRef = useRef(null);
   if (!elRef.current) {

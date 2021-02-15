@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Gallery from "../explore/Gallery";
 
 const ProfilePictures = (props) => {
@@ -9,7 +9,6 @@ const ProfilePictures = (props) => {
           <div>
             <svg
               aria-label="Posts"
-              // class="_8-yf5 "
               fill="#262626"
               height="12"
               viewBox="0 0 48 48"

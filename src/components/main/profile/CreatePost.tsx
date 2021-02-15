@@ -14,14 +14,12 @@ const config = {
   secretAccessKey: process.env.REACT_APP_S3_SECRETKEY,
 };
 
+// styles for S3 dropfield
 const ReactS3Client = new S3(config);
 
-const baseStyle = {
-  //   flex: 1,
-};
+const baseStyle = {};
 
 const activeStyle = {
-  //   borderColor: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
   borderColor: "00e676",
 };
 
@@ -38,7 +36,7 @@ function CreatePost(props) {
   const dispatch = useDispatch();
 
   const onDrop = useCallback((acceptedFiles) => {
-    // Do something with the files
+    // adding post to DB
 
     if (acceptedFiles && acceptedFiles[0]) {
       const file = acceptedFiles[0];
@@ -129,7 +127,6 @@ function CreatePost(props) {
           Drag a file here, or click to select files
         </p>
       </div>
-      {/* <div>file:{getInputProps}</div> */}
     </div>
   );
 }

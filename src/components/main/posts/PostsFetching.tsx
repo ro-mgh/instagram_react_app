@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import Post from "./post/Post";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { useQuery } from "react-query";
 import { fetchPosts } from "../../../utils/fetchingData";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
 import { useInfiniteQuery } from "react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+//unknown posts for explore page
 const PostsFetching = () => {
   const dispatch = useDispatch();
 
@@ -32,20 +32,8 @@ const PostsFetching = () => {
     });
   }
 
-  if (data) {
-    console.log(data);
-  }
-
   return (
     <div className="posts-wrapper">
-      {/* {!isLoading ? (
-        data ? (
-          //   data.map((post) => {
-          //     return <Post {...post} key={post.id} />;
-          //   })
-          <div>post</div>
-        ) : null */}
-
       {status !== "loading" ? (
         data ? (
           <InfiniteScroll

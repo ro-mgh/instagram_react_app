@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
-import mockedUser from "../../../mocked_files/mocked_user_profile";
 import Gallery from "../explore/Gallery";
 import CreatePost from "./CreatePost";
 
@@ -18,7 +16,6 @@ const UserPictures = (props) => {
           <button onClick={toggleView}>
             <svg
               aria-label="Posts"
-              // class="_8-yf5 "
               fill="#262626"
               height="12"
               viewBox="0 0 48 48"
@@ -37,7 +34,6 @@ const UserPictures = (props) => {
           <button onClick={toggleView}>
             <svg
               aria-label="Tagged"
-              // class="_8-yf5 "
               fill="#8e8e8e"
               height="12"
               viewBox="0 0 48 48"

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Gallery from "./Gallery";
-// import { explorePosts } from "../../../store/actions/exploreUsers";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useInfiniteQuery } from "react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -58,25 +57,6 @@ const ExplorePosts = () => {
           </InfiniteScroll>
         ) : null
       ) : (
-        // <div>
-        //   {data.pages.map((page, i) => {
-        //     return <Gallery {...{ posts: page.data }} key={i} />;
-        //   })}
-        //   <div>
-
-        //     <button
-        //       onClick={() => fetchNextPage()}
-        //       // disabled={!hasNextPage || isFetchingNextPage}
-        //     >
-        //       {isFetchingNextPage
-        //         ? "Loading more..."
-        //         : hasNextPage
-        //         ? "Load More"
-        //         : "Nothing more to load"}
-        //     </button>
-        //   </div>
-        //   <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div>
-        // </div>
         <div className="mainfield-progress-wrapper">
           <CircularProgress size={30} />
         </div>
