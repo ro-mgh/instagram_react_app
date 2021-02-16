@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useDropzone } from "react-dropzone";
@@ -6,6 +6,8 @@ import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { CircularProgress } from "@material-ui/core";
 
 const config = {
   bucketName: "insta-project",
@@ -33,11 +35,17 @@ const rejectStyle = {
 
 function CreatePost(props) {
   const user = useSelector((state) => state.authReducer.user);
+  const posts = useSelector((state) => state.dataReducer.users);
   const dispatch = useDispatch();
+  const [isUploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    setUploading(false);
+  }, [posts]);
 
   const onDrop = useCallback((acceptedFiles) => {
     // adding post to DB
-
+    setUploading(true);
     if (acceptedFiles && acceptedFiles[0]) {
       const file = acceptedFiles[0];
       ReactS3Client.uploadFile(file, user.uid + "&&" + Date.now())
@@ -65,6 +73,7 @@ function CreatePost(props) {
                   if (response.ok) {
                     dispatch(exploreUsers());
                   } else {
+                    setUploading(false);
                     dispatch({
                       type: SET_ERROR,
                       payload: {
@@ -73,6 +82,7 @@ function CreatePost(props) {
                     });
                   }
                 } catch (e) {
+                  setUploading(false);
                   dispatch({
                     type: SET_ERROR,
                     payload: {
@@ -82,6 +92,7 @@ function CreatePost(props) {
                 }
               });
           } else {
+            setUploading(false);
             dispatch({
               type: SET_ERROR,
               payload: {
@@ -91,6 +102,7 @@ function CreatePost(props) {
           }
         })
         .catch((err) => {
+          setUploading(false);
           dispatch({
             type: SET_ERROR,
             payload: {
@@ -120,13 +132,21 @@ function CreatePost(props) {
   );
 
   return (
-    <div className="dragdrop-wrapper">
-      <div {...getRootProps({ style })} className="dragdrop-input-wrapper">
-        <input {...getInputProps()} className="dragdrop-input-wrapper" />
-        <p className="dragdrop-input-p">
-          Drag a file here, or click to select files
-        </p>
-      </div>
+    <div>
+      {isUploading ? (
+        <div className="post-linear-wrapper">
+          <CircularProgress size={30} />
+        </div>
+      ) : (
+        <div className="dragdrop-wrapper">
+          <div {...getRootProps({ style })} className="dragdrop-input-wrapper">
+            <input {...getInputProps()} className="dragdrop-input-wrapper" />
+            <p className="dragdrop-input-p">
+              Drag a file here, or click to select files
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

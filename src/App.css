@@ -1761,6 +1761,20 @@ a {
   height: 100px;
 }
 
+.MuiLinearProgress-colorPrimary {
+  background-color: black !important;
+}
+
+.MuiLinearProgress-barColorPrimary {
+  background-color: grey !important;
+}
+
+.post-linear-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 130px;
+}
+
 /* custom logo */
 
 .customlogo-wrapper {
