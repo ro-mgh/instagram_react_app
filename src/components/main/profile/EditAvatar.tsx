@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const config = {
   bucketName: "insta-project",
@@ -18,6 +19,8 @@ const ReactS3Client = new S3(config);
 const EditAvatar = (props) => {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
+  const [isUploading, setUploading] = useState(false);
+  const [isRemoving, setRemoving] = useState(false);
 
   const toggleModal = () => {
     props.onClick();
@@ -25,6 +28,7 @@ const EditAvatar = (props) => {
 
   const uploadAvatar = (e) => {
     if (e.target.files && e.target.files[0]) {
+      setUploading(true);
       const file = e.target.files[0];
       ReactS3Client.uploadFile(file, user.uid)
         .then((data) => {
@@ -52,7 +56,9 @@ const EditAvatar = (props) => {
                   );
                   if (response.ok) {
                     dispatch(exploreUsers());
+                    setUploading(false);
                   } else {
+                    setUploading(false);
                     dispatch({
                       type: SET_ERROR,
                       payload: {
@@ -61,6 +67,7 @@ const EditAvatar = (props) => {
                     });
                   }
                 } catch (e) {
+                  setUploading(false);
                   dispatch({
                     type: SET_ERROR,
                     payload: {
@@ -70,6 +77,7 @@ const EditAvatar = (props) => {
                 }
               });
           } else {
+            setUploading(false);
             dispatch({
               type: SET_ERROR,
               payload: {
@@ -79,6 +87,7 @@ const EditAvatar = (props) => {
           }
         })
         .catch((err) => {
+          setUploading(false);
           dispatch({
             type: SET_ERROR,
             payload: {
@@ -91,12 +100,13 @@ const EditAvatar = (props) => {
 
   const deleteAvatar = (e) => {
     e.preventDefault();
+    setRemoving(true);
     ReactS3Client.deleteFile(user.uid)
       .then((data) => {
-        console.log("Photo deleted");
+        // console.log("Photo deleted");
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
       });
     try {
       const user = firebase.auth().currentUser;
@@ -120,8 +130,10 @@ const EditAvatar = (props) => {
               }
             );
             if (response.ok) {
+              setRemoving(false);
               dispatch(exploreUsers());
             } else {
+              setRemoving(false);
               dispatch({
                 type: SET_ERROR,
                 payload: {
@@ -130,6 +142,7 @@ const EditAvatar = (props) => {
               });
             }
           } catch (e) {
+            setRemoving(false);
             dispatch({
               type: SET_ERROR,
               payload: {
@@ -139,6 +152,7 @@ const EditAvatar = (props) => {
           }
         });
       } else {
+        setRemoving(false);
         dispatch({
           type: SET_ERROR,
           payload: {
@@ -147,6 +161,7 @@ const EditAvatar = (props) => {
         });
       }
     } catch (e) {
+      setRemoving(false);
       dispatch({
         type: SET_ERROR,
         payload: {
@@ -164,7 +179,13 @@ const EditAvatar = (props) => {
           htmlFor="upload-photo"
           className="modal-button image-input-label"
         >
-          Upload Photo
+          {isUploading ? (
+            <div className="mainfield-progress-wrapper">
+              <CircularProgress size={20} />
+            </div>
+          ) : (
+            <div>Upload Photo</div>
+          )}
         </label>
         <input
           className="image-input"
@@ -178,7 +199,13 @@ const EditAvatar = (props) => {
           className="modal-button modal-button-remove"
           onClick={deleteAvatar}
         >
-          Remove Current Photo
+          {isRemoving ? (
+            <div className="mainfield-progress-wrapper">
+              <CircularProgress size={20} />
+            </div>
+          ) : (
+            <div>Remove Current Photo</div>
+          )}
         </button>
         <button onClick={toggleModal} className="modal-button">
           Cancel

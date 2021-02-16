@@ -5,6 +5,7 @@ import CreatePost from "./CreatePost";
 
 const UserPictures = (props) => {
   const [showPosts, setPosts] = useState(true);
+
   // const user = useSelector((state) => state.dataReducer.user);
 
   const toggleView = () => setPosts(!showPosts);
