@@ -166,8 +166,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
                       className={classes.medium}
                     />
                   </div>
-                ) : // </div>
-                null}
+                ) : null}
                 <div className="userprofile-info-username-text">
                   {user.username || ""}
                 </div>
