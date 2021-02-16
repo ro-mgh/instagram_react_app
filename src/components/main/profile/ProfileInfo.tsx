@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.spacing(17),
       height: theme.spacing(17),
     },
+    medium: {
+      width: theme.spacing(5),
+      height: theme.spacing(5),
+    },
   })
 );
 
@@ -154,6 +158,16 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
             ) : null}
             <div className="userprofile-info-wrapper">
               <div className="userprofile-info-username">
+                {isTabletOrMobile ? (
+                  <div className="userprofile-avatar-wrapper">
+                    <Avatar
+                      alt="A"
+                      src={user.avatar || ""}
+                      className={classes.medium}
+                    />
+                  </div>
+                ) : // </div>
+                null}
                 <div className="userprofile-info-username-text">
                   {user.username || ""}
                 </div>

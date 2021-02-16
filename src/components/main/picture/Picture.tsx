@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AlertPop from "../errors/AlertPop";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
+import { useMediaQuery } from "react-responsive";
 
 // post/image page
 
@@ -28,6 +29,7 @@ const Picture = ({ match, location }) => {
     likes: [],
     createdAt: "",
   });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 620px)" });
 
   // getting post info from DB
   useEffect(() => {
@@ -108,26 +110,39 @@ const Picture = ({ match, location }) => {
     <div>
       <Header />
       {post.id ? (
-        <div className="picture-wrapper">
-          <img src={post.image} className="picture-img" alt=""></img>
-          <div className="picture-comments-wrapper">
-            <div className="picture-username-field">
-              <UserHeaderField {...post} />
+        !isTabletOrMobile ? (
+          <div className="picture-wrapper">
+            <img src={post.image} className="picture-img" alt=""></img>
+            <div className="picture-comments-wrapper">
+              <div className="picture-username-field">
+                <UserHeaderField {...post} />
+              </div>
+              <div className="picture-comments-field">
+                <CommentsField commentsArr={post.comments} />
+              </div>
+              <div className="picture-likes-field">
+                <LikesField {...post} />
+              </div>
+              <div className="post-date">
+                {new Date(post.createdAt).toDateString()}
+              </div>
+              <div className="picture-addcomments-field">
+                <AddCommentField {...post} onAddComment={handleCommentAdd} />
+              </div>
             </div>
-            <div className="picture-comments-field">
-              <CommentsField commentsArr={post.comments} />
-            </div>
-            <div className="picture-likes-field">
-              <LikesField {...post} />
-            </div>
+          </div>
+        ) : (
+          <article className="post-wrapper picture-wrapper-mobile">
+            <UserHeaderField {...post} />
+            <img className="post-img" src={post.image} alt=""></img>
+            <LikesField {...post} />
+            <CommentsField commentsArr={post.comments} />
             <div className="post-date">
               {new Date(post.createdAt).toDateString()}
             </div>
-            <div className="picture-addcomments-field">
-              <AddCommentField {...post} onAddComment={handleCommentAdd} />
-            </div>
-          </div>
-        </div>
+            <AddCommentField {...post} onAddComment={handleCommentAdd} />
+          </article>
+        )
       ) : (
         <div className="progress-wrapper">
           <CircularProgress />
