@@ -1,70 +1,59 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Instagram (clone by RM) React App
 
-## Available Scripts
+Hi there! This is a clone of Instagram web application. </br>
+Seeing is believing: [InstagrambyRM](https://master.d3vv0t14g1wvm9.amplifyapp.com/)
 
-In the project directory, you can run:
+## Tech stack
+### Frontend
+#### Main stack
+- ![React](https://ru.reactjs.org/favicon-32x32.png?v=f4d46f030265b4c48a05c999b8d93791) React
+- Typescript
+- Redux
+- Firebase Authentification
+- React Router
+- AWS S3 for photo storage
+- React Query
+#### Styling
+- Material UI
+#### Testing
+- Jest
+#### CI/CD
+- AWS Amplify
 
-### `yarn start`
+### Server
+#### Main stack
+- ![node](https://nodejs.dev/favicon-32x32.png?v=c4ae6cc0f0baa07df6ce6c3f83e5c431) Node
+- Typescript
+- Express
+- REST
+- CRUD
+- Firebase Admin SDK Authentification
+#### DB
+- Prisma
+- AWS Relational Database Service(RDS) PostgreSQL
+#### CI/CD
+- Docker
+- AWS Elastic Container Service (ECS) and Elastic Compute Cloud (EC2)
+- GitHub Actions
+##### [Link to server github repo](https://github.com/ro-mgh/todolist_react_server)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
 
-### `yarn test`
+### A user can:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- create an account and sign into it, and signout from account.
+![signin](https://insta-project.s3.ap-northeast-2.amazonaws.com/Signin%3Aup_screen.png)
+- see images feed for all following users, and explore new users in sidebar.
+![feed](https://insta-project.s3.ap-northeast-2.amazonaws.com/Feed.png)
+- find new users and posts on explore page.
+![explore](https://insta-project.s3.ap-northeast-2.amazonaws.com/Explore.png)
+- add posts to feed and edit profile avatar.
+![userprofile](https://insta-project.s3.ap-northeast-2.amazonaws.com/Edit_avatar.png)
+- follow others, comment or like posts.
+![post](https://insta-project.s3.ap-northeast-2.amazonaws.com/Post.png)
+- search other users.
+![searchfield](https://insta-project.s3.ap-northeast-2.amazonaws.com/Searchfield.png)
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Thanks for reading! 
