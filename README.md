@@ -36,7 +36,7 @@ Seeing is believing: [InstagrambyRM](https://master.d3vv0t14g1wvm9.amplifyapp.co
 - Docker
 - AWS Elastic Container Service (ECS) and Elastic Compute Cloud (EC2)
 - GitHub Actions
-##### [Link to server github repo](https://github.com/ro-mgh/todolist_react_server)
+##### [Link to server github repo](https://github.com/ro-mgh/instagram_server)
 
 
 ## Features
