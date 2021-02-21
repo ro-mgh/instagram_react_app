@@ -44,16 +44,22 @@ Seeing is believing: [InstagrambyRM](https://master.d3vv0t14g1wvm9.amplifyapp.co
 ### A user can:
 
 - create an account and sign into it, and signout from account.
-![signin](https://insta-project.s3.ap-northeast-2.amazonaws.com/Signin%3Aup_screen.png)
 - see images feed for all following users, and explore new users in sidebar.
-![feed](https://insta-project.s3.ap-northeast-2.amazonaws.com/Feed.png)
 - find new users and posts on explore page.
-![explore](https://insta-project.s3.ap-northeast-2.amazonaws.com/Explore.png)
 - add posts to feed and edit profile avatar.
-![userprofile](https://insta-project.s3.ap-northeast-2.amazonaws.com/Edit_avatar.png)
 - follow others, comment or like posts.
-![post](https://insta-project.s3.ap-northeast-2.amazonaws.com/Post.png)
 - search other users.
+
+![signin](https://insta-project.s3.ap-northeast-2.amazonaws.com/Signin%3Aup_screen.png)
+
+![feed](https://insta-project.s3.ap-northeast-2.amazonaws.com/Feed.png)
+
+![explore](https://insta-project.s3.ap-northeast-2.amazonaws.com/Explore.png)
+
+![userprofile](https://insta-project.s3.ap-northeast-2.amazonaws.com/Edit_avatar.png)
+
+![post](https://insta-project.s3.ap-northeast-2.amazonaws.com/Post.png)
+
 ![searchfield](https://insta-project.s3.ap-northeast-2.amazonaws.com/Searchfield.png)
 
 ## Thanks for reading! 
