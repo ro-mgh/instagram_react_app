@@ -6,7 +6,7 @@ Seeing is believing: [InstagrambyRM](https://master.d3vv0t14g1wvm9.amplifyapp.co
 
 ## Tech stack
 ### Frontend
-#### Main stack
+#### Client
 - ![React](https://ru.reactjs.org/favicon-32x32.png?v=f4d46f030265b4c48a05c999b8d93791) React
 - Typescript
 - Redux
