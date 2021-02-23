@@ -29,9 +29,11 @@ const AlertPop = () => {
       open={!!error}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
     >
-      <Alert severity="error" onClose={handleClose}>
-        {error}
-      </Alert>
+      <div data-testid="error">
+        <Alert severity="error" onClose={handleClose}>
+          {error}
+        </Alert>
+      </div>
     </Snackbar>
   );
 };

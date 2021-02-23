@@ -32,10 +32,6 @@ const ExplorePosts = () => {
     });
   }
 
-  if (!data) {
-    console.log(useInfiniteQuery);
-  }
-
   return (
     <div className="explore-posts-wrapper">
       <p className="explore-users-text">Explore</p>
