@@ -17,7 +17,7 @@ const Post = (props) => {
       comments: [
         ...post.comments,
         {
-          user: { username: user.displayName.split("&&")[0], userId: user.uid },
+          user: { username: user.displayName.split("&&")[0], id: user.uid },
           comment: text,
           id: Date.now(),
         },
