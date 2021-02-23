@@ -157,7 +157,11 @@ const LikesField = (props) => {
   return (
     <div>
       <div className="post-icons-wrapper">
-        <button className="icons-like-wrapper" onClick={handleLike}>
+        <button
+          className="icons-like-wrapper"
+          onClick={handleLike}
+          data-testid="like"
+        >
           {like ? (
             <svg
               aria-label="Unlike"

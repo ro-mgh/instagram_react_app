@@ -71,6 +71,7 @@ exports[`rendering Picture component renders Picture 1`] = `
             >
               <button
                 class="icons-like-wrapper"
+                data-testid="like"
               >
                 <svg
                   aria-label="Like"
@@ -139,7 +140,9 @@ exports[`rendering Picture component renders Picture 1`] = `
         <div
           class="picture-addcomments-field"
         >
-          <div>
+          <div
+            data-testid="addcommentfield"
+          >
             <div
               class="post-comments-add"
             >
@@ -148,6 +151,7 @@ exports[`rendering Picture component renders Picture 1`] = `
               >
                 <textarea
                   class="post-comments-textarea"
+                  data-testid="textArea"
                   placeholder="Add a comment..."
                 />
                 <button

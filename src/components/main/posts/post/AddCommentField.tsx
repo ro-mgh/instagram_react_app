@@ -72,11 +72,12 @@ const AddCommentField = ({ onAddComment, id }) => {
   };
 
   return (
-    <div>
+    <div data-testid="addcommentfield">
       <div className="post-comments-add">
         <form className="post-comments-form" onSubmit={handleCommentAdd}>
           <textarea
             className="post-comments-textarea"
+            data-testid="textArea"
             placeholder="Add a comment..."
             onChange={(e) => setText(e.target.value)}
             value={text}
