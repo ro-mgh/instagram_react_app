@@ -6,12 +6,6 @@ import { exploreUsers } from "../../store/actions/exploreUsers";
 import AlertPop from "./errors/AlertPop";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // dispatch(exploreUsers());
-  }, []);
-
   return (
     <div>
       <Header />
