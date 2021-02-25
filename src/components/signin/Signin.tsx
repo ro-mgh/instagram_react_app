@@ -162,10 +162,7 @@ const Signin = ({ signin, auth, authMsgError, authMsgSuccess }) => {
             </div>
           </div>
           <div className="sign-button-div">
-            {/* <Button type="submit" style={buttonSubmit}>
-            Log in
-          </Button> */}
-
+          
             <button
               className="sign-button-submit"
               onClick={signinUserWithEmailAndPasswordHandler}
