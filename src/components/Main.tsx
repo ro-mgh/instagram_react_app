@@ -5,7 +5,6 @@ import FooterExtended from "./footer/FooterExtended";
 import { connect } from "react-redux";
 import Home from "./main/Home";
 import Loader from "../views/Loader";
-// import PropTypes from 'prop-types';
 import { useMediaQuery } from "react-responsive";
 
 interface IAuth {
