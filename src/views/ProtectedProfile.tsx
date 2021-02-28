@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 import { Route, Redirect } from "react-router-dom";
-import Footer from "../components/footer/Footer";
 import { connect } from "react-redux";
 import Loader from "./Loader";
 import Profile from "../components/main/profile/Profile";
