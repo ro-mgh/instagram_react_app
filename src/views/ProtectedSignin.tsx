@@ -13,12 +13,6 @@ interface IAuth {
 }
 
 const ProtectedSignin: FunctionComponent<IAuth> = ({ auth }) => {
-  // to check in Redux
-  // const user = "";
-  // if (user) {
-  //   return <Redirect to="/" />;
-  // }
-
   return (
     <div>
       {!auth.isLoaded ? (

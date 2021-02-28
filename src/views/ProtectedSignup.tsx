@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Route, Redirect, Link } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import SignupField from "../components/signup/SignupField";
 import Footer from "../components/footer/Footer";
 import { connect } from "react-redux";
@@ -14,12 +14,6 @@ interface IAuth {
 }
 
 const ProtectedSignup: FunctionComponent<IAuth> = ({ auth }) => {
-  // to check in Redux
-  const user = "";
-  // if (auth.user) {
-  //   return <Redirect to="/" />;
-  // }
-
   return (
     <div>
       {!auth.isLoaded ? (

@@ -18,7 +18,6 @@ const SignupField: FunctionComponent = () => {
         <button className="sign-up-loginFacebook">
           <span className="sign-up-loginFacebook-logo"></span>
           Log in with Facebook
-          {/* <span className="sign-loginFacebook-text">Log in with Facebook</span> */}
         </button>
         <div className="sign-or">
           <div className="sign-or-dash"></div>

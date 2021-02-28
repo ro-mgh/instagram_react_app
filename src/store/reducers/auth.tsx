@@ -6,9 +6,6 @@ import {
   SIGNOUT_SUCCESS,
   SIGNOUT_ERROR,
   VERIFY_REQUEST,
-  //   EMAIL_NOT_VERIFIED,
-  //   RESET_SUCCESS,
-  //   RESET_ERROR,
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
