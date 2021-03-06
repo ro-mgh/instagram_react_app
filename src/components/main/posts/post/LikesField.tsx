@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import firebase from "../../../../services/firebase";
 import { Link } from "react-router-dom";
 import { SET_ERROR } from "../../../../store/actions/actionTypes";
 
-const LikesField = (props) => {
+interface ILikes {
+  id: number;
+  likes: { userId: string }[];
+}
+
+const LikesField: FunctionComponent<ILikes> = (props) => {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
   const [like, setLike] = useState(false);
@@ -63,7 +68,7 @@ const LikesField = (props) => {
                 });
               }
             })
-            .catch(function (error) {
+            .catch(function () {
               dispatch({
                 type: SET_ERROR,
                 payload: {
@@ -127,7 +132,7 @@ const LikesField = (props) => {
                 });
               }
             })
-            .catch(function (error) {
+            .catch(function () {
               dispatch({
                 type: SET_ERROR,
                 payload: {

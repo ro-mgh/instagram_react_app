@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, FunctionComponent } from "react";
 import firebase from "../../../../services/firebase";
 import { useDispatch } from "react-redux";
 import { SET_ERROR } from "../../../../store/actions/actionTypes";
 
-const AddCommentField = ({ onAddComment, id }) => {
+const AddCommentField: FunctionComponent<{
+  id: number;
+  onAddComment: (text: string) => void;
+}> = ({ onAddComment, id }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
 
@@ -50,7 +53,7 @@ const AddCommentField = ({ onAddComment, id }) => {
                 });
               }
             })
-            .catch(function (error) {
+            .catch(function () {
               dispatch({
                 type: SET_ERROR,
                 payload: { error: "Adding comment: error connecting to DB" },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CommentsField from "../posts/post/CommentsField";
 import LikesField from "../posts/post/LikesField";
 import AddCommentField from "../posts/post/AddCommentField";
@@ -8,10 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
 import { useMediaQuery } from "react-responsive";
+import { RouteComponentProps } from "react-router";
 
 // post/image page
 
-const PictureField = ({ match, location }) => {
+const PictureField: RouteComponentProps = ({ match }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
   const [post, setPost] = React.useState({
@@ -66,7 +67,7 @@ const PictureField = ({ match, location }) => {
                 });
               }
             })
-            .catch(function (error) {
+            .catch(function () {
               // Handle error
               dispatch({
                 type: SET_ERROR,

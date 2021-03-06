@@ -1,7 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
-const CommentsField = (props) => {
+interface IComments {
+  commentsArr: {
+    id: string;
+    user: { id: string; username: string };
+    comment: string;
+  }[];
+}
+
+const CommentsField: FunctionComponent<IComments> = (props) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {

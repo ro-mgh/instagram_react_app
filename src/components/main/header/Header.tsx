@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import logo from "../../../pictures/instagram_logo.png";
 import MenuDropdown from "./MenuDropdown";
 import SearchField from "./SearchField";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
-const Header = () => {
+const Header: FunctionComponent = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 620px)" });
 
   return (

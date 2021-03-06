@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import FooterBottom from "../../footer/FooterBottom";
 import Carousel from "./Carousel";
 import Header from "../header/Header";
 import ExplorePosts from "./ExplorePosts";
 
-const Explore = () => {
+const Explore: FunctionComponent = () => {
   return (
     <div data-testid="explore">
       <Header />

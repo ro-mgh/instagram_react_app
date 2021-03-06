@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { useDispatch } from "react-redux";
 import Post from "./post/Post";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -8,7 +8,7 @@ import { useInfiniteQuery } from "react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 //unknown posts for explore page
-const PostsFetching = () => {
+const PostsFetching: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   const {
@@ -16,11 +16,10 @@ const PostsFetching = () => {
     error,
     fetchNextPage,
     hasNextPage,
-    isFetching,
-    isFetchingNextPage,
+
     status,
   } = useInfiniteQuery("mainPosts", fetchPosts, {
-    getNextPageParam: (lastPage, pages) => {
+    getNextPageParam: (lastPage) => {
       return lastPage.nextCursor;
     },
   });

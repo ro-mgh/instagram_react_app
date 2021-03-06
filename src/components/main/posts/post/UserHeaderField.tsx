@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
@@ -12,7 +12,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const UserHeaderField = (props) => {
+interface IUser {
+  author: { id: string; avatar: string; username: string };
+}
+
+const UserHeaderField: FunctionComponent<IUser> = (props) => {
   const classes = useStyles();
   return (
     <div className="post-header">

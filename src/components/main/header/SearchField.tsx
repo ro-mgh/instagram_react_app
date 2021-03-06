@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const SearchField = () => {
+const SearchField: FunctionComponent = () => {
   const [users, setUsers] = useState([]);
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [search, setSearch] = useState("");

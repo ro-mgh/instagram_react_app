@@ -1,7 +1,11 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
-const Gallery = (props) => {
+interface IProps {
+  posts: { id: number; name: string; image: string }[];
+}
+
+const Gallery: FunctionComponent<IProps> = (props) => {
   //pictures [] as prop
   return (
     <div className="userpicture-wrapper">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Gallery from "./Gallery";
 import { useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -8,22 +8,18 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchNotFollowingPosts } from "../../../utils/fetchingData";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
 
-const ExplorePosts = () => {
+const ExplorePosts: FunctionComponent = () => {
   const dispatch = useDispatch();
 
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteQuery("explorePosts", fetchNotFollowingPosts, {
-    getNextPageParam: (lastPage, pages) => {
-      return lastPage.nextCursor;
-    },
-  });
+  const { data, error, fetchNextPage, hasNextPage, status } = useInfiniteQuery(
+    "explorePosts",
+    fetchNotFollowingPosts,
+    {
+      getNextPageParam: (lastPage) => {
+        return lastPage.nextCursor;
+      },
+    }
+  );
 
   if (error) {
     dispatch({

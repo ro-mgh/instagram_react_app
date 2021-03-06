@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import { useMediaQuery } from "react-responsive";
 import PostsFetching from "./PostsFetching";
 
-const Posts = () => {
+const Posts: FunctionComponent = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1000px)" });
 
   return (
