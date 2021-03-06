@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import Slider from "react-slick";
 import { useSelector } from "react-redux";
 import "slick-carousel/slick/slick.css";
@@ -10,7 +10,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { getArrayOfUnkhownUsers } from "../../../utils/helpers";
 import { useMediaQuery } from "react-responsive";
 
-const Carousel = () => {
+const Carousel: FunctionComponent = () => {
   const [newUsers, setNewUsers] = useState([]);
   const user = useSelector((state) => state.authReducer.user);
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);

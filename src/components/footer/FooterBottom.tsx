@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
-const FooterBottom = () => {
+const FooterBottom: FunctionComponent = () => {
   return (
     <footer>
       <div className="footer-div-main">

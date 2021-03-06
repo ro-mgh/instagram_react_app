@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FunctionComponent } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import firebase from "../../../services/firebase";
@@ -16,7 +16,14 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const CarouselUser = (props) => {
+interface IProps {
+  name: string;
+  avatar: string;
+  id: string;
+  username: string;
+}
+
+const CarouselUser: FunctionComponent<IProps> = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [isFollow, setFollow] = useState(false);
@@ -53,7 +60,7 @@ const CarouselUser = (props) => {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         dispatch({
           type: SET_ERROR,
           payload: { error: "Follow: error connecting to firebase" },
@@ -93,7 +100,7 @@ const CarouselUser = (props) => {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         dispatch({
           type: SET_ERROR,
           payload: { error: "Unfollow: error connecting to DB" },

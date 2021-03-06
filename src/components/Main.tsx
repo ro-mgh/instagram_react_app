@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import PhoneAnimation from "./PhoneAnimation";
 import SigninField from "./signin/SigninField";
 import FooterExtended from "./footer/FooterExtended";

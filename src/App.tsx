@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from "./components/Main";
 import ProtectedSignin from "./views/ProtectedSignin";
@@ -23,7 +23,7 @@ const rrfProps = {
   // createFirestoreInstance // <- needed if using firestore
 };
 
-function App() {
+const App: FunctionComponent = () => {
   return (
     <ReactReduxFirebaseProvider {...rrfProps}>
       <Provider store={store}>
@@ -44,6 +44,6 @@ function App() {
       </Provider>
     </ReactReduxFirebaseProvider>
   );
-}
+};
 
 export default App;
