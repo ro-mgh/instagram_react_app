@@ -1,7 +1,11 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Gallery from "../explore/Gallery";
 
-const ProfilePictures = (props) => {
+interface IProps {
+  posts: { id: number; name: string; image: string }[];
+}
+
+const ProfilePictures: FunctionComponent<IProps> = (props) => {
   return (
     <div className="userpicture-wrapper">
       <div className="userpicture-actions-wrapper">

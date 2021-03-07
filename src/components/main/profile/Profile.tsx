@@ -5,8 +5,9 @@ import FooterBottom from "../../footer/FooterBottom";
 import { useSelector } from "react-redux";
 import ProfileInfo from "./ProfileInfo";
 import AlertPop from "../errors/AlertPop";
+import { RouteComponentProps } from "react-router";
 
-const Profile = ({ match, location }) => {
+const Profile: RouteComponentProps = ({ match }) => {
   const user = useSelector((state) => state.authReducer.user);
 
   return (

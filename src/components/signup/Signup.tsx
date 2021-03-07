@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import { buttonSubmit } from "../../styles/materialui-components/SignStyles";
 import { signupUser } from "../../store/actions/auth";
 import { connect } from "react-redux";
 import Alert from "@material-ui/lab/Alert";
@@ -13,7 +11,7 @@ interface State {
   showPassword: boolean;
 }
 
-const Signup = ({ signup, auth, authMsgError, authMsgSuccess }) => {
+const Signup = ({ signup, authMsgError, authMsgSuccess }) => {
   const [values, setValues] = React.useState<State>({
     email: "",
     name: "",

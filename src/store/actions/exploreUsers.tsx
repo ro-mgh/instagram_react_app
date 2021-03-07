@@ -56,7 +56,7 @@ export const exploreUsers = (): ThunkAction<
           });
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         dispatch({
           type: SET_ERROR,
           payload: {

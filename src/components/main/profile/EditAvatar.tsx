@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
@@ -16,7 +16,7 @@ const config = {
 
 const ReactS3Client = new S3(config);
 
-const EditAvatar = (props) => {
+const EditAvatar: FunctionComponent<{ onClick: () => void }> = (props) => {
   const user = useSelector((state) => state.authReducer.user);
   const dispatch = useDispatch();
   const [isUploading, setUploading] = useState(false);
@@ -86,7 +86,7 @@ const EditAvatar = (props) => {
             });
           }
         })
-        .catch((err) => {
+        .catch(() => {
           setUploading(false);
           dispatch({
             type: SET_ERROR,
@@ -102,10 +102,10 @@ const EditAvatar = (props) => {
     e.preventDefault();
     setRemoving(true);
     ReactS3Client.deleteFile(user.uid)
-      .then((data) => {
+      .then(() => {
         // console.log("Photo deleted");
       })
-      .catch((err) => {
+      .catch(() => {
         // console.error(err);
       });
     try {

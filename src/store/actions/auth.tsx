@@ -98,7 +98,7 @@ export const signupUser = (
                   });
                 }
               })
-              .catch(function (e) {
+              .catch(function () {
                 user.delete();
                 return dispatch({
                   type: SIGNUP_ERROR,
@@ -117,7 +117,7 @@ export const signupUser = (
             });
           }
         })
-        .catch(function (error) {
+        .catch(function () {
           dispatch({
             type: SIGNUP_ERROR,
             payload: {

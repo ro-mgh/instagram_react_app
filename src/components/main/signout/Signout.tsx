@@ -1,11 +1,14 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { signoutUser } from "../../../store/actions/auth";
 import { connect } from "react-redux";
 
-const Signout = ({ signout, auth }) => {
+interface IProps {
+  signout: () => void;
+}
+
+const Signout: FunctionComponent<IProps> = ({ signout }) => {
   const handleSignout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
     signout();
   };
 

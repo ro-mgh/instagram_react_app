@@ -85,7 +85,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         dispatch({
           type: SET_ERROR,
           payload: {
@@ -131,7 +131,7 @@ const ProfileInfo: FunctionComponent<RouteComponentProps> = (props) => {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         // Handle error
         dispatch({
           type: SET_ERROR,

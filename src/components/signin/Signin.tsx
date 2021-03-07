@@ -9,7 +9,9 @@ interface State {
   showPassword: boolean;
 }
 
-const Signin = ({ signin, auth, authMsgError, authMsgSuccess }) => {
+// interface IRedux {}
+
+const Signin = ({ signin, authMsgError, authMsgSuccess }) => {
   const [values, setValues] = React.useState<State>({
     username: "",
     password: "",

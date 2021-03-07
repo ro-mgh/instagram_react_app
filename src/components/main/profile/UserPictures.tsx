@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, FunctionComponent } from "react";
 
 import Gallery from "../explore/Gallery";
 import CreatePost from "./CreatePost";
 
-const UserPictures = (props) => {
+interface IProps {
+  posts: { id: number; name: string; image: string }[];
+}
+
+const UserPictures: FunctionComponent<IProps> = (props) => {
   const [showPosts, setPosts] = useState(true);
 
   // const user = useSelector((state) => state.dataReducer.user);

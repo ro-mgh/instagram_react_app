@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const UserInfo = () => {
+const UserInfo: FunctionComponent = () => {
   const classes = useStyles();
   const [showModal, setModal] = useState(false);
   const userAuth = useSelector((state) => state.authReducer.user);
