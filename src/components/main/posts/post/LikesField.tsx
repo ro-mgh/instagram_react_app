@@ -6,7 +6,7 @@ import { SET_ERROR } from "../../../../store/actions/actionTypes";
 
 interface ILikes {
   id: number;
-  likes: { userId: string }[];
+  likes: { userId: string; postId: number }[];
 }
 
 const LikesField: FunctionComponent<ILikes> = (props) => {

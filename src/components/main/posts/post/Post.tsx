@@ -6,33 +6,21 @@ import UserHeaderField from "./UserHeaderField";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const post = {
-  author: {
-    avatar:
-      "https://insta-project.s3-ap-northeast-2.amazonaws.com/waladPiWs1XukX995ZBlSNODoTH3.jpeg",
-    id: "waladPiWs1XukX995ZBlSNODoTH3",
-    username: "burningman",
-  },
-  comments: [],
-  createdAt: "2021-02-19T09:04:02.437Z",
-  id: 49,
-  image:
-    "https://insta-project.s3-ap-northeast-2.amazonaws.com/waladPiWs1XukX995ZBlSNODoTH3&&1613725435570.jpeg",
-  likes: [],
-  text: null,
-};
-
 interface IProps {
   author: {
     avatar: string;
     id: string;
     username: string;
   };
-  comments: any[];
+  comments: {
+    id: number;
+    user: { id: string; username: string };
+    comment: string;
+  }[];
   createdAt: string;
   id: number;
   image: string;
-  likes: any[];
+  likes: { userId: string; postId: number }[];
   text: string;
 }
 
@@ -42,14 +30,15 @@ const Post: FunctionComponent<IProps> = (props) => {
   const user = useSelector((state) => state.authReducer.user);
 
   // handle comments add
-  const handleCommentAdd = (text) => {
+  const handleCommentAdd = (text: string) => {
+    const currentDate = new Date();
     const newComment = {
       comments: [
         ...post.comments,
         {
+          id: +currentDate.getTime(),
           user: { username: user.displayName.split("&&")[0], id: user.uid },
           comment: text,
-          id: Date.now(),
         },
       ],
     };

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 interface IComments {
   commentsArr: {
-    id: string;
+    id: number;
     user: { id: string; username: string };
     comment: string;
   }[];

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FunctionComponent } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch } from "react-redux";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
@@ -16,7 +16,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const User = (props) => {
+interface IUser {
+  avatar: string;
+  id: string;
+  username: string;
+}
+
+const User: FunctionComponent<IUser> = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [isFollow, setFollow] = useState(false);
@@ -57,7 +63,7 @@ const User = (props) => {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         dispatch({
           type: SET_ERROR,
           payload: {
@@ -103,7 +109,7 @@ const User = (props) => {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         dispatch({
           type: SET_ERROR,
           payload: {

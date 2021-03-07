@@ -1,4 +1,10 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+import React, {
+  useMemo,
+  useCallback,
+  useState,
+  useEffect,
+  FunctionComponent,
+} from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useDropzone } from "react-dropzone";
@@ -6,7 +12,6 @@ import S3 from "react-aws-s3";
 import firebase from "../../../services/firebase";
 import { exploreUsers } from "../../../store/actions/exploreUsers";
 import { SET_ERROR } from "../../../store/actions/actionTypes";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import { CircularProgress } from "@material-ui/core";
 
 const config = {
@@ -33,7 +38,7 @@ const rejectStyle = {
   borderColor: "#ff1744",
 };
 
-function CreatePost(props) {
+const CreatePost: FunctionComponent = () => {
   const user = useSelector((state) => state.authReducer.user);
   const posts = useSelector((state) => state.dataReducer.users);
   const dispatch = useDispatch();
@@ -101,7 +106,7 @@ function CreatePost(props) {
             });
           }
         })
-        .catch((err) => {
+        .catch(() => {
           setUploading(false);
           dispatch({
             type: SET_ERROR,
@@ -149,6 +154,6 @@ function CreatePost(props) {
       )}
     </div>
   );
-}
+};
 
 export default CreatePost;

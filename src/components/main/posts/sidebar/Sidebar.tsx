@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
@@ -18,29 +18,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Sidebar = () => {
+const Sidebar: FunctionComponent = () => {
   const classes = useStyles();
   const authUser = useSelector((state) => state.authReducer.user);
   const allUsersFromStore = useSelector((state) => state.dataReducer.users);
   const [newUsers, setNewUsers] = useState([]);
-  const [user, setUser] = useState(authUser);
-  // useState({
-  //   uid: "",
-  //   displayName: "",
-  //   photoURL: "",
-  // });
+  // const [user, setUser] = useState(authUser);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (Object.entries(authUser).length) {
-  //     setUser(authUser);
-  //   }
-  // }, [authUser]);
 
   // getting all unknown users
   useEffect(() => {
-    if (Object.entries(allUsersFromStore).length > 0 && user.uid) {
-      const unkhownUsers = getArrayOfUnkhownUsers(user.uid, allUsersFromStore);
+    if (Object.entries(allUsersFromStore).length > 0 && authUser.uid) {
+      const unkhownUsers = getArrayOfUnkhownUsers(
+        authUser.uid,
+        allUsersFromStore
+      );
       setNewUsers(unkhownUsers);
     } else {
       dispatch(exploreUsers());
@@ -50,19 +42,21 @@ const Sidebar = () => {
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar-user">
-        <Link to={"/profile/" + user.uid}>
-          <Avatar alt="A" src={user.photoURL} className={classes.large} />
+        <Link to={"/profile/" + authUser.uid}>
+          <Avatar alt="A" src={authUser.photoURL} className={classes.large} />
         </Link>
         <div className="sidebar-user-wrapper">
           <div className="username-font">
-            <Link to={"/profile/" + user.uid}>
+            <Link to={"/profile/" + authUser.uid}>
               <div className="username-font">
-                {user.displayName ? user.displayName.split("&&")[0] : ""}
+                {authUser.displayName
+                  ? authUser.displayName.split("&&")[0]
+                  : ""}
               </div>
             </Link>
           </div>
           <div className="name-font">
-            {user.displayName ? user.displayName.split("&&")[1] : ""}
+            {authUser.displayName ? authUser.displayName.split("&&")[1] : ""}
           </div>
         </div>
       </div>
