@@ -1,10 +1,15 @@
 import { SET_ERROR, CLEAR_ERROR } from "../actions/actionTypes";
 
+import { ErrorType, ErrorInitialState } from "../types/types";
+
 const INITIAL_STATE = {
   error: "",
 };
 
-export default function (state = INITIAL_STATE, action) {
+export default function (
+  state = INITIAL_STATE,
+  action: ErrorType
+): ErrorInitialState {
   switch (action.type) {
     case SET_ERROR:
       return {

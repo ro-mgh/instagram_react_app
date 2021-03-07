@@ -8,13 +8,15 @@ import {
   VERIFY_REQUEST,
 } from "../actions/actionTypes";
 
+import { AuthType, Auth } from "../types/types";
+
 const INITIAL_STATE = {
   authMsgError: "",
   authMsgSuccess: "",
   user: {},
 };
 
-export default function (state = INITIAL_STATE, action) {
+export default function (state = INITIAL_STATE, action: AuthType): Auth {
   switch (action.type) {
     case SIGNIN_SUCCESS:
       return {
