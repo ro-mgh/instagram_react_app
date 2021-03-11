@@ -2,7 +2,33 @@ import firebase from "../services/firebase";
 
 // fetching posts of user following
 
-export const fetchPosts = async ({ pageParam = 0 }) => {
+type Posts = {
+  data: Array<{
+    author: {
+      avatar: string;
+      id: string;
+      username: string;
+    };
+    comments: {
+      id: number;
+      user: { id: string; username: string };
+      comment: string;
+    }[];
+    createdAt: string;
+    id: number;
+    image: string;
+    likes: { userId: string; postId: number }[];
+    text: string;
+  }>;
+
+  nextCursor: number;
+};
+
+export const fetchPosts = async ({
+  pageParam = 0,
+}: {
+  pageParam?: number;
+}): Promise<Posts> => {
   try {
     const user = firebase.auth().currentUser;
     if (user) {
@@ -29,7 +55,7 @@ export const fetchPosts = async ({ pageParam = 0 }) => {
             throw new Error("Fetching posts: error connecting to DB");
           }
         })
-        .catch(function (error) {
+        .catch(function () {
           // Handle error
           throw new Error("Fetching posts: error connecting to DB");
         });
@@ -43,7 +69,20 @@ export const fetchPosts = async ({ pageParam = 0 }) => {
 
 // fetching pictures for explore page
 
-export const fetchNotFollowingPosts = async ({ pageParam = 0 }) => {
+type Pictures = {
+  data: Array<{
+    createdAt: string;
+    id: number;
+    image: string;
+  }>;
+  nextCursor: number;
+};
+
+export const fetchNotFollowingPosts = async ({
+  pageParam = 0,
+}: {
+  pageParam?: number;
+}): Promise<Pictures> => {
   try {
     return firebase
       .auth()
@@ -69,7 +108,7 @@ export const fetchNotFollowingPosts = async ({ pageParam = 0 }) => {
           throw new Error("Fetching random posts: error connecting to DB");
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         // Handle error
         throw new Error("Fetching random posts: error connecting to firebase");
       });
