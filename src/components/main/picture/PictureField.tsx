@@ -16,12 +16,13 @@ const PictureField: RouteComponentProps = ({ match }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
   const [post, setPost] = React.useState({
-    id: "",
+    id: undefined,
     image: "",
     text: "",
     author: {
       username: "",
       id: "",
+      avatar: "",
     },
     comments: [],
     likes: [],
