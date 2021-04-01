@@ -1,7 +1,7 @@
 // auth reducer
 
 type blankUser = {};
-test;
+
 export interface Auth {
   authMsgError?: string;
   authMsgSuccess?: string;
