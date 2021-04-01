@@ -1,6 +1,7 @@
 // auth reducer
 
 type blankUser = Record<string, unknown>;
+test;
 export interface Auth {
   authMsgError?: string;
   authMsgSuccess?: string;
