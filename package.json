@@ -40,7 +40,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "test:coverage": "npm test -- --coverage --watchAll"
+    "test:coverage": "npm test -- --coverage --watchAll",
+    "test-lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
+    "test-ts": "tsc --noemit --incremental false"
   },
   "eslintConfig": {
     "extends": [

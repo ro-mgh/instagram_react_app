@@ -63,7 +63,7 @@ export type ErrorType = ErrorAction;
 // getData reducer
 
 export interface DataInitialState {
-  users: Object;
+  users: Record<string, unknown>;
 }
 
 interface DataAction {
